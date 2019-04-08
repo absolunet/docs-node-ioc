@@ -1,0 +1,21 @@
+<template>
+    <ul>
+        <li v-for="(item,i) in menu" :key="`${i}-${item.anchor}`">
+            <a :href="`#${item.anchor}`" v-text="item.label"></a>
+            <doc-page-menu v-if="item.children && item.children.length> 0" :menu="item.children" />
+        </li>
+    </ul>
+</template>
+
+<script>
+    export default {
+        name: 'doc-page-menu',
+        props: {
+            menu: {
+                type: Array,
+                required: false,
+                default: () => []
+            }
+        }
+    }
+</script>

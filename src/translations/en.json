@@ -1,0 +1,31 @@
+{
+  "app": {
+    "name": "Node IoC",
+    "repository": "https://github.com/absolunet/node-ioc-app"
+  },
+  "You are here": "You are here",
+  "Home": "Home",
+  "View on GitHub": "View on GitHub",
+  "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas": "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas",
+  "Get started!": "Get started!",
+  "error": {
+    "404": "It's dark in here..."
+  },
+  "menu": {
+    "intro": "Intro",
+    "getting-started": "Getting started",
+    "configuration": "Configuration",
+    "architecture": "Architecture",
+    "lifecycle": "Lifecycle",
+    "container": "Container",
+    "service-provider": "Service Provider",
+    "mixins": "Mixins",
+    "basics": "Basics",
+    "commands": "Commands",
+    "config": "Configuration",
+    "terminal": "Terminal",
+    "event": "Event",
+    "http": "HTTP",
+    "filesystem": "Filesystem"
+  }
+}

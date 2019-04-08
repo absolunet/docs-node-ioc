@@ -1,0 +1,63 @@
+{
+  "app": {
+    "name": "Node IoC",
+    "repository": "https://github.com/absolunet/node-ioc-app"
+  },
+  "You are here": "Vous êtes ici",
+  "Home": "Accueil",
+  "View on GitHub": "Voir sur GitHub",
+  "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas": "Un écosystème NodeJS avec une syntaxe élégante pour des idées pétillantes",
+  "Get started!": "Commencez!",
+  "error": {
+    "404": "Il fait plutôt sombre ici..."
+  },
+  "menu": {
+    "intro": "Intro",
+    "getting-started": "Pour commencer",
+    "configuration": "Configuration",
+    "architecture": "Architecture",
+    "lifecycle": "Cycle de vie",
+    "container": "Conteneur",
+    "service-provider": "Service Provider",
+    "mixins": "Mixins",
+    "basics": "Les bases",
+    "commands": "Commandes",
+    "config": "Configuration",
+    "terminal": "Terminal",
+    "filesystem": "Système de fichiers",
+    "handling-data": "Gestion des données",
+    "model": "Modèle",
+    "mapper": "Mapper",
+    "repository": "Repository",
+    "database": "Base de données",
+    "going-deeper": "Pour aller plus loin",
+    "driver": "Driver",
+    "helpers": "Utilitaires",
+    "event": "Événement",
+    "http": "HTTP",
+    "security": "Sécurité",
+    "logging": "Journalisation"
+  },
+  "path": {
+    "/:version/intro/getting-started": "/:version/intro/pour-commencer",
+    "/:version/intro/configuration": "/:version/intro/configuration",
+    "/:version/architecture/lifecycle": "/:version/architecture/cycle-de-vie",
+    "/:version/architecture/container": "/:version/architecture/conteneur",
+    "/:version/architecture/service-provider": "/:version/architecture/service-provider",
+    "/:version/architecture/mixins": "/:version/architecture/mixins",
+    "/:version/basics/commands": "/:version/les-bases/commandes",
+    "/:version/basics/config": "/:version/les-bases/configuration",
+    "/:version/basics/terminal": "/:version/les-bases/terminal",
+    "/:version/basics/filesystem": "/:version/les-bases/systeme-de-fichiers",
+    "/:version/handling-data/model": "/:version/gestion-des-donnees/modele",
+    "/:version/handling-data/mapper": "/:version/gestion-des-donnees/mapper",
+    "/:version/handling-data/repository": "/:version/gestion-des-donnees/repository",
+    "/:version/handling-data/database": "/:version/gestion-des-donnees/base-de-donnees",
+    "/:version/going-deeper/driver": "/:version/pour-aller-plus-loin/driver",
+    "/:version/going-deeper/helpers": "/:version/pour-aller-plus-loin/utilitaires",
+    "/:version/going-deeper/event": "/:version/pour-aller-plus-loin/evenement",
+    "/:version/going-deeper/http": "/:version/pour-aller-plus-loin/http",
+    "/:version/going-deeper/security": "/:version/pour-aller-plus-loin/securite",
+    "/:version/going-deeper/logging": "/:version/pour-aller-plus-loin/journalisation"
+  }
+}

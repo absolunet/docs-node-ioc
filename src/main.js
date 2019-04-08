@@ -1,8 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import app from './lib';
+import Home from './docs/Home';
 
-Vue.config.productionTip = false
+Vue.component('home', Home);
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+app.$mount('#app');
