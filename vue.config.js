@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    publicPath: '/docs-node-ioc/',
     outputDir: path.resolve(__dirname, 'docs'),
     chainWebpack: config => {
         config.module.rule('md')
