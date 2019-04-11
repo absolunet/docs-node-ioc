@@ -4,7 +4,7 @@ import DocContent from './../components/DocContent';
 
 export default [
     {
-        path: '/:locale',
+        path: '/docs-node-ioc/:locale',
         name: 'home',
         component: Page,
         children: [
