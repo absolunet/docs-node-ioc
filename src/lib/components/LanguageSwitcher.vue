@@ -1,7 +1,7 @@
 <template>
-    <dropdown v-if="hasMultipleLocales">
+    <dropdown v-if="hasMultipleLocales" size="tiny" :options="options">
         <template v-slot:label>{{ upper(locale) }}</template>
-        <ul>
+        <ul class="vertical menu">
             <li v-for="(to, label) in locales" :key="label">
                 <router-link :to="to" v-text="upper(label)" />
             </li>
@@ -17,6 +17,13 @@
         mixins: [resolveLocalizedRoutes],
         components: {
             Dropdown
+        },
+        props: {
+            options: {
+                type: Object,
+                required: false,
+                default: () => ({})
+            }
         },
         computed: {
             hasMultipleLocales() {

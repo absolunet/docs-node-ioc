@@ -1,16 +1,41 @@
 {
   "app": {
     "name": "Node IoC",
-    "repository": "https://github.com/absolunet/node-ioc-app"
+    "repository": "https://github.com/absolunet/node-ioc-app",
+    "date": {
+      "since": "2019"
+    },
+    "author": {
+      "name": "Absolunet",
+      "link": "https://absolunet.com"
+    }
   },
+  "license": {
+    "type": "MIT",
+    "link": "https://github.com/absolunet/node-ioc/blob/master/license"
+  },
+  "error": {
+    "404": "Il fait plutôt sombre ici..."
+  },
+  "catchPhrases": {
+    "heart": "❤︎",
+    "hard work": "dur labeur",
+    "heated debates": "débats enflammés",
+    "cold sweats": "sueurs froides",
+    "bad puns": "calembours foireux",
+    "coffee & tea": "cafés & thés"
+  },
+
+
+  "Made with": "Fait avec",
+  "by": "par",
   "You are here": "Vous êtes ici",
   "Home": "Accueil",
   "View on GitHub": "Voir sur GitHub",
   "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas": "Un écosystème NodeJS avec une syntaxe élégante pour des idées pétillantes",
   "Get started!": "Commencez!",
-  "error": {
-    "404": "Il fait plutôt sombre ici..."
-  },
+
+
   "menu": {
     "intro": "Intro",
     "getting-started": "Pour commencer",

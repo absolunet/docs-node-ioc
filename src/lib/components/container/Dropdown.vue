@@ -3,7 +3,7 @@
         <button class="button is-dropdown-submenu-parent" :data-toggle="id" type="button">
             <slot name="label" />
         </button>
-        <div ref="dropdown" class="dropdown-pane" :id="id" data-auto-focus="true">
+        <div ref="dropdown" class="dropdown-pane" :class="size" :id="id" data-auto-focus="true">
             <slot />
         </div>
     </span>
@@ -27,6 +27,11 @@
                 type: Object,
                 required: false,
                 default: () => ({})
+            },
+            size: {
+                type: String,
+                required: false,
+                default: ''
             }
         },
         mounted() {

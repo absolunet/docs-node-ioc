@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <nav>
         <template v-for="(menu,index) in menus">
             <div class="card" v-if="menu.children.length > 0" :key="index">
                 <div class="card-divider">
-                    <router-link :to="buildLinkFromMenu(menu)" v-text="getMenuLabel(menu.name)"/></div>
+                    <router-link :to="buildLinkFromMenu(menu)" v-text="getMenuLabel(menu.name)"/>
+                </div>
                 <div class="card-section">
-                    <ul>
+                    <ul class="vertical menu">
                         <li v-for="{ name } in menu.children" :key="name">
                             <router-link :to="buildLinkFromMenu(menu, name)" v-text="getMenuLabel(name)" />
                         </li>
@@ -13,7 +14,7 @@
                 </div>
             </div>
         </template>
-    </div>
+    </nav>
 </template>
 
 <script>
@@ -25,7 +26,12 @@
         mixins: [resolveLocalizedRoutes, translatesMenu],
         computed: {
             menus() {
-                return menus.filter(({ name }) => name === this.$route.params.version)[0].children;
+                const [currentVersion] = menus.filter(({ name }) => name === this.$route.params.version);
+                if (currentVersion) {
+                    return currentVersion.children;
+                }
+
+                return menus.sort(({ name:a }, { name:b }) => a.localeCompare(b))[0].children;
             }
         },
         methods: {

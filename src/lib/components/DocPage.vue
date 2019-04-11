@@ -1,15 +1,12 @@
 <template>
-    <div>
-        <div class="grid-x">
-            <div class="medium-3 large-2 cell">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="large-3 cell show-for-large">
                 <sections-menu />
             </div>
-            <div class="medium-7 large-6 large-offset-1 cell">
+            <div class="large-9 cell">
                 <breadcrumbs />
                 <router-view />
-            </div>
-            <div class="medium-2">
-                <sidebar />
             </div>
         </div>
     </div>
@@ -18,13 +15,11 @@
 <script>
     import Breadcrumbs from './navigation/Breadcrumbs';
     import SectionsMenu from './navigation/SectionsMenu';
-    import Sidebar from './navigation/Sidebar';
 
     export default {
         components: {
             Breadcrumbs,
-            SectionsMenu,
-            Sidebar
+            SectionsMenu
         }
     };
 </script>
