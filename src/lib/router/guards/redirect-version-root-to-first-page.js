@@ -16,7 +16,7 @@ export default (to, from, next) => {
         const key = `path.original.${path}`;
         path = i18n.te(key) ? i18n.t(key) : path;
 
-        path = `/${to.params.locale}${path.replace(':version', to.params.version)}`;
+        path = `/${to.path.split('/')[1]}/${to.params.locale}${path.replace(':version', to.params.version)}`;
 
         next(path);
     } else {

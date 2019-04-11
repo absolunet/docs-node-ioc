@@ -24,8 +24,8 @@
                 return { name: 'home', params: { locale: this.$route.params.locale } };
             },
             breadcrumbs() {
-                const { path } = this.$route;
-                const unlocalizedPath = path.replace(/^(\/)?[a-zA-Z-]+(\/)?/u, '$2');
+                const { path, params:{ locale } } = this.$route;
+                const unlocalizedPath = path.replace(new RegExp(`^(/)?.*${locale}(/)?`, 'u'), '$2');
                 const parts = unlocalizedPath.split('/').filter((part) => { return Boolean(part); });
                 const breadcrumbs = [];
                 for(let i = 0; i < parts.length; i++) {

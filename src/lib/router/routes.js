@@ -1,10 +1,11 @@
 import Page from './../components/Page';
 import DocPage from './../components/DocPage';
 import DocContent from './../components/DocContent';
+import basePath from './../../../base-path.config';
 
 export default [
     {
-        path: '/docs-node-ioc/:locale',
+        path: `${basePath}:locale`,
         name: 'home',
         component: Page,
         children: [

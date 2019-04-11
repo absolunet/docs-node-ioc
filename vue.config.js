@@ -1,7 +1,8 @@
 const path = require('path');
+const basePath = require('./base-path.config');
 
 module.exports = {
-    publicPath: '/docs-node-ioc/',
+    publicPath: basePath,
     outputDir: path.resolve(__dirname, 'docs'),
     chainWebpack: config => {
         config.module.rule('md')

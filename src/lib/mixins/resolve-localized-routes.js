@@ -26,13 +26,11 @@ export default {
                         return str;
                     }
 
-                    const regex = new RegExp(`/${match}(/.*)?$`);
-
                     if (params[match] === 'locale') {
-                        return str.replace(regex, '$1');
+                        return str.replace(new RegExp(`^/[^/]+/${match}(/.*)?$`), '$1');
                     }
 
-                    return str.replace(regex, `/:${params[match]}$1`);
+                    return str.replace(new RegExp(`/${match}(/.*)?$`), `/:${params[match]}$1`);
                 }, path);
             });
         },
@@ -66,7 +64,7 @@ export default {
             return locale ? this.formatLocalePath(locale, formattedPath) : formattedPath;
         },
         formatLocalePath(locale, path) {
-            return `/${locale}${path}`;
+            return `${this.$router.resolve({ name: 'home', params:{ locale }}).href}${path}`;
         },
         removeLocaleFromPath(path) {
             return this.$i18n.availableLocales.reduce((str, locale) => {

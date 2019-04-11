@@ -33,7 +33,7 @@ export default {
             return $content.wrap('<div>').parent().html();
         },
         contentKey() {
-            return `content.${this.getCurrentPathAlias(this.fallbackLocale, false).slice(1).replace(/\//gu, '__').replace(/[.-]/gu, '_')}`;
+            return `content.${this.getCurrentPathAlias(this.fallbackLocale, false).slice(1).replace(/\//gu, '__').replace(/[.-]/gu, '_').replace(new RegExp(`^.*__${this.fallbackLocale}__`), '')}`;
         },
         title() {
             return this.getMenuLabel(this.getCurrentPathAlias().split('/').reverse()[0]);
