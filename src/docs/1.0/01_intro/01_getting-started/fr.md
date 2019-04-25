@@ -1,8 +1,8 @@
 ## Introduction
 
-Node IoC est un outil de développement Javascript permettant la centralisation les services d'une application, gérer l'injection de dépendance et simplifier le développement des outils CLI, le tout en suivant une syntaxe élégante et simple à utiliser.
+Node IoC est un outil de développement Javascript permettant la centralisation des services d'une application, gérer l'injection de dépendance et simplifier le développement des outils CLI. Le tout offre n plus une syntaxe élégante et simple à utiliser.
 
-Il a été conçu en gardant en tête les développeurs pour leur simplifier la vie et accélérer leur travail, tout en gardant en tête la qualité du code, la testabilité et l'apprentissage facile.
+Node IoC a été conçu afin de simplifier la vie et accélérer le travail des développeurs, tout en gardant en tête la qualité du code, la testabilité et l'apprentissage facile.
 
 
 ## Prérequis
@@ -16,13 +16,13 @@ Pour utiliser et développer dans une application Node IoC, il vous faut certain
 
 ## Installation
 
-Pour installer l'application NodeJS, il vous faut simplement cloner le dépôt Git dans un dossier de travail.
+Pour installer l'application NodeJS, clonez le dépôt Git dans un dossier de travail.
 ```bash
 $ cd mon/repertoire
 $ git clone git@github.com:absolunet/node-ioc-app.git
 ```
 
-Une fois fait, il reste à installer les dépendances du projet, qui contient entre autre le framework Node IoC
+Une fois fait, installez les dépendances du projet, qui contiennent entre autres le framework Node IoC
 
 ```bash
 $ npm install
@@ -32,7 +32,7 @@ ou
 $ yarn
 ```
 
-L'application IoC est maintenant installée et prêt à être utilisée.
+L'application IoC est maintenant installée et prête à être utilisée.
 
 
 ## Tests
@@ -64,7 +64,7 @@ Jest est le système de tests qui est utilisé par Node IoC.
 
 ### Tests de qualité du code (lint)
 
-Un outil de lint a été également utilisé afin de s'assurer d'une qualité continue du code et de l'architecture. Il est recommandé de conserver l'outil d'analise du code et de l'architecture, mais il peut manuellement être enlevé à tout temps.
+Un outil de lint a été également utilisé afin de s'assurer d'une qualité continue du code et de l'architecture. Il est recommandé de conserver l'outil d'analyse du code et de l'architecture, mais il peut manuellement être enlevé à tout temps.
 
 Une commande Node a été créée à cette fin.
 
@@ -79,4 +79,4 @@ $ yarn test:lint
 
 ### Tests en intégration continue.
 
-Par défaut, la plupart des systèmes d'intégration continue propose l'utilisation de la commande `npm test` pour tester l'application. Comme il est jugé que la qualité du code est aussi important que le fonctionnement du code lui-même, l'application exécute par défaut `npm run test:lint && npm run test:unit` lors des tests d'intégration continue.
+Par défaut, la plupart des systèmes d'intégration continuent propose l'utilisation de la commande `npm test` pour tester l'application. Comme il est jugé que la qualité du code est aussi importante que le fonctionnement du code lui-même, l'application exécute par défaut `npm run test:lint && npm run test:unit` lors des tests d'intégration continue.

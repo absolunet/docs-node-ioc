@@ -2,7 +2,7 @@
 
 Node IoC utilise un système de configuration globale avec laquelle les différents services peuvent fonctionner ou interagir avec l'application en suivant des configurations centralisées.
 
-Les configurations sont entièrement divisés par espace de nom, qui se base sur le nom des fichiers de configuration. Si un fichier de configuration se nomme `foo.yaml`, la configuration de ce fichier sera préfixé par `foo.`.
+Les configurations sont entièrement divisées par espace de nom, qui se base sur le nom des fichiers de configuration. Si un fichier de configuration se nomme `foo.yaml`, la configuration de ce fichier sera préfixée par `foo.`.
 
 ```yaml
 # config/foo.yaml
@@ -47,19 +47,19 @@ const config = app.make('config');
 // Accéder à un objet contenant toutes les configurations
 config.get(); // [object Object]
 
-// Accéder à une valeur. Si cette valeur est un objet ou un tableu, cette valeur est retournée
+// Accéder à une valeur. Si cette valeur est un objet ou un tableau, cette valeur est retournée
 config.get('app.name'); // 'Node IoC'
 
 // Si la valeur n'existe pas, une valeur par défaut peut être proposée
 config.get('app.something', 'default value'); // 'default value'
 
-// Une configuration peut aussi être manipulé par programmation
+// Une configuration peut aussi être manipulée par programmation
 config.set('app.something', 'A new value'); // undefined
 ```
 
 ## Fichiers supportés
 
-Les configurations peuvent être créés dans trois formats différents et peuvent être combiné selon les préférences de développement. Les extensions `.js`, `.json`, `.yml` et `.yaml` sont supportés pour créer les configurations.
+Les configurations peuvent être créées dans trois formats différents et peuvent être combiné selon les préférences de développement. Les extensions `.js`, `.json`, `.yml` et `.yaml` sont supportés pour créer les configurations.
 
 ## Création de configurations d'application
 
