@@ -1,4 +1,4 @@
-    import Vue from 'vue';
+import Vue from 'vue';
 import App from './App';
 import i18n from './translations';
 import router from './router';

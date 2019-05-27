@@ -59,24 +59,24 @@ ou
 $ yarn test:unit
 ```
 
-Jest est le système de tests qui est utilisé par Node IoC.
+Jest est le système de tests qui est utilisé par Node IoC par défaut.
 
 
-### Tests de qualité du code (lint)
+### Tests de qualité du code (lint & standards)
 
 Un outil de lint a été également utilisé afin de s'assurer d'une qualité continue du code et de l'architecture. Il est recommandé de conserver l'outil d'analyse du code et de l'architecture, mais il peut manuellement être enlevé à tout temps.
 
 Une commande Node a été créée à cette fin.
 
 ```bash
-$ npm run test:lint
+$ npm run test:standards
 ```
 ou
 ```bash
-$ yarn test:lint
+$ yarn test:standards
 ```
 
 
 ### Tests en intégration continue.
 
-Par défaut, la plupart des systèmes d'intégration continuent propose l'utilisation de la commande `npm test` pour tester l'application. Comme il est jugé que la qualité du code est aussi importante que le fonctionnement du code lui-même, l'application exécute par défaut `npm run test:lint && npm run test:unit` lors des tests d'intégration continue.
+Par défaut, la plupart des systèmes d'intégration continuent propose l'utilisation de la commande `npm test` pour tester l'application. Comme il est jugé que la qualité du code est aussi importante que le fonctionnement du code lui-même, l'application exécute par défaut `npm run test:standards && npm run test:unit` lors des tests d'intégration continue.
