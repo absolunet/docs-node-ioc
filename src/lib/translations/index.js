@@ -2,16 +2,15 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import pages from './../.cache/docs';
 import en from './../../translations/en';
-import fr from './../../translations/fr';
 
 
 Vue.use(VueI18n);
 
-const locales = { en, fr };
+const locales = { en };
 
 
 const i18n = new VueI18n({
-    locale: 'fr',
+    locale: 'en',
     fallbackLocale: 'en',
     messages: Object.assign({}, pages)
 });

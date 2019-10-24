@@ -4,8 +4,9 @@
             <li v-if="breadcrumbs.length > 0">
                 <router-link :to="home" v-text="$t('Home')" />
             </li>
-            <li v-for="(crumb,index) in breadcrumbs" :key="crumb.url">
-                <router-link v-if="index !== breadcrumbs.length - 1" :to="crumb.url" v-text="crumb.label" />
+            <li v-for="(crumb, index) in breadcrumbs" :key="crumb.url" :class="{ disabled: !crumb.url}">
+                <router-link v-if="index !== breadcrumbs.length - 1 && crumb.url" :to="crumb.url" v-text="crumb.label" />
+                <span v-else-if="index !== breadcrumbs.length - 1" v-text="crumb.label" />
                 <span v-else>
                     <span class="show-for-sr">Current: </span> {{ crumb.label }}
                 </span>
@@ -24,20 +25,29 @@
                 return { name: 'home', params: { locale: this.$route.params.locale } };
             },
             breadcrumbs() {
-                const { path, params:{ locale } } = this.$route;
-                const unlocalizedPath = path.replace(new RegExp(`^(/)?.*${locale}(/)?`, 'u'), '$2');
-                const parts = unlocalizedPath.split('/').filter((part) => { return Boolean(part); });
-                const breadcrumbs = [];
-                for(let i = 0; i < parts.length; i++) {
-                    const url = path.replace(`${unlocalizedPath}`, parts.slice(0, i + 1).reduce((str, part) => {
-                        return `${str}/${part}`;
-                    }, ''));
+                const { path, params: { locale } } = this.$route;
+                const unlocalizedPath = path.replace(new RegExp(`^(?:/)?[^/]*${locale}(?<slash>/)?`, 'u'), '$<slash>');
+                const parts = unlocalizedPath.split('/').filter(Boolean);
 
-                    const label = this.getMenuLabel(parts[i]);
-                    breadcrumbs.push({ url, label });
-                }
+                return parts
+                    .map((currentPart, i) => {
+                        const url = path.replace(`${unlocalizedPath}`, parts.slice(0, i + 1).reduce((str, part) => {
+                            return `${str}/${part}`;
+                        }, ''));
 
-                return breadcrumbs;
+                        const label = this.getMenuLabel(currentPart);
+
+                        if ((/\d\.\d(?:\/[\w-]+)?\/?$/u).test(url)) {
+                            return { label };
+                        }
+
+                        return { url, label };
+                    })
+                    .filter((part, i, breadcrumbs) => {
+                        return !breadcrumbs.slice(0, i - 1).some(({ url }) => {
+                            return url === part.url;
+                        }) && !this.$i18n.availableLocales.includes(part.label.toLowerCase());
+                    });
             }
         }
     }

@@ -1,3 +1,0 @@
-## Introduction
-
-## Liste des fonctions

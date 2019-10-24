@@ -1,10 +1,11 @@
 <template>
     <div>
-        <off-canvas>
+        <off-canvas name="main-menu">
             <template v-slot:offcanvas>
-                <div class="logo-container">
-                    <logo />
-                    <h1 class="h2 doc-name" v-text="siteName"></h1>
+                <div class="card">
+                    <div class="card-section">
+                        <h1 class="h2 separator-center margin-vertical-1" v-text="siteName"></h1>
+                    </div>
                 </div>
                 <sections-menu />
             </template>
@@ -16,7 +17,6 @@
 </template>
 
 <script>
-    import Logo from './partials/Logo';
     import OffCanvas from './../container/OffCanvas';
     import SectionsMenu from './../navigation/SectionsMenu';
     import SmallFooter from './partials/SmallFooter';
@@ -24,7 +24,6 @@
 
     export default {
         components: {
-            Logo,
             OffCanvas,
             SectionsMenu,
             SmallFooter,
@@ -43,20 +42,9 @@
     @import '~foundation-sites/scss/foundation';
     @import '../../../styles/code';
 
-    @include foundation-everything();
-</style>
+    @include foundation-everything($prototype: true);
 
-<style lang="scss" scoped>
-    @import '../../config/design';
-
-    .logo-container {
-        padding: 1em;
-        background-color: $card-background;
-        text-align: center;
-    }
-
-    .logo, .doc-name {
-        display: block;
-        margin: $subheader-margin-bottom auto;
+    code {
+        overflow-wrap: break-word;
     }
 </style>

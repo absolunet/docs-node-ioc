@@ -1,37 +1,84 @@
 {
   "app": {
     "name": "Node IoC",
-    "repository": "https://github.com/absolunet/node-ioc-app"
+    "repository": "https://github.com/absolunet/node-ioc-app",
+    "date": {
+      "since": "2019"
+    },
+    "author": {
+      "name": "Absolunet",
+      "link": "https://absolunet.com"
+    }
   },
+  "license": {
+    "type": "MIT",
+    "link": "https://github.com/absolunet/node-ioc/blob/master/license"
+  },
+  "error": {
+    "404": "It's dark in here..."
+  },
+  "catchPhrases": {
+    "heart": "❤︎",
+    "hard work": "hard work",
+    "heated debates": "heated debates",
+    "cold sweats": "cold sweats",
+    "bad puns": "bad puns",
+    "coffee & tea": "coffee & tea"
+  },
+
+
+  "Made with": "Made with",
+  "by": "by",
   "You are here": "You are here",
   "Home": "Home",
   "View on GitHub": "View on GitHub",
   "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas": "A complete NodeJS ecosystem with an elegant syntax for sparkling ideas",
   "Get started!": "Get started!",
-  "error": {
-    "404": "It's dark in here..."
-  },
-  "heart": "❤︎",
-  "hard work": "hard work",
-  "heated debates": "heated debates",
-  "cold sweats": "cold sweats",
-  "bad puns": "bad puns",
-  "coffee & tea": "coffee & tea",
+
+
   "menu": {
-    "intro": "Intro",
     "getting-started": "Getting started",
-    "configuration": "Configuration",
+    "installation": "Installation",
+    "directory-structure": "Directory structure",
+
     "architecture": "Architecture",
     "lifecycle": "Lifecycle",
     "container": "Container",
     "service-provider": "Service Provider",
-    "mixins": "Mixins",
+
+    "first-steps": "First steps",
+    "create-a-command": "Create a command",
+    "create-a-web-page": "Create a Web page",
+    "create-an-api-endpoint": "Create an API endpoint",
+    "create-a-service": "Create a service",
+
     "basics": "Basics",
+    "configuration": "Configuration",
     "commands": "Commands",
-    "config": "Configuration",
-    "terminal": "Terminal",
-    "event": "Event",
-    "http": "HTTP",
-    "filesystem": "Filesystem"
+    "routing": "Routing",
+    "views": "Views",
+
+    "data": "Data",
+    "database": "Database",
+    "models": "Models",
+    "factories": "Factories",
+    "migrations-and-seeders": "Migrations and seeders",
+    "http-client": "HTTP client",
+    "caching": "Caching",
+
+    "going-deeper": "Going deeper",
+    "exception-handling": "Exception handling",
+    "events": "Events",
+    "file-system": "File system",
+    "helpers": "Helpers",
+    "logging": "Logging",
+    "multiple-inheritance": "Multiple inheritance",
+    "security": "Security",
+    "translation": "Translation",
+    "validation": "Validation",
+
+    "tests": "Tests",
+    "test-commands": "Test commands",
+    "test-class": "Test class"
   }
 }

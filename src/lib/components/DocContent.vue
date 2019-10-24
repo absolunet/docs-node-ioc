@@ -26,13 +26,27 @@
 </script>
 
 <style lang="scss" scoped>
-    @import './../config/design';
+    @import '../config/design';
 
     .doc-title {
         margin-bottom: 0;
 
         + hr {
             margin-top: nth($hr-margin, 1) / 4;
+        }
+    }
+</style>
+
+<style lang="scss">
+    @import '../config/design';
+
+    .doc-content {
+        * + h2,
+        * + h3,
+        * + h4,
+        * + h5,
+        * + h6 {
+            margin-top: 1.5em;
         }
     }
 </style>

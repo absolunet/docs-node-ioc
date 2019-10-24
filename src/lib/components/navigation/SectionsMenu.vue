@@ -3,7 +3,7 @@
         <template v-for="(menu,index) in menus">
             <div class="card" v-if="menu.children.length > 0" :key="index">
                 <div class="card-divider">
-                    <router-link :to="buildLinkFromMenu(menu)" v-text="getMenuLabel(menu.name)"/>
+                    <h2 class="h6" v-text="getMenuLabel(menu.name)" />
                 </div>
                 <div class="card-section">
                     <ul class="vertical menu">

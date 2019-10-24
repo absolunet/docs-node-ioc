@@ -25,6 +25,7 @@
 
 <style lang="scss" scoped>
     .jumbotron {
+        padding: 6em 0;
         background: no-repeat center center;
         background-size: cover;
     }

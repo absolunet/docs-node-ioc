@@ -17,6 +17,7 @@ export default {
             }
 
             const $content = $(content);
+            $content.find('h1').remove();
             const ids = [];
             $content.find(titleSelector).each(function() {
                 const $this = $(this);

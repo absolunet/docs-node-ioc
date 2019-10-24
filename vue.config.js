@@ -1,9 +1,10 @@
-const path = require('path');
+const path     = require('path');
 const basePath = require('./base-path.config');
+const sass     = require('sass');
 
 module.exports = {
     publicPath: basePath,
-    outputDir: path.resolve(__dirname, 'docs'),
+    outputDir: path.join(__dirname, 'docs'),
     chainWebpack: config => {
         config.module.rule('md')
             .test(/\.md/)
@@ -15,5 +16,12 @@ module.exports = {
             .options({
                 raw: true
             });
+    },
+    css: {
+        loaderOptions: {
+            sass: {
+                implementation: sass
+            }
+        }
     }
 };

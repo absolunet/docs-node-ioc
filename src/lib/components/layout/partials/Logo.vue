@@ -1,5 +1,7 @@
 <template>
-    <router-link :to="homePage" class="logo"><img src="https://placehold.it/100x39" :alt="siteName" /></router-link>
+    <router-link :to="homePage" class="logo">
+        <logo :alt="siteName" />
+    </router-link>
 </template>
 
 <script>
