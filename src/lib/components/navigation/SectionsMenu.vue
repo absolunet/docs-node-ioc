@@ -36,3 +36,16 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    .router-link-active {
+        position: relative;
+
+        &::before {
+            content: '\02022';
+            position: absolute;
+            left: 0;
+            top: .5em;
+        }
+    }
+</style>

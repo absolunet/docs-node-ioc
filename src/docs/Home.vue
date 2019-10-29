@@ -1,6 +1,6 @@
 <template>
     <div class="home-content">
-        <div class="jumbotron">
+        <div class="section jumbotron">
             <div class="jumbotron-image" style="background-image: url('https://images.unsplash.com/photo-1478088702756-f16754aaf0c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80')"></div>
             <div class="grid-container">
                 <div class="grid-x">
@@ -20,7 +20,7 @@
                         <p>Based on <em><a href="(https://en.wikipedia.org/wiki/SOLID">SOLID</a></em> principles, it comes out with a lot of features that removes the pain of crafting new applications:</p>
                     </div>
                     <div class="cell medium-4 medium-offset-1">
-                        <div class="card shadow">
+                        <div class="card shadow padding-1 first-steps">
                             <div class="card-section">
                                 <p class="separator-left">Our simple step-by-step tutorial will show you how to craft your first application the proper way in minutes, so you can start building something amazing today!</p>
                             </div>
@@ -59,7 +59,7 @@
             <div class="grid-container">
                 <div class="grid-x">
                     <div class="cell medium-10 medium-offset-1 large-8 large-offset-2 text-center">
-                        <p>Node IoC was mostly inspired by Laravel and Symfony for the structure, as well by Angular.js for the dependency injection approach.</p>
+                        <p>Node IoC was mostly inspired by <a href="https://laravel.com" target="_blank">Laravel</a> and <a href="https://symfony.com" target="_blank">Symfony</a> for the structure, as well by <a href="https://angularjs.org" target="_blank">Angular.js</a> for the dependency injection approach.</p>
                         <p>The key that makes Node IoC a better platform to start with is that it is based on all the best things that have been made in JavaScript so far: it unifies the most popular tools and makes implementing them under a complex application feel like a breeze.</p>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <p class="lead">Out-of-the-box package implementations:</p>
                 <div class="grid-x">
                     <div class="cell medium-3" v-for="(group,index) in packageGroups" :key="index">
-                        <ul>
+                        <ul class="margin-bottom-0">
                             <li v-for="p in group" :key="p"><a :href="`https://npmjs.com/package/${p}`" target="_blank" v-text="p"></a></li>
                         </ul>
                     </div>
@@ -174,7 +174,6 @@
 				return this.getLink('/first-steps/create-a-command');
             },
             packageGroups() {
-
 				return this.packages.reduce((groups, p, i, array) => {
 					const group = Math.floor(i / array.length * 4);
 					groups[group] = groups[group] || [];
@@ -193,15 +192,18 @@
 </script>
 
 <style lang="scss" scoped>
-    @import '../styles/config';
+    @import '../lib/config/design';
     $jumbotron-offset: 1em;
+    $section-padding-map: (
+            small: 2em,
+            medium: 5em
+    );
 
     .home-content {
         font-size: 1.25em;
     }
 
     .jumbotron {
-        padding: 6em 0;
         position: relative;
         color: $white;
         overflow: hidden;
@@ -224,8 +226,8 @@
         }
     }
 
-    .section {
-        padding: 5em 0;
+    .first-steps {
+        margin-top: 1em;
     }
 
     .features {
@@ -247,5 +249,23 @@
     .button {
         text-transform: uppercase;
         font-weight: bold;
+    }
+
+    @each $size, $padding in $section-padding-map {
+        @include breakpoint($size) {
+            .section {
+                padding: $padding 0;
+            }
+        }
+    }
+
+    @include breakpoint(medium) {
+        .jumbotron {
+            padding: 6em 0;
+        }
+
+        .first-steps {
+            margin-top: 0;
+        }
     }
 </style>
