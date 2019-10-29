@@ -6,7 +6,7 @@
                     <h2 class="h6" v-text="getMenuLabel(menu.name)" />
                 </div>
                 <div class="card-section">
-                    <ul class="vertical menu">
+                    <ul class="vertical menu no-bullet">
                         <li v-for="{ name } in menu.children" :key="name">
                             <router-link :to="buildLinkFromMenu(menu, name)" v-text="getMenuLabel(name)" />
                         </li>
@@ -26,17 +26,12 @@
         mixins: [resolveLocalizedRoutes, translatesMenu],
         computed: {
             menus() {
-                const [currentVersion] = menus.filter(({ name }) => name === this.$route.params.version);
-                if (currentVersion) {
-                    return currentVersion.children;
-                }
-
-                return menus.sort(({ name:a }, { name:b }) => a.localeCompare(b))[0].children;
+                return menus;
             }
         },
         methods: {
             buildLinkFromMenu(menu, name = null) {
-                return this.getPathAlias(`/:version/${menu.name}/${name || menu.children[0].name}`);
+                return this.getPathAlias(`/${menu.name}/${name || menu.children[0].name}`);
             }
         }
     }

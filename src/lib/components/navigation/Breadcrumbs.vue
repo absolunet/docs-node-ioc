@@ -1,6 +1,6 @@
 <template>
     <nav :aria-label="$t('You are here') + ':'" role="navigation">
-        <ul class="breadcrumbs">
+        <ul class="breadcrumbs no-bullet">
             <li v-if="breadcrumbs.length > 0">
                 <router-link :to="home" v-text="$t('Home')" />
             </li>
@@ -37,7 +37,8 @@
 
                         const label = this.getMenuLabel(currentPart);
 
-                        if ((/\d\.\d(?:\/[\w-]+)?\/?$/u).test(url)) {
+                        const { locale } = this.$i18n;
+                        if ((new RegExp(`\\/${locale}(?:\\/[\\w-]+)?\\/?$`, 'u')).test(url)) {
                             return { label };
                         }
 

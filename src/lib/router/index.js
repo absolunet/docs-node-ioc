@@ -4,14 +4,10 @@ import routes from './routes';
 
 import removeTrailingSlash from './guards/remove-trailing-slash';
 import ensureLocale from './guards/ensure-locale';
-import ensureExistingVersion from './guards/ensure-existing-version';
-import redirectVersionRootToFirstPage from './guards/redirect-version-root-to-first-page';
 
 const guards = [
     removeTrailingSlash,
-    ensureLocale,
-    ensureExistingVersion,
-    redirectVersionRootToFirstPage
+    ensureLocale
 ];
 
 Vue.use(VueRouter);

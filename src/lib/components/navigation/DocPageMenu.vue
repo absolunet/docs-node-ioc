@@ -1,5 +1,5 @@
 <template>
-    <ul class="vertical menu">
+    <ul class="vertical menu no-bullet">
         <li v-for="(item,i) in menu" :key="`${i}-${item.anchor}`">
             <a :href="`#${item.anchor}`" v-text="item.label"></a>
             <doc-page-menu v-if="item.children && item.children.length> 0" :menu="item.children" class="nested" />

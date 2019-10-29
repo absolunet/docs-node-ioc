@@ -41,6 +41,10 @@ $card-margin-bottom: 0;
 $menu-items-padding: .5rem 1rem;
 $topbar-unstack-breakpoint: small;
 
+$button-radius: 2em;
+$button-padding: .85em 2em;
+$button-background-hover: map-get($foundation-palette, secondary);
+
 
 $hljs-background: $black;
 $hljs-color: $white;

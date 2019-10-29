@@ -10,7 +10,9 @@
                 <sections-menu />
             </template>
             <top-bar />
-            <slot />
+            <main class="main">
+                <slot />
+            </main>
             <small-footer />
         </off-canvas>
     </div>
@@ -46,5 +48,23 @@
 
     code {
         overflow-wrap: break-word;
+    }
+
+    ul:not(.no-bullet) {
+        list-style: none;
+
+        li {
+            padding-left: 1em;
+            position: relative;
+        }
+
+
+        li::before {
+            content: "\2022";
+            color: $primary-color;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
 </style>

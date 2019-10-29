@@ -1,7 +1,7 @@
 <template>
     <dropdown v-if="hasMultipleLocales" size="tiny" :options="options">
         <template v-slot:label>{{ upper(locale) }}</template>
-        <ul class="vertical menu">
+        <ul class="vertical menu no-bullet">
             <li v-for="(to, label) in locales" :key="label">
                 <router-link :to="to" v-text="upper(label)" />
             </li>

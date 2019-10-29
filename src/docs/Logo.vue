@@ -4,7 +4,7 @@
 
 <style scoped>
     .logo {
-        height: 1.75em;
+        height: 1.25em;
         vertical-align: middle;
     }
 </style>

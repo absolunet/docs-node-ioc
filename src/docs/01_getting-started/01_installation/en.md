@@ -197,25 +197,25 @@ Here is the basic configuration for Nginx server.
 
 ```
 server {
-        index index.html;
-        server_name my-app.example.com;
-        root /var/www/my_app;
-        listen 80;
+    index index.html;
+    server_name my-app.example.com;
+    root /var/www/my_app;
+    listen 80;
 
-        location / {
+    location / {
 
-                # Here, we indicate that any request made to "http://my-app.example.com"
-                # domain, on port 80, are actually made to "http://localhost:8080".
-                # If a request to the page "http://my-app.example.com/foo/bar" is made,
-                # nginx will resolve the response through "http://localhost:8080/foo/bar".
+        # Here, we indicate that any request made to "http://my-app.example.com"
+        # domain, on port 80, are actually made to "http://localhost:8080".
+        # If a request to the page "http://my-app.example.com/foo/bar" is made,
+        # nginx will resolve the response through "http://localhost:8080/foo/bar".
 
-                proxy_pass http://localhost:8080;
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection 'upgrade';
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
-        }
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
 }
 ```
 
