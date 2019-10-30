@@ -2,7 +2,8 @@
     <div class="home-content">
         <div class="section jumbotron">
             <div class="jumbotron-image" style="background-image: url('https://images.unsplash.com/photo-1478088702756-f16754aaf0c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80')"></div>
-            <div class="grid-container">
+            <sparks />
+            <div class="grid-container jumbotron-content">
                 <div class="grid-x">
                     <div class="cell medium-10 large-8">
                         <p class="h2 jumbotron-text">{{ $t('A complete Node.js ecosystem with an elegant syntax to drive sparkling ideas') }}</p>
@@ -112,7 +113,12 @@
 </template>
 
 <script>
+    import Sparks from './Sparks';
+
     export default {
+        components: {
+			Sparks
+		},
         beforeCreate() {
             document.body.classList.add('home-page');
         },
@@ -207,6 +213,10 @@
         position: relative;
         color: $white;
         overflow: hidden;
+    }
+
+    .jumbotron-content {
+        position: relative;
     }
 
     .jumbotron-text {
