@@ -55,7 +55,7 @@ class Particle {
     }
 
     generateRandomSpeed() {
-        return Math.random() * 4;
+        return Math.random() * 3;
     }
 
 	generateRandomSize() {
@@ -105,6 +105,7 @@ export default {
 				context.closePath();
 				context.fill();
 			});
+			window.requestAnimationFrame(draw);
 		};
 
 		resetCanvasSize();
@@ -112,7 +113,7 @@ export default {
         particles.push(...[...new Array(10).keys()].map(() => {
 			return new Particle(canvas);
 		}));
-        setInterval(draw, 1000 / 30);
+		window.requestAnimationFrame(draw);
         window.addEventListener('resize', resetCanvasSize);
     }
 };
