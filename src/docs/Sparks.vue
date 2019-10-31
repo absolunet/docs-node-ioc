@@ -71,14 +71,7 @@ class Particle {
 }
 
 export default {
-	data: () => ({
-        enabled: window.innerWidth >= 768
-    }),
 	mounted() {
-		if (!this.enabled) {
-			return;
-        }
-
 		const { canvas } = this.$refs;
 
         const context = canvas.getContext('2d');
