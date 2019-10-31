@@ -16,6 +16,7 @@ class Particle {
     }
 
     move() {
+		this.direction += Math.random() * 0.1 - 0.05;
 		this.x += Math.cos(this.direction) * this.speed;
 		this.y += Math.sin(this.direction) * this.speed;
 
@@ -37,16 +38,16 @@ class Particle {
     }
 
     generateColor() {
-		const r = this.generateRandomInteger(150, 200);
-		const g = this.generateRandomInteger(50, 150);
-		const b = this.generateRandomInteger(0, 40);
-		const a = this.generateRandomAlpha();
+		const r   = this.generateRandomInteger(150, 255);
+		const g   = this.generateRandomInteger(50, r);
+		const b   = this.generateRandomInteger(0, Math.min(r, g));
+		const a   = this.generateRandomAlpha();
 
-		return `rgba(${r}, ${g}, ${b}, ${a})`;
+		return { r, g, b, a };
     }
 
     generateRandomAlpha() {
-		return 0.5; // Math.min(0.7, Math.random() + 0.4);
+        return Math.random() * 0.5 + 0.2;
     }
 
     generateRandomDirection() {
@@ -54,11 +55,17 @@ class Particle {
     }
 
     generateRandomSpeed() {
-        return Math.random() * 3;
+        return Math.random() * 4;
     }
 
 	generateRandomSize() {
 		return this.generateRandomInteger(3, 10);
+    }
+
+    get css() {
+		const {r, g, b, a } = this.color;
+
+		return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
 
 }
@@ -93,7 +100,7 @@ export default {
 			particles.forEach((particle) => {
 				particle.move();
 				context.beginPath();
-				context.fillStyle = particle.color;
+				context.fillStyle = particle.css;
 				context.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2, true);
 				context.closePath();
 				context.fill();
