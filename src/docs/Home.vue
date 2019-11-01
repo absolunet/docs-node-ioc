@@ -201,8 +201,8 @@
     @import '../lib/config/design';
     $jumbotron-offset: 1em;
     $section-padding-map: (
-            small: 2em,
-            medium: 5em
+        small: 2em,
+        medium: 5em
     );
 
     .home-content {
@@ -229,7 +229,7 @@
         z-index: -1;
         background: no-repeat center left;
         background-size: cover;
-        filter: blur($jumbotron-offset / 2);
+        filter: blur($jumbotron-offset / 4);
 
         @each $side in (top, right, bottom, left) {
             #{$side}: -$jumbotron-offset;
