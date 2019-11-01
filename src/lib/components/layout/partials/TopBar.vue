@@ -52,6 +52,8 @@
 </script>
 
 <style lang="scss">
+    @import './../../../config/design.scss';
+
     .top-bar {
         .secondary.menu {
             a, .button {
@@ -59,11 +61,22 @@
             }
         }
     }
+
+    :target::before {
+        content: "";
+        display: block;
+        height: 2.75rem;
+        margin-top: -2.75rem;
+
+        @media screen and (min-width: $alt-small-breakpoint) {
+            height: 3.75rem;
+            margin-top: -3.75rem;
+        }
+    }
 </style>
 
 <style lang="scss" scoped>
     @import './../../../config/design.scss';
-    $alt-small-breakpoint: 425px;
 
     .top-bar {
         box-shadow: 0 0 5px rgba($black, 0.25);
@@ -81,8 +94,8 @@
 
     .offcanvas-toggle {
         position: relative;
-        width: 1.25em;
-        height: 1.25em;
+        width: 1.25rem;
+        height: 1.25rem;
         vertical-align: text-bottom;
 
         &::before {
