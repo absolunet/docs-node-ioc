@@ -23,5 +23,5 @@
             SectionsMenu,
             DocContent
         }
-    };
+	};
 </script>

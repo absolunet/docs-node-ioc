@@ -2,8 +2,10 @@
 
 ## Server requirements
 
-The Node IoC has some basic server requirements. You need to have a globally installed Node.js binary at version `>= 12`.
-It was tested on Nginx 1.16.1, as well as on Apache 2.0. It was also tested locally on a Windows 10 distribution, but nothing has been tested on a Windows IIS server yet.
+The Node IoC has some basic server requirements.
+You need to have a globally installed Node.js binary at version `>= 12`.
+It was tested on Nginx 1.16.1, as well as on Apache 2.0.
+It was also tested locally on a Windows 10 distribution, but nothing has been tested on a Windows IIS server yet.
 
 You will also need NPM at version `>=6.9.0` (stable) or Yarn at version `>=1.19.1` (stable)
 
@@ -11,7 +13,9 @@ You will also need NPM at version `>=6.9.0` (stable) or Yarn at version `>=1.19.
 
 ## Create new Node IoC application
 
-To create a new Node IoC application, you may clone (or download) the official [Node IoC application scaffold](https://github.com/absolunet/node-ioc-app). This repository is always up to date to the last framework version. It provides everything needed to quickly start a new Node.js project.
+To create a new Node IoC application, you may clone (or download) the official [Node IoC application scaffold](https://github.com/absolunet/node-ioc-app).
+This repository is always up to date to the last framework version.
+It provides everything needed to quickly start a new Node.js project.
 
 ```bash
 cd [your-working-directory]
@@ -19,7 +23,8 @@ git clone https://github.com/absolunet/node-ioc-app.git [your-application-name]
 cd [your-application-name]
 ```
 
-With this method, you will download the Git history as well. Simply delete the `.git` folder and start a fresh history with `git init` (if you are working with Git as your SVN)
+With this method, you will download the Git history as well.
+Simply delete the `.git` folder and start a fresh history with `git init` (if you are working with Git as your SVN)
 
 Now that the application was downloaded, install the project dependencies, with the development dependencies so you can test your application.
 
@@ -35,13 +40,17 @@ _From now on, NPM will be used for examples_
 
 ## Compile source code
 
-The application, as well as the framework, was built with the latest ES6+ features. In order to properly work on older environment, without experimental flags or unstable implementation, they rely on Babel transpiler, which baiscally converts EcmaScript Modules (ESM) to CommonJS, the default Node.js modular system. That being said, you are free to use any JavaScript preprocessor you want, such as TypeScript. However, the application comes with vanilla JavaScript only, without any TypeScript definition.
+The application, as well as the framework, was built with the latest ES6+ features.
+In order to properly work on older environment, without experimental flags or unstable implementation, they rely on Babel transpiler, which basically converts EcmaScript Modules (ESM) to CommonJS, the default Node.js modular system.
+That being said, you are free to use any JavaScript preprocessor you want, such as TypeScript.
+However, the application comes with vanilla JavaScript only, without any TypeScript definition.
 
 
 
 ### Node Manager
 
-To compile your code, [Absolunet](https://absolunet.com) as built a [Node Manager](https://github.com/absolunet/node-manager) to facilitate code compilation, outdated dependencies reports, package deployment, API documentation generation and much more. By the way, feel free to check the amazing [Absolunet public packages](https://github.com/absolunet)!
+To compile your code, [Absolunet](https://absolunet.com) as built a [Node Manager](https://github.com/absolunet/node-manager) to facilitate code compilation, outdated dependencies reports, package deployment, API documentation generation and much more.
+By the way, feel free to check the amazing [Absolunet public packages](https://github.com/absolunet)!
 
 
 
@@ -67,7 +76,8 @@ If you feel that some additional configuration is needed, please read the offici
 
 ## Run CLI
 
-Now that your application has been compiled, you are ready to use Node IoC. The basic command to run your application CLI must start by `node ioc`, follow by your command.
+Now that your application has been compiled, you are ready to use Node IoC.
+The basic command to run your application CLI must start by `node ioc`, follow by your command.
 
 ```bash
 node ioc
@@ -104,13 +114,14 @@ node ioc list
 When you start using the application, you will only have few commands available, for multiple reasons:
  - Your environment has not been set yet
  - You don't have any module installed
- - You have not yet built your own commands
+ - You have not built your own commands yet
 
 
 
 ## Run server
 
-One of the available command is called `serve`. It starts your application HTTP server, which is powered by Express.
+One of the available command is called `serve`.
+It starts your application HTTP server, which is powered by Express.
 
 To start the server, use this command:
 
@@ -119,9 +130,11 @@ node ioc serve
 ```
 
 You should see `This is serving on port 8080...` appearing, indicating that your server has successfully started.
-You can now visit your application website through [http://localhost:8080](http://localhost:8080). A basic website scaffold comes with the application for example purpose, but feel free to change whatever you want.
+You can now visit your application website through [http://localhost:8080](http://localhost:8080).
+A basic website scaffold comes with the application for example purpose, but feel free to change whatever you want.
 
-The port remains configurable with the `--port` option. You you want to know how a command works, you can use the `--help` flag.
+The port remains configurable with the `--port` option.
+You you want to know how a command works, you can use the `--help` flag.
 
 ```bash
 node ioc serve --help
@@ -150,7 +163,8 @@ Options:
 
 ### Configure Node.js HTTP proxy
 
-In a conventional server, the ports 80 and 443 are already reserved in order to serve content. With this constraint, a reverse proxy must be configured to redirect port 80 (or 443) requests to the application port (8080 by default).
+In a conventional server, the ports 80 and 443 are already reserved in order to serve content.
+With this constraint, a reverse proxy must be configured to redirect port 80 (or 443) requests to the application port (8080 by default).
 
 
 
@@ -223,14 +237,16 @@ server {
 
 ### Configure process management
 
-Since Node.js is an engine that is not bootstrapped my the Apache or the Nginx server, it must be started manually. The `node ioc serve` starts a new process that listen to the HTTP port 8080.
+Since Node.js is an engine that is not bootstrapped my the Apache or the Nginx server, it must be started manually.
+The `node ioc serve` starts a new process that listen to the HTTP port 8080.
 However, in order to make this process automatically started on server boot, a process manager can be a very good help to monitor the process and ensure that it is fully running anytime.
 
 
 
 #### PM2
 
-[PM2](http://pm2.keymetrics.io/) os one of the most popular Node.js production process manager. It allows to easily manage, start, stop, restart and monitor processes.
+[PM2](http://pm2.keymetrics.io/) os one of the most popular Node.js production process manager.
+It allows to easily manage, start, stop, restart and monitor processes.
 
 First, install the package globally.
 
@@ -244,7 +260,9 @@ Then, go to your application directory and run the command to create the pm2 ser
 pm2 start "node ioc serve" --name "my-app"
 ```
 
-This will first create the `my-app` process into PM2, then it will start the process. Your application will then run at port 8080. The reverse proxy will then do the trick to enable your website over port 80 or 443.
+This will first create the `my-app` process into PM2, then it will start the process.
+Your application will then run at port 8080.
+The reverse proxy will then do the trick to enable your website over port 80 or 443.
 
 You can stop the process by running the following command.
 
@@ -266,10 +284,9 @@ To enable start on server boot, please follow the [official documentation](http:
 
 Node IoC make it very easy to manage packages and framework behavior through configuration files.
 Those files are located under the `config` folder.
-The configuration system supports `.yaml`, `yml`, `.js` and `.json` files. By default, `.yaml` files are being used, mostly for readability.
+The configuration system supports `.yaml`, `yml`, `.js` and `.json` files.
+By default, `.yaml` files are being used, mostly for readability.
 If you are using `.js` files, make sure that you are using common.js syntax (`module.exports = {}`) instead of EcmaScript modules (`export default {}`), since those files are never compiled.
-
-The configuration system is documented [here](../../basics/configuration)
 
 However, here are the key points:
 
@@ -290,7 +307,8 @@ The environment is very useful to quickly adapt configuration from local machine
 The configuration can directly references the environment variable with the double mustache syntax.
 However, to ensure that the environment remains simple to manage, a `.env` file can be used in your application.
 Every key-value pair will be merged in the existing environment during your application execution time.
-A `.env.example` is provided by default in the application repository. Simply copy the file with the name `.env` and change the appropriate values, such as `APP_ENV`, that will specify the application environment, such as `local`, `test`, `staging` or `production`.
+A `.env.example` is provided by default in the application repository.
+Simply copy the file with the name `.env` and change the appropriate values, such as `APP_ENV`, that will specify the application environment, such as `local`, `test`, `staging` or `production`.
 The environment repository can be used to safely retrieve environment variable (eg: `app.make('env').get('APP_ENV', 'production')` (get `APP_ENV` environment variable value, with `production` as default value)).
 If the file does not exists, the current environment will still be accessible through the application and the environment repository.
 

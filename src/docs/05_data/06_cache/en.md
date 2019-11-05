@@ -2,17 +2,22 @@
 
 ## Introduction
 
-Cache in Node IoC is very simple to use, configuration-driven and make is easy to store data in multiple backends. It offers out-of-the-box runtime, file and database caching drivers, but makes implementing Redis or Memcached very simple if you want or need it.
+Cache in Node IoC is very simple to use, configuration-driven and make is easy to store data in multiple backends.
+It offers out-of-the-box runtime, file and database caching drivers, but makes implementing Redis or Memcached very simple if you want or need it.
 
 
 
 ## Configuration
 
-To use the cache system, it must be configured first. You can find the cache configuration in the `config/cache.yaml` file.
+To use the cache system, it must be configured first.
+You can find the cache configuration in the `config/cache.yaml` file.
 
-By default, the file cache store is used, under `default`. There is three different stores available: `runtime`, `file` and `database`. Each of them has a dedicated driver, so you can reuse those drivers with other cache stores, with other configuration.
+By default, the file cache store is used, under `default`.
+There is three different stores available: `runtime`, `file` and `database`.
+Each of them has a dedicated driver, so you can reuse those drivers with other cache stores, with other configuration.
 
-Let's say for instance that you need to cache in a different file for a certain type of data. You could have this configuration.
+Let's say for instance that you need to cache in a different file for a certain type of data.
+You could have this configuration.
 
 ```yaml
 stores:
@@ -25,13 +30,18 @@ stores:
     path: '/path/to/other/folder'
 ```
 
-Also, you can specify global configuration, under the `common` key. You can configure the cache prefix with the `common.prefix` key. It may be very useful if using a common cache system such as Redis. Also, you can specify a default expiration time, in seconds. If data was cached without specific expiration time, this time will be used.
+Also, you can specify global configuration, under the `common` key.
+You can configure the cache prefix with the `common.prefix` key.
+It may be very useful if using a common cache system such as Redis.
+Also, you can specify a default expiration time, in seconds.
+If data was cached without specific expiration time, this time will be used.
 
 
 
 ## The cache manager
 
-The cache manager, injectable through `cache`, will help resolving the cache driver instance through configuration. With the proxy wrapper, you can directly access the default driver instance from it, or you can get the driver for the store you want.
+The cache manager, injectable through `cache`, will help resolving the cache driver instance through configuration.
+With the proxy wrapper, you can directly access the default driver instance from it, or you can get the driver for the store you want.
 
 ```javascript
 const cache = app.make('cache'); // CacheManager {}
@@ -54,17 +64,20 @@ const store = cache.build('file', {
 ```
 
 
+
 ## Commands
 
-### The `cache:clear` command
+### The cache:clear command
 
-If you want to clear the whole cache, the `cache:clear` will use the default store and flush it. If you need to clear a specific cache store, you can use `cache:clear store-name`, such as `cache:clear file`.
+If you want to clear the whole cache, the `cache:clear` will use the default store and flush it.
+If you need to clear a specific cache store, you can use `cache:clear store-name`, such as `cache:clear file`.
 
 
 
-### The `cache:forget` command
+### The cache:forget command
 
-If you need to remove a single cached key from the store, you can use `cache:forget key`. If you need to forget a key in a specific cache store, you can use `cache:forget key store-name`, such as `cache:clear key file`.
+If you need to remove a single cached key from the store, you can use `cache:forget key`.
+If you need to forget a key in a specific cache store, you can use `cache:forget key store-name`, such as `cache:clear key file`.
 
 
 
@@ -100,23 +113,31 @@ await cache.flush(); // All the keys, including the forever cached data, are flu
 
 ### Runtime driver
 
-The runtime cache driver is a simple store handled by a JavaScript object, without any permanent save. This cache is working through the process runtime. When the process has exited, the cache is flushed. It is a good driver for testing purpose, or if you need to cache simple data, but is not suggested for production. It does not need any configuration.
+The runtime cache driver is a simple store handled by a JavaScript object, without any permanent save.
+This cache is working through the process runtime.
+When the process has exited, the cache is flushed.
+It is a good driver for testing purpose, or if you need to cache simple data, but is not suggested for production.
+It does not need any configuration.
 
 
 
 ### File driver
 
-The file driver save the cached values in JSON files in a configured folder. By default, the application suggests that the cached values goes in the `storage/framework/cache/data`.
+The file driver save the cached values in JSON files in a configured folder.
+By default, the application suggests that the cached values goes in the `storage/framework/cache/data`.
 
 
 
 ### Database driver
 
-The database driver uses a database connection (configured in `config/database.yaml`, under the `connections` key), through the `connection` configuration key. To use the default connection, simply use the `connection: "default"` configuration
-The table name can be configured through the `table` configuration key. By default, `cache` is the table that will be used.
+The database driver uses a database connection (configured in `config/database.yaml`, under the `connections` key), through the `connection` configuration key.
+To use the default connection, simply use the `connection: "default"` configuration
+The table name can be configured through the `table` configuration key.
+By default, `cache` is the table that will be used.
 
 
 
-### The `cache:table` command
+### The cache:table command
 
-To quickly create your database cache table, the `cache:table` command will create a database migration that creates the cache table by using the configured table name. Don't forget to run `db:migrate` after creating the cache table migration.
+To quickly create your database cache table, the `cache:table` command will create a database migration that creates the cache table by using the configured table name.
+Don't forget to run `db:migrate` after creating the cache table migration.

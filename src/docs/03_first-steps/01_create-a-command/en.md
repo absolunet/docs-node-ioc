@@ -28,7 +28,8 @@ Ebook: http://books.google.ca/books?id=ppjUtAEACAAJ&dq=react&hl=&source=gbs_api
 
 ## Create the command class file
 
-First, we need a command class file. Node IoC offers you a command to create a command scaffold.
+First, we need a command class file.
+Node IoC offers you a command to create a command scaffold.
 
 ```bash
 node ioc make:command InspireBookCommand
@@ -42,7 +43,8 @@ We need to compile our code.
 npm run manager:build
 ```
 
-Once the code is fully compiled by the Manager, run `node ioc` command, you should see a new command called `name:command` in the list. Let's try it out!
+Once the code is fully compiled by the Manager, run `node ioc` command, you should see a new command called `name:command` in the list.
+Let's try it out!
 
 ```bash
 node ioc name:command
@@ -62,8 +64,10 @@ npm run manager:watch
 
 Once that the command has been created, we need to properly fill metadata, such as the name, the description, etc.
 
-First, we need to change the generic command name. Let's name it `inspire:book`.
-Second, let's adjust the command description. How about `Find an inspiring book that matches your needs`?
+First, we need to change the generic command name.
+Let's name it `inspire:book`.
+Second, let's adjust the command description.
+How about `Find an inspiring book that matches your needs`?
 
 ```javascript
 class InspireBookCommand extends Command {
@@ -90,7 +94,8 @@ If it's still the old name, don't forget to compile your code!
 
 ## Describe arguments
 
-After this, if you take a look above on the expected result, we need to handle an argument. In the example, the argument is a `parameter`, its value is `react`.
+After this, if you take a look above on the expected result, we need to handle an argument.
+In the example, the argument is a `parameter`, its value is `react`.
 
 > A **parameter** is a value that follows the command, without the `--` prefix, such as `name:command parameter`.
 >
@@ -135,7 +140,9 @@ Options:
 
 We can see that the `book` parameter is now handled by the console engine.
 
-Now, let's try to retrieve the parameter value in the `handle` method. You can do it with the `parameter` method. It needs the parameter name as the only argument.
+Now, let's try to retrieve the parameter value in the `handle` method.
+You can do it with the `parameter` method.
+It needs the parameter name as the only argument.
 
 ```javascript
 class InspireBookCommand extends Command {
@@ -159,9 +166,10 @@ When running `node ioc inspire:book react`, you should see `react` logged back i
 
 
 
-## Inject the `http` service
+## Inject the http service
 
-Now, we have all we need to consume the [Google Books API](https://developers.google.com/books/docs/v1/using#PerformingSearch). To consume it, we need the `http` service, which allow us to make HTTP calls.
+Now, we have all we need to consume the [Google Books API](https://developers.google.com/books/docs/v1/using#PerformingSearch).
+To consume it, we need the `http` service, which allow us to make HTTP calls.
 
 ```javascript
 class InspireBookCommand extends Command {
@@ -197,8 +205,10 @@ The `http` service now bound to your class, you can use `this.http.get(url, conf
 
 ## Make the API call
 
-Now, we need to make an API call to Google Books. Since an API call takes time, we need to switch to `async` mode.
-Somply use the `async` keyword before the `handle` method to make it async. At the same time, let's make our API call.
+Now, we need to make an API call to Google Books.
+Since an API call takes time, we need to switch to `async` mode.
+Simply use the `async` keyword before the `handle` method to make it async.
+At the same time, let's make our API call.
 
 ```javascript
 class InspireBookCommand extends Command {
@@ -246,7 +256,8 @@ class InspireBookCommand extends Command {
 
 ## Format the output
 
-We now have everything we need to display that inspiring book to the user. We just need to format the final output.
+We now have everything we need to display that inspiring book to the user.
+We just need to format the final output.
 
 ```javascript
 class InspireBookCommand extends Command {

@@ -1,7 +1,33 @@
 {
   "name": "node-ioc-docs",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0-beta.1",
+  "description": "The perfect IoC framework for Node.js lovers",
+  "definition": "",
+  "homepage": "https://github.com/absolunet/node-ioc",
+  "author": {
+    "name": "Absolunet",
+    "url": "https://absolunet.com"
+  },
+  "keywords": [
+    "node",
+    "absolunet",
+    "ioc",
+    "solid",
+    "container",
+    "di",
+    "framework"
+  ],
+  "license": "MIT",
+  "repository": {
+    "url": "git://github.com/absolunet/node-ioc.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/absolunet/node-ioc/issues"
+  },
+  "engines": {
+    "node": ">= 12.0.0"
+  },
   "scripts": {
     "serve": "npm run cache && vue-cli-service serve",
     "build": "npm run cache && vue-cli-service build",

@@ -8,31 +8,42 @@ Services, repositories, factories, builders, drivers, engines, handlers... Those
 
 If you are new to this world, it's important to understand the [SOLID](https://en.wikipedia.org/wiki/SOLID) principles.
 
-The first principle that it defines is the _**S**ingle responsibility principle_, which states that each function, class, method, file, etc., must have a single purpose, a unique responsibility regarding your application. It makes it easier to maintain, to test, to predict and to use. We refer the classes that have too much responsibilities as _God class_.
+The first principle that it defines is the _**S**ingle responsibility principle_, which states that each function, class, method, file, etc., must have a single purpose, a unique responsibility regarding your application.
+It makes it easier to maintain, to test, to predict and to use.
+We refer the classes that have too much responsibilities as _God class_.
 
-So, if a controller has business logic in it, it does not comply to the SOLID principle. The controller's role is to handle the request and to return a response matching the request, not to interact with a database or to send emails.
+So, if a controller has business logic in it, it does not comply to the SOLID principle.
+The controller's role is to handle the request and to return a response matching the request, not to interact with a database or to send emails.
 
-In this assignment, we will create a `TodoService` that will perfectly fit with the previous assignment. In the last assignment, the controller itself managed the business logic of the todos. Let's split those two responsibilities.
+In this assignment, we will create a `TodoService` that will perfectly fit with the previous assignment.
+In the last assignment, the controller itself managed the business logic of the todos.
+Let's split those two responsibilities.
 
 
 
 ## What is a service?
 
-Essentially, a service manages the business (or the application) logic. They are separated by concerns and can use other services, repositories and so on. In an eCommerce platform, for instance, it is very usual to have a `CustomerService`, a `ProductService` and an `OrderService`, each of them exposing methods to interact with the data by using the programmed business logic.
+Essentially, a service manages the business (or the application) logic.
+They are separated by concerns and can use other services, repositories and so on.
+In an eCommerce platform, for instance, it is very usual to have a `CustomerService`, a `ProductService` and an `OrderService`, each of them exposing methods to interact with the data by using the programmed business logic.
 
 In our case, the `TodoService` that we will create will essentially exposes the CRUD methods, but with some verbosity in it: instead of `index`, we will call `all()`, or `getAllTodos()`, whatever is verbose enough for you and those who will read or use the code.
 
-> Indeed, the ratio of time spent reading versus writing is well over 10 to 1. We are constantly reading old code as part of the effort to write new code. ...[Therefore,] making it easy to read makes it easier to write.
+> Indeed, the ratio of time spent reading versus writing is well over 10 to 1.
+> We are constantly reading old code as part of the effort to write new code.
+> ...[Therefore,] making it easy to read makes it easier to write.
 >
 > --- _Robert C. Martin, Clean Code: A Handbook of Agile Software Craftsmanship_
 
 
 
-## Create the `TodoService`
+## Create the TodoService
 
-First, let's create our first service. Unlike the other times, there is no command to scaffold a service since they are normally completely custom.
+First, let's create our first service.
+Unlike the other times, there is no command to scaffold a service since they are normally completely custom.
 
-Let's create a `services` folder under `src/app`, to group our services. Then, we can create a `TodoService.js` file in it.
+Let's create a `services` folder under `src/app`, to group our services.
+Then, we can create a `TodoService.js` file in it.
 
 Here is the basic content:
 
@@ -45,12 +56,18 @@ class TodoService {
 export default TodoService;
 ```
 
-Normally, any Node.js developer would go in their `TodoController` and `import TodoService from '../../../services/TodoService`. Not in Node IoC. **NEVER** do this in Node IoC. Why? Why using Node IoC in the first place. From the beginning, we injected `config` and `http`, the controller used the application to build `validator` and `view`, without importing anything. We should work the same way!
+Normally, any Node.js developer would go in their `TodoController` and `import TodoService from '../../../services/TodoService`.
+Not in Node IoC.
+**NEVER** do this in Node IoC.
+Why? Why using Node IoC in the first place.
+From the beginning, we injected `config` and `http`, the controller used the application to build `validator` and `view`, without importing anything.
+We should work the same way!
 
 To make a service injectable, only two lines of code are required, and those lines will be located in a `ServiceProvider`.
 In our application, we have two service providers: the `AppServiceProvider`, which should be used for service registration and third party initialization, and `RouteServiceProvider`, which load the routes into the router.
 
-Inside the `src/app/providers/AppServiceProvider`, you will see two methods: `register` and `boot`. The `register` is perfectly suited to bind a service in the application to make it injectable.
+Inside the `src/app/providers/AppServiceProvider`, you will see two methods: `register` and `boot`.
+The `register` is perfectly suited to bind a service in the application to make it injectable.
 
 ```javascript
 import { ServiceProvider } from '@absolunet/ioc';
@@ -68,8 +85,8 @@ class AppServiceProvider extends ServiceProvider {
     register() {
         // You may register any service either as a binding or a singleton using
         // this.app.bind('service.name', concrete) or
-        // this.app.singleton('service.name', concrete). However, you should not
-        // use any service since some services may not be available yet.
+        // this.app.singleton('service.name', concrete).
+        // However, you should not use any service since some services may not be available yet.
         this.app.singleton('todo', TodoService);
     }
 
@@ -77,8 +94,8 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     boot() {
-        // You may use services here to bootstrap them. You can get a service
-        // instance using this.app.make('service.name').
+        // You may use services here to bootstrap them.
+        // You can get a service instance using this.app.make('service.name').
     }
 
 }
@@ -105,7 +122,9 @@ class TodoController extends Controller {
 }
 ```
 
-In the dumped page, you should see `( TodoService #1 ) { ▸ }`. Your service was successfully instantiated! We can now start to implement it.
+In the dumped page, you should see `( TodoService #1 ) { ▸ }`.
+Your service was successfully instantiated!
+We can now start to implement it.
 
 
 
@@ -120,7 +139,8 @@ Here are the main actions (as a TypeScript interface) that we want to perform ov
  - `updateById(id: number, data: UpdateTodoModel): Todo;`
  - `deleteById(id: number): void;`
 
-They are much more verbose than `index` or `show`, aren't they? Now, let's write our methods in the service.
+They are much more verbose than `index` or `show`, aren't they?
+Now, let's write our methods in the service.
 
 ```javascript
 class TodoService {
@@ -156,7 +176,9 @@ class TodoService {
 
 ## Refactor the controller
 
-Let's use the service in the controller instead of the config repository and all the business logic. However, the validation should remain. It is still the controller's responsibility to validate the request.
+Let's use the service in the controller instead of the config repository and all the business logic.
+However, the validation should remain.
+It is still the controller's responsibility to validate the request.
 
 ```javascript
 class TodoController extends Controller {
@@ -230,17 +252,24 @@ Now, we need to implement the `TodoService` methods.
 
 ## Implement the service
 
-### Implement `getAll()`
+### Implement getAll()
 
 Let's tackle our first method, `getAll`, which should return an array of todos, as described above.
 
-But, before implementing it, we need to store the todos somewhere. And the `config` repository was just for testing... It is not its purpose, so we should not use it anymore.
+But, before implementing it, we need to store the todos somewhere.
+And the `config` repository was just for testing...
+It is not its purpose, so we should not use it anymore.
 
-In fact, we just need a repository to store them. We could create a `TodoRepository` to manage the todo store, but let's implement a single service for now.
+In fact, we just need a repository to store them.
+We could create a `TodoRepository` to manage the todo store, but let's implement a single service for now.
 
-Normally, in object-oriented programming, we would use a private property to store the todos. In JavaScript, the encapsulation is not yet implemented (take a look at [this TC39 proposal](https://github.com/tc39/proposal-class-fields)). However, Absolunet offers an easy to use tool to emulate encapsulation with the `[@absolunet/private-registry](https://github.com/absolunet/node-private-registry)` package (of course, it is not as strong as real encapsulation, but it's still a good starting point).
+Normally, in object-oriented programming, we would use a private property to store the todos.
+In JavaScript, the encapsulation is not yet implemented (take a look at [this TC39 proposal](https://github.com/tc39/proposal-class-fields)).
+However, Absolunet offers an easy to use tool to emulate encapsulation with the `[@absolunet/private-registry](https://github.com/absolunet/node-private-registry)` package.
+Of course, it is not as strong as real encapsulation, but it's still a good starting point.
 
-Let's use it. This time, since it should be kept private, you can `import` it.
+Let's use it.
+This time, since it should be kept private, you can `import` it.
 
 ```javascript
 import __ from '@absolunet/private-registry';
@@ -277,7 +306,9 @@ class TodoService {
 }
 ```
 
-In the container instantiation cycle, the instance's dependencies are resolved. An instance is created, with the resolved dependencies passed as arguments. They are then dynamically assigned, and finally, the `init` method is called.
+In the container instantiation cycle, the instance's dependencies are resolved.
+An instance is created, with the resolved dependencies passed as arguments.
+They are then dynamically assigned, and finally, the `init` method is called.
 
 In the `init` method, you can assume that everything is properly set up and the instance is ready to work.
 
@@ -300,17 +331,21 @@ class TodoService {
 }
 ```
 
-Here, a new array, with all the todos in it, is returned, to prevent that the array is directly modified by the caller. It would remove the meaning of a private member.
+Here, a new array, with all the todos in it, is returned, to prevent that the array is directly modified by the caller.
+It would remove the meaning of a private member.
 
-The same thing is done for all the todos. They are transform to an identical object, but on another instance, to prevent direct modification.
+The same thing is done for all the todos.
+They are transform to an identical object, but on another instance, to prevent direct modification.
 
-Let's try to call the `/api/todo` route. We should have an empty array as the response.
+Let's try to call the `/api/todo` route.
+We should have an empty array as the response.
 
 
 
-### Implement `create()`
+### Implement create()
 
-Now, we can create a new todo and store it in the private registry. And we can keep track of an incrementing ID, which would be much cleaner than what we have done previously in the controller.
+Now, we can create a new todo and store it in the private registry.
+And we can keep track of an incrementing ID, which would be much cleaner than what we have done previously in the controller.
 
 ```javascript
 class TodoService {
@@ -342,7 +377,7 @@ class TodoService {
 
 
 
-### Implement `findById()`
+### Implement findById()
 
 Finding the todo by ID should be simple, it's basically the same thing that we did in the controller during the last assignment.
 
@@ -364,16 +399,19 @@ class TodoService {
 }
 ```
 
-Here, we do the same thing as the `getAll` method. We return another instance of the same data to prevent direct overwrite.
+Here, we do the same thing as the `getAll` method.
+We return another instance of the same data to prevent direct overwrite.
 
-However, you may have noticed that we do not cast the id as string, because, in our model, we expect a number as ID. It's the responsibility of the caller to provide us the proper type.
+However, you may have noticed that we do not cast the id as string, because, in our model, we expect a number as ID.
+It's the responsibility of the caller to provide us the proper type.
 In the controller, you may have also noticed that all the `id` that are sent to the service are cast as `Number`.
 
 
 
-### Implement `existById()`
+### Implement existById()
 
-We can rely on our `findById` method and return a boolean value of the returned data, or we can rely on the `some` method. Both methods are very similar in term of performance, so no need to worry about it for now.
+We can rely on our `findById` method and return a boolean value of the returned data, or we can rely on the `some` method.
+Both methods are very similar in term of performance, so no need to worry about it for now.
 
 ```javascript
 class TodoService {
@@ -408,7 +446,8 @@ class TodoService {
 ```
 
 
-### Implement `updateById()`
+
+### Implement updateById()
 
 Now, let's update an existing todo.
 
@@ -445,13 +484,16 @@ class TodoService {
 
 Here, first retrieve the original array, with all the original todo instances.
 
-We attempt to find the todo with the received ID. If it does not exists, we throw an error. Notice that our controller made a `existById` check before going forward with the update.
+We attempt to find the todo with the received ID.
+If it does not exists, we throw an error.
+Notice that our controller made a `existById` check before going forward with the update.
 
-Notice that we do not reassign the todo in the array. Since the reference is still the same, the todo in the array is pointing to the same object as the `todo` constant.
+Notice that we do not reassign the todo in the array.
+Since the reference is still the same, the todo in the array is pointing to the same object as the `todo` constant.
 
 
 
-### Implement `deleteById()`
+### Implement deleteById()
 
 Finally, let's delete a todo by ID.
 

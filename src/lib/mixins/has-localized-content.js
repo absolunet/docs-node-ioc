@@ -7,6 +7,14 @@ const titleSelector = 'h1,h2,h3,h4,h5,h6';
 
 export default {
     mixins: [resolveLocalizedRoutes, translatesMenu],
+    mounted() {
+        this.updateTitle();
+    },
+    watch: {
+        title() {
+            this.updateTitle()
+        }
+    },
     computed: {
         content() {
             const { contentKey } = this;
@@ -58,6 +66,15 @@ export default {
             });
 
             return menu;
+        }
+    },
+    methods: {
+        updateTitle() {
+            const title = document.head.querySelector('title');
+            const parts = title.innerText.split('|');
+            const name = parts[parts.length - 1];
+
+            title.innerText = `${this.title} | ${name}`;
         }
     }
 }

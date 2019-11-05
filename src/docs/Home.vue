@@ -42,7 +42,7 @@
                             <li>Complete <router-link :to="commandLink">CLI command system</router-link> powered by <a href="http://yargs.js.org" target="_blank">Yargs</a></li>
                             <li>Full <router-link :to="routingLink">routing and HTTP handling</router-link> powered by <a href="https://expressjs.com" target="_blank">Express</a></li>
                             <li><a href="http://knexjs.org" target="_blank">Knex.js</a>&nbsp;<router-link :to="databaseLink">database connections</router-link> with <a href="https://bookshelfjs.org" target="_blank">Bookshelf ORM</a></li>
-                            <li><router-link :to="cachingLink">Cache</router-link> system with multiple back-ends</li>
+                            <li><router-link :to="cacheLink">Cache</router-link> system with multiple back-ends</li>
                         </ul>
                     </div>
                     <div class="cell large-6">
@@ -164,8 +164,8 @@
 			databaseLink() {
                 return this.getLink('/data/database');
             },
-			cachingLink() {
-                return this.getLink('/data/caching');
+			cacheLink() {
+                return this.getLink('/data/cache');
             },
             configLink() {
                 return this.getLink('/basics/configuration');

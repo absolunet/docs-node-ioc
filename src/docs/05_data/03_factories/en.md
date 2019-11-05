@@ -2,7 +2,8 @@
 
 ## Introduction
 
-Model factories are very useful when it comes to testing and prototyping applications. It allows to create random model instances and database records with data that may seems real by using [Faker.js](https://github.com/marak/faker.js).
+Model factories are very useful when it comes to testing and prototyping applications.
+It allows to create random model instances and database records with data that may seems real by using [Faker.js](https://github.com/marak/faker.js).
 
 The `db.factory` service will help you quickly create fake models from your own fake model schemas.
 
@@ -10,7 +11,9 @@ The `db.factory` service will help you quickly create fake models from your own 
 
 ## Model factory
 
-A model factory is a simple class that links a model name to a fake schema for quick scaffold. It has a `model` accessor, which returns the model identifier in the `db.model` repository. The `make` method is then used to get a fake data object to create a model instance.
+A model factory is a simple class that links a model name to a fake schema for quick scaffold.
+It has a `model` accessor, which returns the model identifier in the `db.model` repository.
+The `make` method is then used to get a fake data object to create a model instance.
 
 ```javascript
 class UserFactory extends Factory {
@@ -48,7 +51,7 @@ factory.register(UserFactory, 'Admin'); // Instead of being registered as "User"
 
 
 
-### The `make:factory` command
+### The make:factory command
 
 This command will help you quickly scaffold a model factory class file.
 

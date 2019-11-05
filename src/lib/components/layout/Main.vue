@@ -67,4 +67,8 @@
             left: 0;
         }
     }
+
+    li > p {
+        margin-bottom: 0;
+    }
 </style>

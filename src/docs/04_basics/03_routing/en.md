@@ -2,19 +2,24 @@
 
 ## Introduction
 
-Routing is the best way to assign HTTP requests to their handlers. This section will cover the Node IoC routing system, which is directly linked to [Express](https://expressjs.com/).
+Routing is the best way to assign HTTP requests to their handlers.
+This section will cover the Node IoC routing system, which is directly linked to [Express](https://expressjs.com/).
 
 
 
 ## Routes
 
-The application routes are normally located in `src/routes` folder. They are loaded by the `src/app/providers/RouteServiceProvider`. This service provider loads both the `api.js` and the `web.js` files, one after the other, to separate the route types. All the `api.js` routes will be automatically prefixed by `/api`.
+The application routes are normally located in `src/routes` folder.
+They are loaded by the `src/app/providers/RouteServiceProvider`.
+This service provider loads both the `api.js` and the `web.js` files, one after the other, to separate the route types.
+All the `api.js` routes will be automatically prefixed by `/api`.
 
 
 
 ## Basic routing
 
-The router uses expressive syntax, similar to what Express exposes. The router handles all basic HTTP verbs as method, an URL and a handler.
+The router uses expressive syntax, similar to what Express exposes.
+The router handles all basic HTTP verbs as method, an URL and a handler.
 
 ```javascript
 router.get('/foo', (request, response) => {
@@ -28,7 +33,8 @@ As a route handler, you can also define a controller action.
 router.get('/foo', 'FooController@index');
 ```
 
-The syntax to use a controller action is `ControllerName@method`. Given the above example, here would be a valid implementation of the controller.
+The syntax to use a controller action is `ControllerName@method`.
+Given the above example, here would be a valid implementation of the controller.
 
 ```javascript
 class FooController extends Controller {
@@ -52,7 +58,9 @@ The router handles the following basic methods:
 
 ### Redirection routes
 
-Sometime, application may handle redirection. It is always a better solution, regarding the performance, to handle the redirection from the server engine, such as Apache or Nginx configuration files. A simple solution was develop to handle those situations, for both temporary and permanent redirection.
+Sometime, application may handle redirection.
+It is always a better solution, regarding the performance, to handle the redirection from the server engine, such as Apache or Nginx configuration files.
+A simple solution was develop to handle those situations, for both temporary and permanent redirection.
 
  - `router.redirect(from, to)`
  - `router.permanentRedirect(from, to)`
@@ -61,7 +69,9 @@ Sometime, application may handle redirection. It is always a better solution, re
 
 ### Static routes
 
-Also, static content may come from dedicated folders. By default, the `/static` and `/uploads` routes are static assets routes, `/static` from the `path.public` folder and `/uploads` from the `path.upload`'s `public` folder. They are simply pointing to a folder, and the file tree will be taken in account to retrieve the file to serve.
+Also, static content may come from dedicated folders.
+By default, the `/static` and `/uploads` routes are static assets routes, `/static` from the `path.public` folder and `/uploads` from the `path.upload`'s `public` folder.
+They are simply pointing to a folder, and the file tree will be taken in account to retrieve the file to serve.
 
 Given the following file tree, here is the basic schema that the following route would handle with a file response.
 
@@ -97,13 +107,16 @@ The `router.all(uri, handler)` method is an alias of the `any` method.
 
 Also, fallback routes may be very useful to handle single page application (SPA) built with React or Vue.js, for instance.
 
-The `router.fallback(handler)` method will create a route that matches any path that was not matched yet by the defined routes. It prevents a 404 response from being sent. However, if you define this route before another specific route in the same group, the specific route will never match.
+The `router.fallback(handler)` method will create a route that matches any path that was not matched yet by the defined routes.
+It prevents a 404 response from being sent.
+However, if you define this route before another specific route in the same group, the specific route will never match.
 
 
 
 ## Route parameters
 
-A route can receive parameters, such as an ID/UUID, a username, a unique slug, etc. The way to define a route parameter is by using the colon token, such as `/:id`.
+A route can receive parameters, such as an ID/UUID, a username, a unique slug, etc.
+The way to define a route parameter is by using the colon token, such as `/:id`.
 
 The entire route parameters will be available with the request's `params` property, the same way you would do with Express.
 
@@ -113,9 +126,12 @@ router.get('/todo/:todo', 'TodoController@show');
 ```
 
 
+
 ### Constraints
 
-To add constraints to a route parameter, you normally would use regular expression in the route signature, which some could find annoying for readability. Since the `route.get(uri, handler)` method returns a `Route` instance, you can use some useful methods. To add constraints, you can use the `where` method, which is chainable.
+To add constraints to a route parameter, you normally would use regular expression in the route signature, which some could find annoying for readability.
+Since the `route.get(uri, handler)` method returns a `Route` instance, you can use some useful methods.
+To add constraints, you can use the `where` method, which is chainable.
 
 ```javascript
 router.get('/todo/:todo', 'TodoController@show')
@@ -150,7 +166,8 @@ class FooController extends Controller {
 
 ## Named routes
 
-It may be easy to reference a route by its URL, but you will have to change some of them, either for SEO reasons, localization, refactoring, etc. The named routes are a very simple way to prevent those refactor messes that you may encounter.
+It may be easy to reference a route by its URL, but you will have to change some of them, either for SEO reasons, localization, refactoring, etc.
+The named routes are a very simple way to prevent those refactor messes that you may encounter.
 
 To name a route, the `Route` object exposes the `name` method.
 
@@ -168,9 +185,11 @@ route.action === 'FooController@index'; // true
 ```
 
 
+
 ## Groups
 
-Grouping routes is a great idea to prevent all routes to have long URIs, complex naming structure that may have typos in it, and so on. The router offers the `group` method that accepts a group options object, and a callback that registers the routes in the group.
+Grouping routes is a great idea to prevent all routes to have long URIs, complex naming structure that may have typos in it, and so on.
+The router offers the `group` method that accepts a group options object, and a callback that registers the routes in the group.
 
 ```javascript
 router.group({ prefix: '/admin', as: 'admin.', namespace: 'backend.'}, () => {
@@ -203,9 +222,19 @@ router.group({ prefix: '/admin', as: 'admin.', namespace: 'backend.'}, () => {
 
 You can use the following group options:
 
- - `as`: The routes name prefix. Would end with a period if you want to define as route namespace.
- - `namespace`: Controller namespace. Should end with a period.
- - `prefix`: URI prefix segment. Can contain multiple segments.
+ - `as`
+    > The routes name prefix.
+    > Would end with a period if you want to define as route namespace.
+
+
+ - `namespace`
+    > Controller namespace.
+    > Should end with a period.
+
+
+ - `prefix`
+    > URI prefix segment.
+    > Can contain multiple segments.
 
 
 ## Resource routes
@@ -265,14 +294,18 @@ The `apiResource` method will do the exact same thing than `resource`, but by om
 
 ## Controllers
 
-A controller in Node IoC is a simple class that contains actions, which are methods. In your application, they are located in the `src/app/http/controllers` folder. An abstract `Controller` is already defined, empty and ready to be enhanced. It already inherits from the Controller class in the framework.
+A controller in Node IoC is a simple class that contains actions, which are methods.
+In your application, they are located in the `src/app/http/controllers` folder.
+An abstract `Controller` is already defined, empty and ready to be enhanced.
+It already inherits from the Controller class in the framework.
 
 
 ### Auto-registration
 
 The application controllers are automatically registered in the `router.controller` repository, which contains all the known controllers.
 
-Their file names, without the `.js` extension, is used as their name. If they are nested in a folder, the folder path becone the controller's namespace, replacing the slash by dots.
+Their file names, without the `.js` extension, is used as their name.
+If they are nested in a folder, the folder path become the controller's namespace, replacing the slash by dots.
 
 ```
 src/app/http/controllers/
@@ -327,7 +360,8 @@ node ioc make:controller DashboardController --resource
 node ioc make:controller DashboardController --api
 ```
 
-A handler controller will only have a `handle` method. It is normally used for single action controller.
+A handler controller will only have a `handle` method.
+It is normally used for single action controller.
 A resource controller defines all the resource actions: `index`, `create` `store`, `show`, `edit`, `update` and `destroy`.
 An API controller defines all the API resource actions: `index`, `store`, `show`, `update` and `destroy`.
 
@@ -385,18 +419,55 @@ class MyApiController extends Controller {
 
 To send proper status code, some helper methods were defined:
 
- - `status(code)`: Set the status code manually
- - `throwWithStatus(status)`: Set the status code manually, the throw a corresponding HTTP error
- - `ok()`: Set `200 OK.` status code
- - `created()`: Set `201 Created.` status code
- - `accepted()`: Set `202 Accepted.` status code
- - `noContent()`: Set `204 No Content.` status code
- - `badRequest()`: Set `400 Bad Request.` status code and throws `BadRequestHttpError`
- - `unauthorized()`: Set `401 Unauthorized.` status code and throws `UnauthorizedHttpError`
- - `forbidden()`: Set `403 Forbidden.` status code and throws `ForbiddenHttpError`
- - `notFound()`: Set `404 Not Found.` status code and throws `NotFoundHttpError`
- - `methodNotAllowed()`: Set `405 Method Not Allowed.` status code and throws `MethodNotAllowedHttpError`
- - `timeout()`: Set `408 Timeout.` status code and throws `TimeoutHttpError`
- - `teapot()`: Set `418 Timeout.` status code
+ - `status(code)`
+    > Set the status code manually
 
-When an HTTP error is thrown, it is handled by the `exception.handler`, which will render the proper response for both JSON and HTML requests, depending on the current environment.
+
+ - `throwWithStatus(status)`
+    > Set the status code manually, the throw a corresponding HTTP error
+
+
+ - `ok()`
+    > Set `200 OK.` status code
+
+
+ - `created()`
+    > Set `201 Created.` status code
+
+
+ - `accepted()`
+    > Set `202 Accepted.` status code
+
+
+ - `noContent()`
+    > Set `204 No Content.` status code
+
+
+ - `badRequest()`
+    > Set `400 Bad Request.` status code and throws `BadRequestHttpError`
+
+
+ - `unauthorized()`
+    > Set `401 Unauthorized.` status code and throws `UnauthorizedHttpError`
+
+
+ - `forbidden()`
+    > Set `403 Forbidden.` status code and throws `ForbiddenHttpError`
+
+
+ - `notFound()`
+    > Set `404 Not Found.` status code and throws `NotFoundHttpError`
+
+
+ - `methodNotAllowed()`
+    > Set `405 Method Not Allowed.` status code and throws `MethodNotAllowedHttpError`
+
+
+ - `timeout()`
+    > Set `408 Timeout.` status code and throws `TimeoutHttpError`
+
+
+ - `teapot()`
+    > Set `418 Timeout.` status code
+
+When an HTTP error is thrown, it is handled by the `exception.handler`, which will render the proper response for both JSON and HTML requests, depending on the `app.debug` configuration state.
