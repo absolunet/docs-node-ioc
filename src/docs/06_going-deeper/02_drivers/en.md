@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In Node IoC, the abstraction os one of its main architecture concepts.
+In Node IoC, the abstraction is one of its main architecture concepts.
 Using a complex service must be as easy as possible, without having to drill down to the concrete object that will handle the process.
 Drivers are a very important piece of equipment a complex class can use to abstract implementation.
 
