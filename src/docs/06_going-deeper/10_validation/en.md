@@ -3,8 +3,8 @@
 ## Introduction
 
 Validation is an essential part of any application.
-Strong validator system were develop over time, some even light enough for browsers, such as `yup`.
-However, one of the strongest validation system on the market is the popular [`@hapi/joi`](https://hapi.dev/family/joi/) validation package.
+Strong validator systems were developed over time, some even light enough for browsers, such as `yup`.
+However, one of the strongest validation systems on the market is the popular [`@hapi/joi`](https://hapi.dev/family/joi/) validation package.
 This package is being used for the `validator` service.
 
 
@@ -29,7 +29,7 @@ validator.assert({ foo: 'bar' }, schema);
 // [1] "foo" is not allowed
 ```
 
-All the `@hapi/joi` package API is available in the `validator` service, including extensions through `extend`.
+All the `@hapi/joi` package API is available in the `validator` service, including extensions through `extend`.
 
 
 

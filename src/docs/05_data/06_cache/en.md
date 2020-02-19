@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Cache in Node IoC is very simple to use, configuration-driven and make is easy to store data in multiple backends.
+Cache in Node IoC is very simple to use, configuration-driven and makes it easy to store data in multiple backends.
 It offers out-of-the-box runtime, file and database caching drivers, but makes implementing Redis or Memcached very simple if you want or need it.
 
 
@@ -30,7 +30,7 @@ stores:
     path: '/path/to/other/folder'
 ```
 
-Also, you can specify global configuration, under the `common` key.
+Also, you can specify the global configuration, under the `common` key.
 You can configure the cache prefix with the `common.prefix` key.
 It may be very useful if using a common cache system such as Redis.
 Also, you can specify a default expiration time, in seconds.
@@ -40,7 +40,7 @@ If data was cached without specific expiration time, this time will be used.
 
 ## The cache manager
 
-The cache manager, injectable through `cache`, will help resolving the cache driver instance through configuration.
+The cache manager, injectable through `cache`, will help to resolve the cache driver instance through configuration.
 With the proxy wrapper, you can directly access the default driver instance from it, or you can get the driver for the store you want.
 
 ```javascript
@@ -83,7 +83,7 @@ If you need to forget a key in a specific cache store, you can use `cache:forget
 
 ## Cache drivers
 
-The cache drivers extends the same interface-like class, which contains the same base methods: `get`, `put`, `forever`, `increment`, `decrement`, `delete` and `flush`
+The cache drivers extend the same interface-like class, which contains the same base methods: `get`, `put`, `forever`, `increment`, `decrement`, `delete` and `flush`
 
 ```javascript
 const cache = app.make('cache').resolveDefault();
@@ -106,7 +106,7 @@ await cache.get('foo'); // 14
 await cache.delete('foo');
 await cache.get('foo'); // null, the key "foo" was deleted moments earlier
 
-await cache.flush(); // All the keys, including the forever cached data, are flushed from the cache store.
+await cache.flush(); // All the keys, including the forever cached data, are flushed from the store.
 ```
 
 
@@ -116,15 +116,15 @@ await cache.flush(); // All the keys, including the forever cached data, are flu
 The runtime cache driver is a simple store handled by a JavaScript object, without any permanent save.
 This cache is working through the process runtime.
 When the process has exited, the cache is flushed.
-It is a good driver for testing purpose, or if you need to cache simple data, but is not suggested for production.
+It is a good driver for testing purposes, or if you need to cache simple data, but is not suggested for production.
 It does not need any configuration.
 
 
 
 ### File driver
 
-The file driver save the cached values in JSON files in a configured folder.
-By default, the application suggests that the cached values goes in the `storage/framework/cache/data`.
+The file driver saves the cached values in JSON files in a configured folder.
+By default, the application suggests that the cached values go in the `storage/framework/cache/data`.
 
 
 

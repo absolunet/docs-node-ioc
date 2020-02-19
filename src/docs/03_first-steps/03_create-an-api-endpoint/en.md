@@ -31,7 +31,7 @@ node ioc serve
 This will start a new server process over port `8080`.
 Try accessing [http://localhost:8080]().
 You should see the default Web welcome page.
-If you need to change port, use the `--port=8080` option, with the wanted port.
+If you need to change the port, use the `--port=8080` option, with the wanted port.
 
 To develop faster, Node IoC provides a daemon feature that will relaunch the server on file change.
 
@@ -63,7 +63,7 @@ export default (router) => {
 ```
 
 It's important to notice that the key difference between this file and the `web.js` routes file is that all the routes in the `api.js` file are prefixed by `/api` by default.
-So, the `/app` route here is in fact a route that matches `/api/app` URL.
+So, the `/app` route here is, in fact, a route that matches `/api/app` URL.
 
 Let's add our first custom route.
 It should point to `/todo`.
@@ -80,9 +80,9 @@ export default (router) => {
 
 If you access to [http://localhost:8080/api/todo](), you should see `My first API endpoint`.
 
-However, since we are working with API endpoint, it is strongly suggested that you use an appropriate tool.
+However, since we are working with API endpoints, it is strongly suggested that you use an appropriate tool.
 We recommend using [Postman](https://www.getpostman.com/downloads/), or any API consumer tool.
-You must be able to easily switch HTTP method and set request body.
+You must be able to easily switch the HTTP method and set the request body.
 
 
 
@@ -90,7 +90,7 @@ You must be able to easily switch HTTP method and set request body.
 
 As we saw earlier in the previous tutorial, a `Controller` is needed to clearly separate our logic from the routes.
 
-We also learned a useful command that create a controller class file for us, called `make:command`.
+We also learned a useful command that creates a controller class file for us, called `make:command`.
 
 Let's check its signature through the `--help` flag.
 
@@ -111,7 +111,7 @@ Options:
   --handler      Generate a single method handler controller class.                                            [boolean]
 ```
 
-As we can see, there is some custom flags, such as `resource`, `api` and `handler`.
+As we can see, there are some custom flags, such as `resource`, `api` and `handler`.
 Each one of them indicates to create a specific type of controller.
 In our case, we need an API controller, which implements the API CRUD methods that we want to implement.
 
@@ -206,7 +206,7 @@ class TodoController extends Controller {
 ```
 
 Notice that we used the `json` method.
-It accepts any JSON serializable value and handle all the formatting for you.
+It accepts any JSON serializable value and handles all the formatting for you.
 No need to `JSON.stringify` anymore.
 
 If you access the endpoint, you should now see `"My first JSON response"`, as an `application/json` content type (notice the double quotes).
@@ -232,7 +232,7 @@ export default (router) => {
 ```
 
 Those routes are the basic ones for any RESTful API architecture.
-Since it happen too often, two special method from the `router` service was created, called `resource` and `apiResource`.
+Since it happens too often, two special methods from the `router` service was created, called `resource` and `apiResource`.
 
 What they do is basically the same as we did, but automatically.
 
@@ -283,7 +283,7 @@ You should now see the application name instead of our placeholder sentence.
 ### The config repository
 
 The configuration repository is one of the most useful ones.
-It allows to use configuration to drive our entire application through `yaml` files.
+It allows using configuration to drive our entire application through `yaml` files.
 It offers some methods, such as `get`, `set`, `has`, `merge`, etc.
 The files in the `config` folder act like namespaces: the `app.name` key can be found in the `app.yaml` file, under the `name` YAML key.
 The configuration repository accepts `.yaml`, `.yml`, `.js` and `.json` files to retrieve default configuration (however, your JavaScript ile must be written in CommonJS syntax, with `module.exports`).
@@ -293,7 +293,7 @@ The configuration repository accepts `.yaml`, `.yml`, `.js` and `.json` files to
 ### Return a todo list
 
 Let's return the todo list.
-It will be empty at first, but will be filled when we will implement the other CRUD methods.
+It will be empty at first but will be filled when we will implement the other CRUD methods.
 
 ```javascript
 class TodoController extends Controller {
@@ -334,7 +334,7 @@ class TodoController extends Controller {
 If you reload the page, you should see `[{"name":"My first todo","done":false}]`.
 But try to reload it another time.
 Now, you have two todos, `[{"name":"My first todo","done":false},{"name":"My first todo","done":false}]`.
-The configuration keeps the result in cache the whole time the application runs.
+The configuration caches the result the whole time the application runs.
 
 Now that we can assert that the configuration repository works, let's put the controller back the way it was.
 
@@ -362,7 +362,7 @@ The first action that will interact with our data is the `store` action.
 Its role is to create a new entity.
 We need to use the `POST` HTTP method.
 
-Let's try with Postman, with the following url: `http://localhost:8080/api/todo` with the `POST` HTTP method, and let's return fake JSON response in the `store` controller action.
+Let's try with Postman, with the following url: `http://localhost:8080/api/todo` with the `POST` HTTP method, and let's return a fake JSON response in the `store` controller action.
 
 > In order to trap errors in JSON response instead of HTML, your request must have the `Accept: application/json` header.
 
@@ -380,7 +380,7 @@ class TodoController extends Controller {
 }
 ```
 
-The two actions refers to the same URL, but with a different HTTP method, `GET` for `index`, and `POST` form `store`.
+The two actions refer to the same URL, but with a different HTTP method, `GET` for `index`, and `POST` form `store`.
 If you try to send a `POST` request to the `/api/todo` URL, you should see `"Storing new todo"` instead of `[]`.
 
 This action normally expects that it receives a body containing the Todo data to be stored.
@@ -394,7 +394,7 @@ Let's establish a "todo" model for the backend side.
 }
 ```
 
-However, the user only have to specify the `label` field, since it will not be done, and the ID is generated by the server.
+However, the user only has to specify the `label` field, since it will not be done, and the ID is generated by the server.
 
 ```json
 {
@@ -440,8 +440,8 @@ class TodoController extends Controller {
         const previousId = (todos[todos.length - 1] || {}).id || 0;
 
         const todo = {
-        	...this.request.body,
-        	id: previousId + 1,
+           ...this.request.body,
+           id: previousId + 1,
             done: false,
         };
 
@@ -483,8 +483,8 @@ class TodoController extends Controller {
         });
 
         const todo = {
-        	...this.request.body,
-        	id: previousId + 1,
+           ...this.request.body,
+           id: previousId + 1,
             done: false,
         };
 
@@ -504,7 +504,7 @@ The `validate` method accepts a callback that is used to validate each request b
 The default validator is the well-known [@hapi/joi](https://hapi.dev/family/joi/) validation package.
 You can use all the available methods and schema types.
 
-Here we validate that the body contains (and contains only) a label that is a string with minimum length of 3 characters.
+Here we validate that the body contains (and contains only) a label that is a string with a minimum length of 3 characters.
 
 Now, create a todo, then go to the index endpoint.
 Your todo should be there.
@@ -552,13 +552,13 @@ Here, we retrieve the requested todo ID.
 Then, we attempt to retrieve the corresponding todo.
 With a database, we would have used `where` and `first` statements.
 
-We used the ID as matcher, and we converted them to string to keep strict equality check (most backend developers like type tests and casting, let's use it too, even with a weakly-typed language)
+We used the ID as a matcher, and we converted them to string to keep strict equality check (most backend developers like type tests and casting, let's use it too, even with a weakly-typed language)
 
 Interesting fact, you can send a `404 Not Found.` very easily with the `notFound` method, but in a local environment, it converts to a `NotFoundHttpError` page, which is great for testing.
 If you are not in a local environment, the real 404 page or JSON response will show up.
 
-To be able to display a todo, ensure that your todo list contains the requested todo.
-Friendly reminder that each time the server is stopped, the data disappear and you have to created them again.
+To be able to display a todo, ensure that your to-do list contains the requested todo.
+Friendly reminder that each time the server is stopped, the data disappear and you have to create them again.
 
 
 

@@ -3,15 +3,15 @@
 ## Introduction
 
 Model factories are very useful when it comes to testing and prototyping applications.
-It allows to create random model instances and database records with data that may seems real by using [Faker.js](https://github.com/marak/faker.js).
+It allows you to create random model instances and database records with data that may seem real by using [Faker.js](https://github.com/marak/faker.js).
 
-The `db.factory` service will help you quickly create fake models from your own fake model schemas.
+The `db.factory` service will help you quickly create fake models from your fake model schemas.
 
 
 
 ## Model factory
 
-A model factory is a simple class that links a model name to a fake schema for quick scaffold.
+A model factory is a simple class that links a model name to a fake schema for a quick scaffold.
 It has a `model` accessor, which returns the model identifier in the `db.model` repository.
 The `make` method is then used to get a fake data object to create a model instance.
 
@@ -65,13 +65,13 @@ If you are creating a model, you can also use the `--factory` flag, or the `--al
 node ioc make:model User --factory
 ```
 
-This will create a `src/database/factories/UserFactory`, linked to the `User` model.
+This will create a `src/database/factories/UserFactory` file, linked to the `User` model.
 
 The command will simply assume that the name, without the suffix `Factory`, will be the model name.
 
 
 
-## Make a model from factory
+## Make a model from a factory
 
 To make a model based on the factory schema, the `db.factory` offers the `make` method, that accepts the following arguments:
 

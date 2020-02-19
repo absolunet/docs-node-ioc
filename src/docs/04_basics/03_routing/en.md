@@ -9,7 +9,7 @@ This section will cover the Node IoC routing system, which is directly linked to
 
 ## Routes
 
-The application routes are normally located in `src/routes` folder.
+The application routes are normally located in the `src/routes` folder.
 They are loaded by the `src/app/providers/RouteServiceProvider`.
 This service provider loads both the `api.js` and the `web.js` files, one after the other, to separate the route types.
 All the `api.js` routes will be automatically prefixed by `/api`.
@@ -19,7 +19,7 @@ All the `api.js` routes will be automatically prefixed by `/api`.
 ## Basic routing
 
 The router uses expressive syntax, similar to what Express exposes.
-The router handles all basic HTTP verbs as method, an URL and a handler.
+The router handles all basic HTTP verbs as a method, a URL and a handler.
 
 ```javascript
 router.get('/foo', (request, response) => {
@@ -58,9 +58,9 @@ The router handles the following basic methods:
 
 ### Redirection routes
 
-Sometime, application may handle redirection.
+Sometime, the application may handle redirection.
 It is always a better solution, regarding the performance, to handle the redirection from the server engine, such as Apache or Nginx configuration files.
-A simple solution was develop to handle those situations, for both temporary and permanent redirection.
+A simple solution was developed to handle those situations, for both temporary and permanent redirection.
 
  - `router.redirect(from, to)`
  - `router.permanentRedirect(from, to)`
@@ -71,7 +71,7 @@ A simple solution was develop to handle those situations, for both temporary and
 
 Also, static content may come from dedicated folders.
 By default, the `/static` and `/uploads` routes are static assets routes, `/static` from the `path.public` folder and `/uploads` from the `path.upload`'s `public` folder.
-They are simply pointing to a folder, and the file tree will be taken in account to retrieve the file to serve.
+They are simply pointing to a folder, and the file tree will be taken into account to retrieve the file to serve.
 
 Given the following file tree, here is the basic schema that the following route would handle with a file response.
 
@@ -138,7 +138,7 @@ router.get('/todo/:todo', 'TodoController@show')
     .where('todo', '[1-9]\d*');
 ```
 
-This constraint indicates that, to match the following route, the `todo` parameter must be a valid positive number.
+This constraint indicates that to match the following route, the `todo` parameter must be a valid positive number.
 
 
 
@@ -188,8 +188,8 @@ route.action === 'FooController@index'; // true
 
 ## Groups
 
-Grouping routes is a great idea to prevent all routes to have long URIs, complex naming structure that may have typos in it, and so on.
-The router offers the `group` method that accepts a group options object, and a callback that registers the routes in the group.
+Grouping routes is a great idea to prevent all routes to have long URIs, a complex naming structure that may have typos in it, and so on.
+The router offers the `group` method that accepts a group options object and a callback that registers the routes in the group.
 
 ```javascript
 router.group({ prefix: '/admin', as: 'admin.', namespace: 'backend.'}, () => {
@@ -304,8 +304,8 @@ It already inherits from the Controller class in the framework.
 
 The application controllers are automatically registered in the `router.controller` repository, which contains all the known controllers.
 
-Their file names, without the `.js` extension, is used as their name.
-If they are nested in a folder, the folder path become the controller's namespace, replacing the slash by dots.
+Their file names, without the `.js` extension is used as their name.
+If they are nested in a folder, the folder path becomes the controller's namespace, replacing the slash by dots.
 
 ```
 src/app/http/controllers/
@@ -323,7 +323,7 @@ src/app/http/controllers/
 
 ### Register a controller
 
-To manually register a controller, the `router.controller` repository offers a `add` method.
+To manually register a controller, the `router.controller` repository offers an `add` method.
 
 ```javascript
 import MyController from './MyController';
@@ -332,7 +332,7 @@ app.make('router.controller').add('MyController', MyController);
 ```
 
 When registering a controller, they are bound to the application under their name.
-The fact that the controller are in `PascalCase` clashes with the other services and should not entered in conflict.
+The fact that the controllers are in `PascalCase` clashes with the other services and should prevent conflicts.
 
 You can retrieve a controller instance anytime by using the `get` method.
 
@@ -344,7 +344,7 @@ app.make('router.controller').get('MyController'); // MyController {}
 
 ## Create a controller
 
-To create a controller in your application, a simple command create the necessary scaffold of a controller that inherits from your base controller.
+To create a controller in your application, a simple command creates the necessary scaffold of a controller that inherits from your base controller.
 
 ```bash
 node ioc make:controller MyController
@@ -352,7 +352,7 @@ node ioc make:controller MyController
 
 It will create an empty `MyController.js` controller class file inside the `src/app/http/controllers` folder.
 
-You can create different kind of controller, such as a handler, a resource or an API resource controller.
+You can create different kinds of controllers, such as a handler, a resource or an API resource controller.
 
 ```
 node ioc make:controller DashboardController --handler
@@ -361,7 +361,7 @@ node ioc make:controller DashboardController --api
 ```
 
 A handler controller will only have a `handle` method.
-It is normally used for single action controller.
+It is normally used for a single action controller.
 A resource controller defines all the resource actions: `index`, `create` `store`, `show`, `edit`, `update` and `destroy`.
 An API controller defines all the API resource actions: `index`, `store`, `show`, `update` and `destroy`.
 
@@ -399,7 +399,7 @@ class HomeController extends Controller {
 
 ## Send JSON response
 
-To send JSON response, the `json` method transform the given value to JSON and send it as an `application/json` response.
+To send a JSON response, the `json` method transform the given value to JSON and send it as an `application/json` response.
 
 ```javascript
 class MyApiController extends Controller {
@@ -417,7 +417,7 @@ class MyApiController extends Controller {
 
 ### Set HTTP status code
 
-To send proper status code, some helper methods were defined:
+To send the proper status code, some helper methods were defined:
 
  - `status(code)`
     > Set the status code manually

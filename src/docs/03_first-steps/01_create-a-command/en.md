@@ -20,7 +20,7 @@ node ioc inspire:book react
 Fullstack React
 The Complete Guide to ReactJS and Friends
 By Accomazzo Anthony, Accomazzo Anthony and Ari Lerner
-Published date: Ari Lerne
+Published date: 2017-03
 Ebook: http://books.google.ca/books?id=ppjUtAEACAAJ&dq=react&hl=&source=gbs_api
 ```
 
@@ -52,7 +52,7 @@ node ioc name:command
 
 You should see a console message indicating `To be implemented...`.
 
-From now on, we will not need to create new files, so you can use the Manager watch command to auto-compile file on save.
+From now on, we will not need to create new files, so you can use the Manager watch command to compile files on save.
 
 ```bash
 npm run manager:watch
@@ -105,7 +105,7 @@ In the example, the argument is a `parameter`, its value is `react`.
 
 To be able to receive a parameter, we need to specify it in the command through the `parameters` accessor.
 
-It should return an array of array of `Parameter` arguments, which are, in order, `[name, isRequired, defaultValue, description]`.
+It should return a two-dimensional array of `Parameter` arguments, which are, in order, `[name, isRequired, defaultValue, description]`.
 
 ```javascript
 class InspireBookCommand extends Command {
@@ -169,7 +169,7 @@ When running `node ioc inspire:book react`, you should see `react` logged back i
 ## Inject the http service
 
 Now, we have all we need to consume the [Google Books API](https://developers.google.com/books/docs/v1/using#PerformingSearch).
-To consume it, we need the `http` service, which allow us to make HTTP calls.
+To consume it, we need the `http` service, which allows us to make HTTP calls.
 
 ```javascript
 class InspireBookCommand extends Command {

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The test class in Node IoC is a way to enhance the tests development experience.
+The test class in Node IoC is a way to enhance the test development experience.
 All modern JavaScript test engines rely on callbacks, which is not very practical to organize code.
 
 We can then use test classes to write our tests, à la PHPUnit.
@@ -14,7 +14,7 @@ We can then use test classes to write our tests, à la PHPUnit.
 The test class always extends the application's `TestCase` base class, which extends from the framework's `TestCase` base class.
 It allows you to centralize all common features and assertions in a single file.
 The main difference between application classes and test classes is that they are written in CommonJS instead of ESM.
-This prevents any unexpected tests behaviour and ensure that the environment has the most "vanilla" flavour.
+This prevents any unexpected test behavior and ensures that the environment has the most "vanilla" flavor.
 
 
 ```javascript
@@ -65,7 +65,7 @@ All of your test cases file names and class names should end with `Test`, such a
 
 To define a test, we would normally use a syntax like `test('Some description', () => { /* ... */ })`.
 Instead, we can rely on method names.
-All methods that starts with `test` will be considered tests.
+All methods that start with `test` will be considered tests.
 The description will then be the rest of the method's name, transformed as a sentence by the `helper.string` helper.
 
 ```javascript
@@ -84,13 +84,13 @@ class SomeTest extends TestCase {
 The defined test method, as shown above, will be transformed as a test statement in the engine.
 It will also describe the test as part of a given namespace, which is represented by the test file location, and the file name itself.
 
-For instance, the `test/unit/foo/bar/some/ClassTest.js` class file would be described as `Unit > Foo > Bar > Some`, and then by `Class`. If it has two test methods, `testSomething` and `testOtherThing`, we would have the following output.
+For instance, the `test/unit/foo/bar/some/ClassTest.js` class file would be described as `Unit > Foo > Bar > Some`, and then by `Class`. If it has two test methods, `testSomething` and `testAnotherThing`, we would have the following output.
 
 ```
 Unit > Foo > Bar > Some
   Class
     ✓ Something (12ms)
-    ✓ Other thing (34ms)
+    ✓ Another thing (34ms)
 ```
 
 
@@ -150,7 +150,7 @@ class SomeTest extends TestCase {
     }
 
     testSomething() {
-    	const result = this.someService.doSomething();
+       const result = this.someService.doSomething();
         this.expect(result).toBe('foo');
         this.expect(fakeRepository.get).toHaveBeenCalledTimes(1);
     }
@@ -158,7 +158,7 @@ class SomeTest extends TestCase {
 }
 ```
 
-If you need to expect a service to be bound, you can use the `expectBound`, or `expectNotBound` for the opposite behaviour.
+If you need to expect a service to be bound, you can use the `expectBound`, or `expectNotBound` for the opposite behavior.
 
 ```javascript
 class SomeTest extends TestCase {

@@ -3,10 +3,10 @@
 ## Introduction
 
 Tests are a key point when it comes to maintain and scale applications.
-Node IoC kept that in mind all the way from the start to make extensions and application easy to test.
+Node IoC kept that in mind all the way from the start to make extensions and applications easy to test.
 
-There is an out-of-the-box command that allow to test the application, which is called `test`.
-It runs tests from classes instead of callback for more scalability and verbosity, with a PHPUnit lookalike architecture.
+There is an out-of-the-box command that allows testing the application, which is called `test`.
+It runs tests from classes instead of callbacks for more scalability and verbosity, with a PHPUnit lookalike architecture.
 
 Paired with this enhanced testing system, the `@absolunet/tester` package will wrap Node IoC tests within NPM commands to test both the features and the logic, as well as the code itself.
 It comes by default with a folder validator (`package.json` content, `CHANGELOG.md` structure, CI files such as `.travis.yml` and `bitbucket-pipelines.yml`, etc.) and the power of `ESLint` for the best code quality.
@@ -14,7 +14,7 @@ It comes by default with a folder validator (`package.json` content, `CHANGELOG.
 All those tests are powered by [`Jest`](https://jestjs.io/), developed by Facebook.
 As always, you can implement your own test engine, such as Ava or Jasmine, but Jest is the recommended one here.
 
-However, all the `@absolunet/tester` test are driven by Jest, without any possible configuration to change the engine.
+However, all the `@absolunet/tester` tests are driven by Jest, without any possible configuration to change the engine.
 
 
 
@@ -67,14 +67,14 @@ node ioc test --type=unit
 ```
 
 You can also pass `--type=all` as an option.
-This is the default behaviour.
+This is the default behavior.
 
 
 
 ## The make:test command
 
 To quickly scaffold a test class, the `make:test` is perfect.
-It also allow you to create the wanted test in the proper folder.
+It also allows you to create the wanted test in the proper folder.
 
 ```bash
 node ioc make:test MyClassTest

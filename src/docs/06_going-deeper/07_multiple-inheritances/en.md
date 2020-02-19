@@ -2,8 +2,8 @@
 
 ## Introduction
 
-Inheritance in JavaScript allows to extend a class or to modify the prototype object of an instance.
-By default, it does not allow multiple inheritance, unlike some Object-Oriented languages such as C++.
+Inheritance in JavaScript allows us to extend a class or to modify the prototype object of an instance.
+By default, it does not allow multiple inheritances, unlike some Object-Oriented languages such as C++.
 However, Node IoC offers a simple way to define mixins, a simple way to add some features in a class.
 They act somehow like traits in PHP.
 We will take a look at how they work, the existing mixins and how to define one.
@@ -15,7 +15,7 @@ We will take a look at how they work, the existing mixins and how to define one.
 A mixin is a function that accepts an optional class as its only argument.
 It returns another class that extends the given one, or a plain class by default if no parent class is provided.
 You can then extend this new class without any problem.
-With this in mind, it must be understood that `A extending someMixin(B)` results in `A extends SomeClass` and `SomeClass extends B`.
+With this in mind, it must be understood that `A extends someMixin(B)` results in `A extends SomeClass` and `SomeClass extends B`.
 
 ```javascript
 import { mixins } from '@absolunet/ioc';
@@ -39,8 +39,8 @@ After this dynamic call, `MyService` has some methods offered by the mixin.
  - `isDriverAlias(name)`
 
 However, this mixin alone does nothing special.
-It simply create a dynamic class that you could have made "static".
-The interesting thing happen when extending another class, byt by still using the mixin.
+It simply creates a dynamic class that you could have made "static".
+The interesting thing happens when extending another class, but by still using the mixin.
 
 ```javascript
 class MyService {
@@ -98,7 +98,7 @@ const {
 
 ### checksTypes
 
-The `checksTypes` mixin exposes four methods that helps validating types.
+The `checksTypes` mixin exposes four methods that help validating types.
 
  - `isInstantiable(object)`
     > Returns `true` if the given argument can be called with the `new` keyword
@@ -136,7 +136,7 @@ The `forwardsCalls` mixin exposes a single method, and declare an abstract metho
 The `getsMethods` mixin exposes a single method.
 
  - `getMethods(instance)`
-    > Returns a list of all available methods in the given instance, including instance methods, prototype methods and inherited methods, sorted alphabetically.
+    > Returns a list of all available methods in the given instance, including instance methods, prototype methods, and inherited methods, sorted alphabetically.
 
 
 
@@ -154,7 +154,7 @@ The `hasDriver` mixin exposes all the necessary features to use drivers.
 
 
  - `addDriver(name, driver)`
-    > Add a driver instance or class with a name that acts as an unique identifier.
+    > Add a driver instance or class with a name that acts as a unique identifier.
 
 
  - `setDefaultDriver(name)`
@@ -273,15 +273,15 @@ const { hasUser } = mixins; // undefined;
 ```
 
 The callback will always receive a `SuperClass`.
-It can be a class that is passed in parameter, or a plain empty class.
+It can be a class that is passed in parameter or a plain empty class.
 
 Notice that, when implementing the `init` method, we attempt to initialize the parent, if it implements the `init` method too.
 Also, we inject the `event` dispatcher.
 However, the parent class may also inject services.
-We must ensure that its dependencies are resolve, and in the same order.
+We must ensure that its dependencies are resolved and in the same order.
 That is the reason why the current class dependencies are appended instead of prepended.
 
-This is one of the only items that cannot be injected by Node IoC since it allows to change an exported value that can be used for further definitions.
+This is one of the only items that cannot be injected by Node IoC since it allows us to change an exported value that can be used for further definitions.
 
 If you want to create mixins, they should be done before loading any classes.
 

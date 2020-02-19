@@ -12,7 +12,7 @@ Node IoC offers four helpers, the `helper.date`, `helper.file`, `helper.path` an
 
 ## The date helper
 
-The date helper is in reality a wrapper over ['Moment.js](https://momentjs.com/).
+The date helper is, in reality, a wrapper over ['Moment.js](https://momentjs.com/).
 The `helper.date` simply returns the Moment function to create Moment instance.
 
 ```javascript
@@ -22,7 +22,7 @@ dateHelper().calendar(); // "Today at 1:23 PM"
 ```
 
 It also configures the global locale based on the application configuration.
-If the `app.locale` is set to `fr`, the result would be `AUjourd'hui à 13:23`.
+If the `app.locale` is set to `fr`, the result would be `Aujourd'hui à 13:23`.
 
 
 
@@ -41,7 +41,7 @@ fileHelper.parseSize('1KB'); // 1024
 
 ## The path helper
 
-The path helper wraps the core `path` module with [`slash`](https://github.com/sindresorhus/slash) to ensure Windows and Unix the same and predictable behaviour.
+The path helper wraps the core `path` module with [`slash`](https://github.com/sindresorhus/slash) to ensure Windows and Unix the same and predictable behavior.
 All `path` methods and properties are accessible through this helper.
 This will allow you to use the `path` core module as an injectable, decorable instance.
 
@@ -59,7 +59,7 @@ pathHelper.isRelative('/foo/bar'); // false
 ## The string helper
 
 The string helper exposes the [`to-case`](https://github.com/ianstormtaylor/to-case) and [`pluralize`](https://github.com/blakeembrey/pluralize) features.
-You can use all the `to-case` methods, as well as `plural(string, count)` and `singluar(string)`.
+You can use all the `to-case` methods, as well as `plural(string, count)` and `singular(string)`.
 
 ```javascript
 const stringHelper = app.make('helper.string');

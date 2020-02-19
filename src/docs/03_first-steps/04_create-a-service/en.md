@@ -10,9 +10,9 @@ If you are new to this world, it's important to understand the [SOLID](https://e
 
 The first principle that it defines is the _**S**ingle responsibility principle_, which states that each function, class, method, file, etc., must have a single purpose, a unique responsibility regarding your application.
 It makes it easier to maintain, to test, to predict and to use.
-We refer the classes that have too much responsibilities as _God class_.
+We refer to classes that have too many responsibilities as _God class_.
 
-So, if a controller has business logic in it, it does not comply to the SOLID principle.
+So, if a controller has business logic in it, it does not comply with the SOLID principle.
 The controller's role is to handle the request and to return a response matching the request, not to interact with a database or to send emails.
 
 In this assignment, we will create a `TodoService` that will perfectly fit with the previous assignment.
@@ -27,7 +27,7 @@ Essentially, a service manages the business (or the application) logic.
 They are separated by concerns and can use other services, repositories and so on.
 In an eCommerce platform, for instance, it is very usual to have a `CustomerService`, a `ProductService` and an `OrderService`, each of them exposing methods to interact with the data by using the programmed business logic.
 
-In our case, the `TodoService` that we will create will essentially exposes the CRUD methods, but with some verbosity in it: instead of `index`, we will call `all()`, or `getAllTodos()`, whatever is verbose enough for you and those who will read or use the code.
+In our case, the `TodoService` that we will create will essentially expose the CRUD methods, but with some verbosity in it: instead of `index`, we will call `all()`, or `getAllTodos()`, whatever is verbose enough for you and those who will read or use the code.
 
 > Indeed, the ratio of time spent reading versus writing is well over 10 to 1.
 > We are constantly reading old code as part of the effort to write new code.
@@ -263,8 +263,8 @@ It is not its purpose, so we should not use it anymore.
 In fact, we just need a repository to store them.
 We could create a `TodoRepository` to manage the todo store, but let's implement a single service for now.
 
-Normally, in object-oriented programming, we would use a private property to store the todos.
-In JavaScript, the encapsulation is not yet implemented (take a look at [this TC39 proposal](https://github.com/tc39/proposal-class-fields)).
+Normally, in object-oriented programming, we would use private property to store the todos.
+In JavaScript, the encapsulation is not yet implemented (written in early 2020, take a look at [this TC39 proposal](https://github.com/tc39/proposal-class-fields) to validate that statement).
 However, Absolunet offers an easy to use tool to emulate encapsulation with the `[@absolunet/private-registry](https://github.com/absolunet/node-private-registry)` package.
 Of course, it is not as strong as real encapsulation, but it's still a good starting point.
 
@@ -335,7 +335,7 @@ Here, a new array, with all the todos in it, is returned, to prevent that the ar
 It would remove the meaning of a private member.
 
 The same thing is done for all the todos.
-They are transform to an identical object, but on another instance, to prevent direct modification.
+They are transformed into an identical object, but in another instance, to prevent direct modification.
 
 Let's try to call the `/api/todo` route.
 We should have an empty array as the response.
@@ -402,7 +402,7 @@ class TodoService {
 Here, we do the same thing as the `getAll` method.
 We return another instance of the same data to prevent direct overwrite.
 
-However, you may have noticed that we do not cast the id as string, because, in our model, we expect a number as ID.
+However, you may have noticed that we do not cast the id as a string, because, in our model, we expect a number as ID.
 It's the responsibility of the caller to provide us the proper type.
 In the controller, you may have also noticed that all the `id` that are sent to the service are cast as `Number`.
 
@@ -411,7 +411,7 @@ In the controller, you may have also noticed that all the `id` that are sent to 
 ### Implement existById()
 
 We can rely on our `findById` method and return a boolean value of the returned data, or we can rely on the `some` method.
-Both methods are very similar in term of performance, so no need to worry about it for now.
+Both methods are very similar in terms of performance, so no need to worry about it for now.
 
 ```javascript
 class TodoService {
@@ -486,7 +486,7 @@ Here, first retrieve the original array, with all the original todo instances.
 
 We attempt to find the todo with the received ID.
 If it does not exists, we throw an error.
-Notice that our controller made a `existById` check before going forward with the update.
+Notice that our controller made an `existById` check before going forward with the update.
 
 Notice that we do not reassign the todo in the array.
 Since the reference is still the same, the todo in the array is pointing to the same object as the `todo` constant.

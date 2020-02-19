@@ -3,14 +3,14 @@
 ## Introduction
 
 Logging messages can be quite useful when debugging or inspecting jobs.
-The Node IoC logger offers everything you need to log messages for specific level in configurable channels.
+The Node IoC logger offers everything you need to log messages for a specific level in configurable channels.
 Out of the box, you can log in a file or in a database, but you can easily implement a driver to log into Logstash, Papertrail, Sentry or Bugsnag.
 
 
 
 ## Configuration
 
-The logging service provider offers a configuration that enumerate available channels.
+The logging service provider offers a configuration that enumerates available channels.
 By default, there are three channels: `stack`, `single` and `database`, each of them containing a driver and its configuration.
 Those channels will be detailed later in this page.
 
@@ -18,7 +18,7 @@ Those channels will be detailed later in this page.
 
 ## The logger service
 
-The logger service offers a fluent way to log messages for specific level.
+The logger service offers a fluent way to log messages for a specific level.
 It follows the PHP's [PSR-3 LoggerInterface](https://www.php-fig.org/psr/psr-3/#3-psrlogloggerinterface) which specifies these methods for a logger:
 
  - `emergency(message, context = {})`
@@ -38,8 +38,8 @@ The logger service exposes all those methods to call the driver's `log` method, 
 
 ### Level threshold
 
-For each channel, a `level` configuration can be set to prevent logging level that you don't need to log.
-For instance, you may want to log everything in your `single` channel, but prevent any log under the `error` level to be logged in the database.
+For each channel, a `level` configuration can be set to prevent to log level that you don't need to log.
+For instance, you may want to log everything in your `single` channel but prevent any log under the `error` level to be logged in the database.
 
 
 
@@ -47,7 +47,7 @@ For instance, you may want to log everything in your `single` channel, but preve
 
 Channels are basically drivers with custom configuration.
 Node IoC offers three drivers, and three channels using each of the drivers.
-You can of course create your own channels with existing drivers, or create your own driver and create one or many channels with it.
+You can, of course, create your own channels with existing drivers, or create your own driver and create one or many channels with it.
 
 
 
@@ -82,7 +82,7 @@ The `stack` channel is very interesting since it uses the `stack` driver, which 
 By default, the stack channel logs through the `single` channel.
 You can add or change the channels through the `channels` configuration.
 
-Let's say for instance that you want to log into the database, so you can display the records in an administrator page, but you also want to write in a file that you can easily download for debugging, without having to fetch the database records.
+Let's say for instance that you want to log into the database, so you can display the records on an administrator page, but you also want to write in a file that you can easily download for debugging, without having to fetch the database records.
 The stack channel is then the perfect choice.
 
-If you need to log in multiple channels, but change the channels depending on the environment, you can create multiple stack channels, with different channels in them, and change the default channel through the `LOG_CHANNEL` environment variable.
+If you need to log in multiple channels but change the channels depending on the environment, you can create multiple stack channels, with different channels in them, and change the default channel through the `LOG_CHANNEL` environment variable.

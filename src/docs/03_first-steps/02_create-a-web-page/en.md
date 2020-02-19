@@ -35,7 +35,7 @@ node ioc serve
 This will start a new server process over port `8080`.
 Try accessing [http://localhost:8080]().
 You should see the default Web welcome page.
-If you need to change port, use the `--port=8080` option, with the wanted port.
+If you need to change the port, use the `--port=8080` option, with the wanted port.
 
 To develop faster, Node IoC provides a daemon feature that will relaunch the server on file change.
 
@@ -104,7 +104,7 @@ router.get('/inspire/book/search', (request, response) => {
 
 
 
-## Creat the controller
+## Create the controller
 
 Now, let's do the things right! A closure is a fast way to implement a route, but the code will rapidly begin to be messy, and the routes file, huge.
 We need to split the code by responsibility.
@@ -173,9 +173,9 @@ The request should now be handled by the controller, through the `index` method.
 ## Render the index view
 
 The view system is already attached to the controller instance.
-You can use the `view` method to display an rendered template.
+You can use the `view` method to display a rendered template.
 
-> The same way the controller names are dotted-separated paths to the file from the controllers folder, the views uses the same approach.
+> The same way the controller names are dotted-separated paths to the file from the controllers' folder, the views use the same approach.
 >
 > Starting from the `resources/views` folder, the view `pages.home` should be located at `resources/views/pages/home.html`.
 
@@ -196,7 +196,7 @@ Now, the `/inspire/book` page should display the same page as the home page.
 Let's define our own page template.
 
 Inside `resources/views/pages`, we will create a folder called `inspire`, and inside of it, a `book` folder.
-The views organization is your to implement when building your own website.
+The views organization is yours to implement when building your own website.
 We will keep it simple and URL-related for now, so you won't get lost through this assignment.
 Feel free to explore the best ways to organize your application.
 
@@ -262,7 +262,7 @@ Inside the application layout slot, we print the page main HTML content.
 
 ### The t() helper function
 The `{{:~t('some text)}}` instruction prints the given text, but transformed by the `translator` service.
-If a translation exists for the current locale, it will returns the translated string.
+If a translation exists for the current locale, it will return the translated string.
 Otherwise, the original string is returned.
 
 
@@ -311,7 +311,7 @@ We just need to actually perform a search and render it.
 ### Use a route name instead of an URL
 
 We succeeded in sending a search request from a page to a route.
-However, let's already use the good practice.
+However, let's already use good practices.
 
 We should not rely on route URL since they can easily change, and it would be a mess to maintain.
 
@@ -357,7 +357,7 @@ Once the routes are named, we can replace the hard-coded URL in the form with th
 ```
 
 When reloading the page, the URL in the form should be the same as it was before.
-The main advantage is that you can now rename your URL without refactor your whole templates that are possibly using this route URL.
+The main advantage is that you can now rename your URL without refactoring your whole templates that are possibly using this route URL.
 
 
 
@@ -365,8 +365,8 @@ The main advantage is that you can now rename your URL without refactor your who
 
 We first need to retrieve the `book` parameter sent by the form.
 
-You can simply use the `request` object bind to the controller.
-It exposes a `query` property, which represent all the query string parameters.
+You can simply use the `request` object bound to the controller.
+It exposes a `query` property, which represents all the query string parameters.
 Then, we can retrieve the `book` value inside the request query.
 
 ```javascript
@@ -393,7 +393,7 @@ We have correctly retrieved our parameter.
 Now, we need to perform a search in the [Google Book API](https://developers.google.com/books/docs/v1/using#PerformingSearc).
 
 If you already did the _Create a command_ assignment, there is nothing new here.
-We first inject the `http` service, we make our action async, then we await for the HTTP call response to finally retrieve a random book.
+We first inject the `http` service, we make our action async, then we _await_ for the HTTP call response to finally retrieve a random book.
 
 
 ```javascript
@@ -426,14 +426,14 @@ class InspireBookController extends Controller {
 }
 ```
 
-In Node.js, or any CLI application, it's a reflex to print the received data in the console.
-We can also launch the engine debugger, if available, to put some break points.
+In Node.js or any CLI application, it's a reflex to print the received data in the console.
+We can also launch the engine debugger, if available, to put some breakpoints.
 However, for front-end developers, it is mode intuitive to use the browser console such as the Chrome DevTool Console or Firebug.
 It is still possible to launch node in inspect mode, but may still be complicated to use if not properly configured.
 
 Fortunately, Node IoC provides a simple service to quickly inspect some data in the browser or in the console, called `dumper`.
 It is based on the [Symfony VarDumper](https://symfony.com/doc/current/components/var_dumper.html#dump-examples-and-output) project.
-It allows to use a JSON-tree lookalike system to inspect the dumped data.
+It allows, in a development environment, to use a JSON-tree lookalike system to inspect the dumped data.
 The base controller offers it out of the box.
 
 Let's use it!
@@ -477,7 +477,7 @@ If you click on arrows, you will be able to inspect the nested objects and array
 
 ## Render the search result view
 
-Now that we have a nice view on our model, let's render a web page with the data.
+Now that we have a nice view of our model, let's render a web page with the data.
 
 ```javascript
 class InspireBookController extends Controller {
@@ -589,7 +589,7 @@ We create an image tag with the thumbnail as the source.
 
 We also added a link button to the Google Books page.
 
-On the other portion of the page we basically printed the minimalist information about the book: title, subtitle (if it exists), author(s) and description.
+On the other portion of the page, we basically printed the minimalist information about the book: title, subtitle (if it exists), author(s) and description.
 
 For the author, we made a `for` loop to print all the names.
 
@@ -597,7 +597,7 @@ For the author, we made a `for` loop to print all the names.
 
 ### Pluralization and translation
 
-Something that we did not covered yet was the pluralization, which is part of the framework, within a standalone helper, but also within the translator service, which we use through the `t` helper function.
+Something that we did not cover yet was the pluralization, which is part of the framework, within a standalone helper, but also within the translator service, which we use through the `t` helper function.
 
 Then `t` function can accept multiple kind of parameters:
 
@@ -607,11 +607,11 @@ Then `t` function can accept multiple kind of parameters:
  - `t('my.string', { foo: 'bar' }, 2)` -> translation with placeholder replacement and pluralization
  
  Unlike the `helper.string`'s `pluralize` method, the pluralization of a translation is not magic.
- It rely on translation configuration.
+ It relies on translation configuration.
  
- In our case, we used the following statement: `t('Author', book.volumeInfo.authors.length`, which basically say that the word should be translated, and also pluralize if there are more than one author.
- If the value is `>= 1`, the the plural version, if it exists, will be used.
- Since no translation were made yet, we see `Author` as an output instead of `Authors` when we see more than one result.
+ In our case, we used the following statement: `t('Author', book.volumeInfo.authors.length`, which basically says that the word should be translated, and also pluralize if there are more than one author.
+ If the value is `>= 1`, the plural version, if it exists, will be used.
+ Since no translation was made yet, we see `Author` as an output instead of `Authors` when we see more than one result.
 
 Let's make our first pluralizable translation!
 
@@ -632,10 +632,10 @@ Author:
       - Auteurs
 ```
 
-What this entry do is this:
+What this entry does is this:
 
- - For a single value, the `Author` translation, in english, will be `Author`.
- - For a plural value, the `Author` translation, in english, will be `Authors`.
+ - For a single value, the `Author` translation, in English, will be `Author`.
+ - For a plural value, the `Author` translation, in English, will be `Authors`.
 
 Now, for multiple authors, we should see `Authors` instead of `Author`.
 

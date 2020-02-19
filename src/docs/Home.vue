@@ -17,8 +17,8 @@
                 <div class="grid-x">
                     <div class="cell medium-7">
                         <p>Node IoC is a <a href="https://nodejs.org" target="_blank">Node.js</a> framework designed to help developers create elegant and well-designed applications, for both the Web and the CLI.</p>
-                        <p>Easy to use for beginners, but strong enough for advanced JavaScript engineers, it was built with the developers in mind to make their life easier when it comes to build simple to complex application architecture, with a scalable, modular approach.</p>
-                        <p>Based on <em><a href="(https://en.wikipedia.org/wiki/SOLID">SOLID</a></em> principles, it comes out with a lot of features that removes the pain of crafting new applications:</p>
+                        <p>Easy to use for beginners, but strong enough for advanced JavaScript engineers, it was built with the developers in mind to make their life easier when it comes to building simple to complex application architecture, with a scalable, modular approach.</p>
+                        <p>Based on <em><a href="(https://en.wikipedia.org/wiki/SOLID">SOLID</a></em> principles, it comes out with a lot of features that remove the pain of crafting new applications:</p>
                     </div>
                     <div class="cell medium-4 medium-offset-1">
                         <div class="card shadow padding-1 first-steps">

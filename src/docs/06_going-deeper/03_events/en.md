@@ -32,11 +32,11 @@ You can choose the implementation from the `events.default` configuration key, b
 Since some packages, or even your own application, could want to bind to the lifecycle events, and the `event` dispatcher would normally not be attached yet, the application offers two methods to listen to events before the lifecycle starts:
 
  - `app.onBooting(listener)`
-    > Will attach listener to the `application.booting` event
+    > Will attach a listener to the `application.booting` event
 
 
  - `app.onBooted(listener)`
-    > Will attach listener to the `application.booted` event
+    > Will attach a listener to the `application.booted` event
 
 Also, some hooks are available in the console kernel.
 By default, they are declared in your application's console kernel.

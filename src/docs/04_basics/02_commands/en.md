@@ -5,7 +5,7 @@
 The commands are the main entry point for CLI users.
 It acts as both CLI routes and controllers, for those who work with MVC architecture.
 
-Basically, a command is used to handle CLI request through a structured, standardized and simplified system.
+A command is used to handle CLI request through a structured, standardized and simplified system.
 Each command is represented by a `Command` class file, with some methods and accessors that must be implemented to work properly.
 
 We will go through everything you need to get started properly in your Node IoC application.
@@ -16,12 +16,12 @@ We will go through everything you need to get started properly in your Node IoC 
 
 In the application, the commands are located in the `src/app/console/commands` folder.
 By default, an application has no command, but Node IoC makes it a breeze to create a command.
-To have a quick introduction on commands, you may want to start with the `Create a command` first step.
+To have a quick introduction to commands, you may want to start with the `Create a command` first step.
 
 All the commands in the commands folder are automatically loaded by the application kernel (`src/app/console/Kernel.js`), before handling the request.
 At the auto-registration point, all the service providers were booted, so all the services are available and can be injected.
 
-For the commands, there is no dynamic namespaces based on folder structure, so you can organize your commands the way you want in the dedicated folder.
+For the commands, there are no dynamic namespaces based on the folder structure, so you can organize your commands the way you want in the dedicated folder.
 
 
 
@@ -61,7 +61,7 @@ The `name` accessor is the command name fronted in the CLI system.
 When executing `node ioc my:command`, the command registrar understands that the command should be handled by a `MyCommand` instance.
 When the command must be handled, the `handle` method is called and awaited.
 In the `handle` method, you can do whatever you like.
-The `handle` method can be made `async` anytime, or can return a promise.
+The `handle` method can be made `async` anytime or can return a promise.
 
 ```javascript
 class MyCommand extends Command {
@@ -111,7 +111,7 @@ class MyCommand extends Command {
 
 ### Arguments
 
-A command can be useful to perform generic actions, but are way more powerful when accepting arguments, such as `parameters`, `options` and `flags`.
+A command can be useful to perform generic actions but are way more powerful when accepting arguments, such as `parameters`, `options` and `flags`.
 
 > A **parameter** is a value that follows the command, without the `--` prefix, such as `name:command parameter`.
 >
@@ -123,7 +123,7 @@ By default, some options and flags are available for all commands.
 
  - `--help`
     > Flag.
-    > Display the command signature, description and available options and flags
+    > Display the command signature, description, and available options and flags
 
 
  - `--version`
@@ -151,7 +151,7 @@ A parameter has a name that is used for the command signature and inside the com
 A parameter has a name, can be required, can have a default value and can have a description.
 
 To support an argument, you can use the `parameters` accessor.
-By default, there is no parameters.
+By default, there are no parameters.
 
 ```javascript
 class MyCommand extends Command {
@@ -192,7 +192,7 @@ For this example, the signature would be this:
 node ioc my:command <foo> <bar> [baz] [qux]
 ```
 
-The `foo` and `bar` parameters would be required in order that the `handle` method is called.
+The `foo` and `bar` parameters would be required so that the `handle` method is called.
 The `baz` and `qux` would be optional.
 
 These commands would work:
@@ -227,7 +227,7 @@ node ioc my:command some
   YError: Not enough non-option arguments: got 1, need at least 2
 ```
 
-In order to implement parameters properly, required parameters should always be on the top of the array, and the optional ones, at the bottom, the same way we would do in a function or in a method.
+To implement parameters properly, required parameters should always be on the top of the array, and the optional ones, at the bottom, the same way we would do in a function or a method.
 
 
 
@@ -239,7 +239,7 @@ By default, an option is, of course, optional.
 An option has a name, can have a default value and can have a description.
 
 To support an option, you can use the `options` accessor.
-By default, there is no options.
+By default, there are no options.
 
 ```javascript
 class MyCommand extends Command {
@@ -325,7 +325,7 @@ When present, its value is `true`.
 A flag has a name and can have a description.
 
 To support a flag, you can use the `flags` accessor.
-By default, there is no flags.
+By default, there are no flags.
 
 ```javascript
 class MyCommand extends Command {
@@ -365,7 +365,7 @@ node ioc my:command
   false
   false
 
-node ioc my:comand --foo
+node ioc my:command --foo
   true
   false
 
@@ -382,7 +382,7 @@ node ioc my:command --foo --bar
 
 ### Handle command
 
-By default, the only method that must be implement to properly handle the command request is `handle`.
+By default, the only method that must be implemented to properly handle the command request is `handle`.
 However, the command lifecycle offers two other methods to act before and after, called `preprocess` and `postprocess`.
 
 
@@ -411,8 +411,8 @@ If you forgot to do so, or if you need service conditionally, the application is
 
 #### Postprocess
 
-The postprocess phase may be used to do additional things after the request handling.
-Normally, there is nothing to do since everything would be done in the handling phase, but it is mostly useful for commands that are forwarding request to another command that may have policies that does not expose it.
+The postprocess phase may be used to do additional things after request handling.
+Normally, there is nothing to do since everything would be done in the handling phase, but it is useful for commands that are forwarding the request to another command that may have policies that do not expose it.
 Forwarding is explained below.
 
 
@@ -421,7 +421,7 @@ Forwarding is explained below.
 
 Since some commands can be scoped with policies, which will be explained below, it may be useful to create a "public" command that forwards the call to a private command, with some preprocessing to format the arguments from your command to the private command, and postprocessing to act after the underlying command has properly handled the command.
 
-To forward the call to another command, you can either use the `call` method in your `handle` method, or implement the `forward` accessor.
+To forward the call to another command, you can either use the `call` method in your `handle` method or implement the `forward` accessor.
 
 #### The call method
 
@@ -469,7 +469,7 @@ class FooBarCommand extends Command {
 ```
 
 When forwarding a command call, the whole arguments are sent, in the same order, to the underlying command.
-In fact the whole arguments configuration are taken from the underlying command instead of the current one.
+The whole argument configuration is taken from the underlying command instead of the current one.
 So, implementing the `parameter`, `options` and `flags` accessors will not impact how the command will be parsed when building it into Yargs.
 
 Consider the following `baz:qux` signature, here is the `foo:bar` command signature.
@@ -480,7 +480,7 @@ node ioc foo:bar <one> [two] [--three=null] [four]
 ```
 
 The signature will be identical.
-By default, if a command forwards to a command that also forwards to another command, the three commands will have the exact same signature, except for their name.
+By default, if a command forwards to a command that also forwards to another command, the three commands will have the same signature, except for their name.
 And their policies will be different too, so their public appearance will be different.
 
 
@@ -488,7 +488,7 @@ And their policies will be different too, so their public appearance will be dif
 ### Policies
 
 The policies can be very useful to prevent commands to be publicly accessible from the CLI.
-They are scoping access to the different commands from the public access.
+They are scoping access to the different commands from public access.
 However, their policies can be ignored when calling them by the code.
 
 The policies can be set from the `policies` accessor.
@@ -509,7 +509,7 @@ All the policies are checked with the `gate` service.
 Policies can also be defined with this service.
 
 By default, a Node IoC application defines the `public`, `private`, `env`, `db` and `http` policies.
-You can read about it in the security page.
+You can read about it on the security page.
 
 Before bootstrapping Yargs, each registered command policies are checked before adding the command's signature to Yargs for public access.
 If the policies fail, the command is ignored from Yargs bootstrapping.
@@ -520,7 +520,7 @@ If the policies fail, the command is ignored from Yargs bootstrapping.
 
 The terminal is an extended version of the `@absolunet/terminal` package that offers a log of useful methods to print in the terminal, but also to prompt the user for information or to display data in tables.
 
-In a command, the terminal is automatically injected without explicit dependency injection directive, as well as the application.
+In a command, the terminal is automatically injected without an explicit dependency injection directive, as well as the application.
 However, some useful methods were created that abstracts the terminal to quickly use common command features.
 
  - `write(...parameters)`
@@ -588,7 +588,7 @@ A service was designed to handle these issues, called the `terminal.interceptor`
 
 It offers some nice features, such as adding and removing interceptors, enabling and disabling interception, manipulating output from interceptors, capturing output data into an array and get the output from the time it starts capturing, muting the console and remove the colors.
 
-One of the feature you may want to use more often in a command class is the capture.
+One of the features you may want to use more often in a command class is the capture.
 When using third parties that may output in the CLI, you can start the output capture, by calling the `captureOutput` method, and finally calling `stopCaptureOutput`, which will return the captured output, ordered by call in an array.
 
 ```javascript

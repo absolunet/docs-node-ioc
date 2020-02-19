@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In Node IoC, the file system is way more that the default `fs` module.
+In Node IoC, the file system is way more than the default `fs` module.
 It mainly relies on two packages, `@absolunet/fsp` and `@absolunet/fss`, which offers the same methods, one in sync mode and the other in async, promise-based mode.
 
 
@@ -51,7 +51,7 @@ It also exposes `async` and `sync` properties that are reflecting the two file s
 
 The async file system can be directly injected through `file.system.async`.
 This instance exposes all the `@absolunet/fsp` methods, plus some other utilities, which all of them are promise-based.
-You can therefore use ES2017 `async/await`.
+You can, therefore, use ES2017 `async/await`.
 The methods and their parameters are exactly the same as the ones provided in the sync file system.
 
 

@@ -3,8 +3,8 @@
 ## Introduction
 
 Views are the entry point for front-end development.
-It allows to render HTML pages in an organized, composable and programmatic way, inject dynamic data in your pages from the back-end, prepare the field for a single-pag application, and so on.
-Node IoC have made it easy to play with views by building a configurable and extendable view factory that relies by default on [JSRender](https://www.jsviews.com) template engine.
+It allows you to render HTML pages in an organized, composable and programmatic way, inject dynamic data in your pages from the back-end, prepare the field for a single-page application, and so on.
+Node IoC has made it easy to play with views by building a configurable and extendable view factory that relies, by default, on [JSRender](https://www.jsviews.com) template engine.
 If you feel the need to work with another template system, such as Pug, or more dynamic and modern engines such as React or Vue.js, feel free to create the appropriate driver in a Node IoC package.
 
 
@@ -13,12 +13,12 @@ If you feel the need to work with another template system, such as Pug, or more 
 
 In a default Node IoC application, the views are located under the `resources/views` folder.
 Everything in this folder can be moved, manipulates, deleted, whatever suits you the best.
-The only views that should not move is the `errors` views (if you do, it will not break anything, but you will lose some exception handling features).
+The only views that should not move are the `errors` views (if you do, it will not break anything, but you will lose some exception handling features).
 
 The original structure proposes directories that separate the view concerns.
 The `layouts` folder contains everything you need to quickly scaffold any page with a default template containing all the basic HTML tags, your head, CSS and JavaScript files, title, meta tags, etc.
 The `pages` views use the layout by extending it and inserting content in the `slot`.
-We will go deeper in this concept.
+We will go deeper into this concept.
 Like said before, feel free to move the structure to match your needs.
 
 
@@ -33,7 +33,7 @@ const renderedView = app.make('view').make('pages.hello', { heading: 'Hello worl
 // typeof renderedView === "string"
 ```
 
-This method will call the `view.resolver` to find the `pages.hello` view, retrieve its path, then render it with the `view.engine` with the view-model, if given, and return the result.
+This method will call the `view.resolver` to find the `pages.hello` view, retrieve its path, then render it with the `view.engine` with the view-model, if given and return the result.
 
 
 
@@ -87,7 +87,7 @@ Given the view-model object `{ heading: 'This is a <strong>huge</strong> news' }
 
 #### The include tag
 
-To include another template, the `include` exists in the JSRender engine, but refactored by Node IoC.
+To include another template, the `include` exists in the JSRender engine but refactored by Node IoC.
 
 ```html
 {{include name="components.grid.cell"}}
@@ -129,7 +129,7 @@ However, if it has a closing tag, such as the `components.grid.cell` that wraps 
 It is very useful to extend views, such as the main layout, or for components that may receive content.
 
 If you are building a component that should accept content, the `{{:slot}}` statement can be used anywhere to insert the content.
-You can even use this statement more than once if you need.
+You can even use this statement more than once if you need it.
 
 
 
@@ -155,7 +155,7 @@ It acts the same way as `app.make()`.
 
 #### The config helper
 
-Sometimes, configuration are used by all templates.
+Sometimes, the configuration is used by all templates.
 To prevent sending the same view-model over and over again, you can quickly access the configuration from the `config` helper.
 
 ```html
@@ -178,14 +178,14 @@ Notice that the parameters object keys are wrapped by quotes.
 It is mandatory for JSRender.
 Otherwise, it is going to interpret the key as a variable, such as `{ [bar]: 'the-bar-slug' }` would normally do in JavaScript.
 
-The parameters object is optional.
+The parameter object is optional.
 It is only required if the route URI has parameters.
 
 
 
 #### The t helper
 
-The `t` helpers stands for `translate`.
+The `t` helper stands for `translate`.
 A lot of framework use `t()`, `trans()`, `__()` and `translate()`.
 The choice of the `t` name was mainly for simplicity when translating content.
 
@@ -199,7 +199,7 @@ The choice of the `t` name was mainly for simplicity when translating content.
 #### The dump helper
 
 In a controller, you can easily dump variables with the `return this.dump(variable)` statement.
-However, it may be very useful to dump data while rendering template, because the context of a template differs a lot from a basic JavaScript class context.
+However, it may be very useful to dump data while rendering a template, because the context of a template differs a lot from a basic JavaScript class context.
 
 You can dump any value you want, anywhere you want.
 It will simply inject a dump area in your view, without blocking the view rendering.

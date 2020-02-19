@@ -6,7 +6,7 @@ In any IoC application, the Container is the central point of action when it com
 Its role is to store the different bindings, to resolve those bindings, to manage the dependency injection process, etc.
 Node IoC makes no exception about this and offers all the basic features a container should provide.
 
-The container is in fact the base class of the application.
+The container is, in fact, the base class of the application.
 You can directly use the container features through the application.
 
 
@@ -16,19 +16,19 @@ You can directly use the container features through the application.
 First, the container offers two main methods to bind elements: the `bind` and the `singleton` methods.
 
 When using `bind`, we associate an abstract (a string) to a concrete (a class, a factory, an instance, a primitive type value, etc.).
-If a value was already bind with the same abstract, it is overwritten at this moment.
+If a value was already bound with the same abstract, it is overwritten at this moment.
 When making the abstract, the concrete is resolved.
-The resolving algorithm is describe below.
+The resolving algorithm is described below.
 
-When using `singleton`, the same thing happen.
+When using `singleton`, the same thing happens.
 The key difference is that when making the instance, the first made instance will be stored as a singleton and returned each time the container is asked to make this abstract instead of making the instance every time.
 
 ```javascript
 class SomeServiceProvider extends ServiceProvider {
 
     register() {
-        this.app.bind('foo', 'Foo'); // The 'foo' abstract will result in 'Foo' as concrete.
-        this.app.bind('bar', { key: 'value' }); // The 'bar' abstract will result in the object as concrete.
+        this.app.bind('foo', 'Foo'); // The 'foo' abstract will result in 'Foo' as the concrete.
+        this.app.bind('bar', { key: 'value' }); // The 'bar' abstract will result in the object as the concrete.
         this.app.bind('baz', () => { // The 'baz' abstract will result in a newly created object each time it will be made.
             return { key: 'value' };
         });
@@ -53,7 +53,7 @@ class SomeServiceProvider extends ServiceProvider {
 
 ### The make method
 
-When binding an concrete to an abstract, it is to be resolved by another entity through the container.
+When binding a concrete to an abstract, it is to be resolved by another entity through the container.
 
 The container offers a simple method to get the concrete from an abstract: `make`.
 It accepts the abstract name as an argument and will process everything for us, from the resolving to the instantiation with dependency injection.
@@ -68,13 +68,13 @@ You can make any bound abstract and the container will resolve it for you.
 
 However, if you need to use all the rich container features when it comes to instantiation, you can use the `make` method with a concrete instead of an abstract.
 
-If you have a `SomeService` class that you need to instantiate on the fly, simply make it, it will returns you a `SomeService` instance by following all the resolving steps.
+If you have a `SomeService` class that you need to instantiate on the fly, simply make it, it will return you a `SomeService` instance by following all the resolving steps.
 
 ```javascript
 app.make(SomeService); // SomeService {}
 ```
 
-To push it further more, let's say that you have a singleton of the `once` abstract.
+To push it furthermore, let's say that you have a singleton of the `once` abstract.
 Making `once` twice will not create a new instance.
 If you need another one regardless of the binding state, you could do something like `app.make(app.make('once').constructor)`.
 It will create a new instance of the `once` concrete class.
@@ -112,7 +112,7 @@ Aliasing an abstract can be useful to keep simple abstract names, while still ha
 Let's say that you have a binding called `namespace.foo.bar.baz` and you want to have it available with `baz`.
 Simply call `app.alias('baz', 'namespace.foo.bar.baz')`.
 When making `baz`, the `namespace.foo.bar.baz` concrete will be returned.
-It still handle singleton as it would be with the original abstract.
+It still handles singleton as it would be with the original abstract.
 
 ```javascript
 app.singleton('foo', SomeService);
@@ -127,7 +127,7 @@ app.make('foo') === app.make('baz'); // true
 ## Decorators
 
 Decorators are a very effective way to enhance the available features within a class instance.
-In Node IoC, the decorators are simply closures in which we transform the value to either a new one, or in the same one with enhanced or transformed behavior.
+In Node IoC, the decorators are simply closures in which we transform the value to either a new one or in the same one with enhanced or transformed behavior.
 It acts the same way as a reducer, so you must return a value at the end of the decorator.
 
 ```javascript
@@ -150,7 +150,7 @@ Tagging is a feature that allows abstract grouping.
 In OOP, with interfaces, it is usually used to group concretes that share the same interface.
 
 The best example would be loggers: one that logs into a file and another that logs through ElasticSearch.
-Both of them exposes the same API that returns the same value types but are implement in two different ways.
+Both of them expose the same API that returns the same value types but is implemented in two different ways.
 
 ```javascript
 app.singleton('logger.file', FileLogger);
@@ -199,7 +199,7 @@ app.make(SomeService); // console -> [Application {}, ConfigRepository {}]
 
 If a dependency cannot be resolved, it will throw an error.
 
-This is where the `make` and the `resolve` methods adds a new feature: dependency injection overwriting.
+This is where the `make` and the `resolve` methods add a new feature: dependency injection overwriting.
 
 ```javascript
 class SomeService  {
@@ -226,7 +226,7 @@ app.make(SomeService, {
 When overwriting dependency injection, the required dependency concrete bound in the container will not be instantiated.
 
 The fun part is that the container automatically binds the different injected concrete in the class instance as accessors.
-The name is transformed to a `camelCase` representation of the abstract.
+The name is transformed into a `camelCase` representation of the abstract.
 
 ```javascript
 class SomeService  {
@@ -243,7 +243,7 @@ console.log(someService.config);       // ConfigRepository {}
 console.log(someService.routerHander); // Handler {}
 ```
 
-It also bind the application to the instance with the `[@absolunet/private-registry](https://github.com/absolunet/node-private-registry)` library.
+It also binds the application to the instance with the `[@absolunet/private-registry](https://github.com/absolunet/node-private-registry)` library.
 
 ```javascript
 import __ from '@absolunet/private-registry';
@@ -266,7 +266,7 @@ __(someService).get('router.handler'); // Handler {}
 
 ## Resolving algorithm
 
-The main resolving algorithm handle all the previously described features, but has much more power under the hood.
+The main resolving algorithm handles all the previously described features but has much more power under the hood.
 
  - Abstract resolution
  - Tag resolution
@@ -279,18 +279,18 @@ The main resolving algorithm handle all the previously described features, but h
  - Concrete decoration
  - Singleton management
 
-First, when trying to make a concrete from either an abstract or an object, the contains checks if a singleton exists with the given abstract name.
+First, when trying to make concrete from either an abstract or an object, the contains checks if a singleton exists with the given abstract name.
 If the abstract is not a string, it will always return a fresh instance.
 If a singleton exists, it is returned without going any further.
 
 If a singleton is not found, then the concrete is resolved.
 
 To resolve the concrete, it starts by checking if the given abstract is bound to the container, either as an abstract or as an alias.
-If it is the case, the concrete is retrieve, along with a singleton flag.
+If it is the case, the concrete is retrieved, along with a singleton flag.
 
-Otherwise, if the abstract is a valid tag, the tagged concrete are resolve through the same process within a loop to resolve all the tagged abstracts.
+Otherwise, if the abstract is a valid tag, the tagged concretes are resolved through the same process within a loop to resolve all the tagged abstracts.
 
-Otherwise, if the abstract is a string, it assumes that it must be either a path or a module that is requireable.
+Otherwise, if the abstract is a string, it assumes that it must be either a path or a module that can be required.
 It attempts to require it.
 
 Otherwise, the abstract is considered a concrete.
@@ -298,8 +298,8 @@ Otherwise, the abstract is considered a concrete.
 Then, when a concrete has been found, it builds it by following those rules:
 
  - If it is a class or a regular function, it returns a new instance with dependency injection, if present.
- - Otherwise, if it is a function, it calls it and return the received value.
- - Otherwise, it treats it as an object and merge the dependency overwrites in it, if provided.
+ - Otherwise, if it is a function, it calls it and returns the received value.
+ - Otherwise, it treats it as an object and merges the dependency overwrites in it if provided.
  
 Now that the build has been done, all the decorators, in order of bindings, decorates the built instance.
 

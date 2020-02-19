@@ -10,7 +10,7 @@ To make it easy to work with those parties, Node IoC provides an HTTP client ser
 
 ## The http service
 
-To access the HTTP client, you can inject the `http` service, which will return a factoried Axios instance.
+To access the HTTP client, you can inject the `http` service, which will return a factorized Axios instance.
 Then, all the available features in Axios will be directly available.
 
 ```javascript

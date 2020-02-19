@@ -2,9 +2,9 @@
 
 ## Introduction
 
-It happens often that some features are restricted to some users, or other conditions such as configuration.
+It happens often that some features are restricted to some users or other conditions such as configuration.
 Those restrictions are called `policies`, which comes out of the box in Node IoC.
-You can define your own policies through the `gate` service and use them wherever you want.
+You can define your policies through the `gate` service and use them wherever you want.
 Plus, there is already an implementation of gates and policies in commands that you are already using without even noticing it.
 
 
@@ -42,7 +42,7 @@ gate.policy('no',  () => { return false; });
 gate.can(['yes', 'no']); // false
 ```
 
-You may define policies in your service providers to centralize operations since they will be available by all other services, commands and controllers.
+You may define policies in your service providers to centralize operations since they will be available by all other services, commands, and controllers.
 
 
 
@@ -111,3 +111,43 @@ class MyCommand extends Command {
 
 In the above example, the command would be available only if the environment is set to `local`.
 For instance, all the commands extending `GeneratorCommand` (those starting by `make:` are extending this class) have the `env:local` policy, at least.
+
+
+
+### Policy class
+
+It is sometimes preferable to implement policies in external classes to separate concerns.
+The framework offers a base class to implement a policy.
+In a policy class, the dependency injection can be used, the same way it is done for all other classes.
+
+
+```javascript
+import { Policy } from '@absolunet/ioc';
+
+
+class NonProductionPolicy extends Policy {
+
+    static get dependencies() {
+        return ['config'];
+    }
+
+    get name() {
+        return 'non-production';
+    }
+
+    passes() {
+        return ['prod', 'production'].includes(this.config.get('app.env', 'production'));
+    }
+
+}
+```
+
+To register a policy class, the `register` method can be used on the gate service.
+
+```javascript
+import NonProductionPolicy from './policies/NonProductionPolicy';
+
+const gate = app.make('gate');
+
+gate.register(NonProductionPolicy);
+```

@@ -3,17 +3,17 @@
 ## Introduction
 
 Node IoC offers a custom translation system that all the common cases, from simple translation to pluralization and tokens.
-Most of the existing _i18n_ systems are either async, only rely on JSON files or does not handle complex use cases.
-The `translator` service uses drivers for its implementation, which add a lot of flexibility.
+Most of the existing _i18n_ systems are either async, only rely on JSON files or do not handle complex use cases.
+The `translator` service uses drivers for its implementation, which adds a lot of flexibility.
 By default, only the `file` driver is provided, but feel free to implement your own, such as a database translation driver.
 
 
 
 ## The translator service
 
-The translator service allows to easily translate strings, for both current and specific locales.
-You can also easily add a translation, or even a batch of translations.
-By default, translations are loaded by the kernel to ensure sync translations afterwards.
+The translator service allows us to easily translate strings, for both current and specific locales.
+You can also easily add a translation or even a batch of translations.
+By default, translations are loaded by the kernel to ensure sync translations afterward.
 All translation implementation is in fact offered by its drivers.
 
 However, it abstracts their methods for simple and verbose usage.
@@ -40,7 +40,7 @@ translator.translate('Only translated into Spanish'); // "Solo traducido al espa
 translator.translate('Unexisting translation'); // "Unexisting translation", as no translation was provided
 ```
 
-The default locale and fallback locale can be set in configuration, in the `config/app.yaml`.
+The default locale and fallback locale can be set in the configuration, in the `config/app.yaml`.
 
 ```yaml
 # config/app.yaml
@@ -62,7 +62,7 @@ As always, feel free to use both `.yaml`, `.yml`, `.json` and `.js` files.
 All the translations can be found in your application, under the `resources/lang` folder.
 
 By default, the `translations.yaml` file is used as the default one.
-All the existing translations in this file can be directly referred.
+All the existing translations in this file can be directly referred to.
 
 ```yaml
 Hello, world!:
@@ -100,12 +100,12 @@ bar:
 fileDriver.translate('foo.bar'); // Bar en français
 ```
 
-A lot of developers like to work with translation keys instead of plain sentences or words translations.
+A lot of developers like to work with translation keys instead of plain sentences or word translations.
 You can do both with the `translations.yaml` file that can be used for full word(s) translations, and other files for namespaces translation keys.
 
-All the translations in the `translations.yaml` file will not contain namespace prefix.
+All the translations in the `translations.yaml` file will not contain a namespace prefix.
 
-An interesting strategy would also be to create sub-namespaces within namespaced file.
+An interesting strategy would also be to create sub-namespaces within a namespaced file.
 
 ```yaml
 # resources/lang/foo.yaml

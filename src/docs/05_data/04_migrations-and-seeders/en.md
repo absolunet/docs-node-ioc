@@ -3,11 +3,12 @@
 ## Introduction
 
 Migrations are mostly used to build your database schema in an incremental, _agile_ approach.
-It allows you to build the schema of your database one table, one column at the time, and ensure that it can evolve over time when you are adding new features that requires your schema to change.
+It allows you to build the schema of your database one table, one column at the time, and ensure that it can evolve when you are adding new features that require your schema to change.
 
-Seeders, on the other hand, are used to feed your database with data, mostly factoried, fake data, for developing purpose.
-It helps you quickly create a prototype with hundreds or thousands table entries with a single command.
+Seeders, on the other hand, are used to feed your database with data, mostly fake data from factories, for developing purposes.
+It helps you quickly create a prototype with hundreds or thousands of table entries with a single command.
 It also allows you to test the impact of a large database without being in production yet.
+
 
 
 ## Migrations
@@ -21,7 +22,7 @@ node ioc make:migration CreateUsersTable
 ```
 
 This will create the `12345678901234_CreateUsersTable.js` file, under the `src/database/migrations` folder.
-The prefix is the date it was created, in order to prevent running migrations that were created later to run before mode recent migrations.
+The prefix is the date it was created, to prevent running migrations that were created later to run before mode recent migrations.
 
 This will create a file that contains two methods: `up` and `down`.
 The `up` method is used when running the migration, while the `down` method will be used when rollbacking.
@@ -77,7 +78,7 @@ node ioc db:migrate
 
 You can, instead of running up the migration, running them down, to rollback their actions.
 This command, unlike the `db:migrate` that uses the `up` method, uses the `down` method on all migrations that were already run.
-It will start by the last ran migration to the first one.
+It will start with the last ran migration to the first one.
 
 ```
 node ioc db:migrate
@@ -105,21 +106,21 @@ node ioc db:migrate:rollback
 
 ### The db:migrate:refresh command
 
-If you need to restart all over your database schema, the `db:migrate:refresh` will start by rollbacking all ran migrations, like `db:migrate:rollback` does, until no migration rollback can be run.
+If you need to restart all over your database schema, the `db:migrate:refresh` will start by rollbacking all ran migrations, like `db:migrate:rollback` does, until no migration rollbacks can be run.
 Then, all available migrations will run up, like `db:migrate` does.
 
 
 
 ### The db:migrate:fresh command
 
-This command simply flushes the entire database to run all migrations afterwards.
+This command simply flushes the entire database to run all migrations afterward.
 This is very useful when working in a local environment to restore the database to the most recent state without having to worry about rollback issues.
 
 
 
 ### The db:migrate:status command
 
-This command helps you get a quick overview of the migrations that were ran and those which are pending to run up.
+This command helps you get a quick overview of the migrations that were run and those which are pending to run.
 It simply prints a table with all the migrations and their status.
 
 
@@ -128,9 +129,9 @@ It simply prints a table with all the migrations and their status.
 
 When the migrations are run, you have a database schema ready to be used for insertion.
 To quickly insert fake data in your database, the `src/database/seeds/DatabaseSeeder.js` class may come in help.
-This class will be run with the `db:seed` command, and this class can, and should, run other seeders.
+This class will be run with the `db:seed` command and this class can, and should, run other seeders.
 
-A seeder only have the `seed` method, unlike the migrations with `up` and `down`.
+A seeder only has the `seed` method, unlike the migrations with `up` and `down`.
 When running a seeder, insertion of fake records in the database can be done.
 
 

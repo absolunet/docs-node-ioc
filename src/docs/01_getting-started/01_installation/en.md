@@ -11,7 +11,7 @@ You will also need NPM at version `>=6.9.0` (stable) or Yarn at version `>=1.19.
 
 
 
-## Create new Node IoC application
+## Create a new Node IoC application
 
 To create a new Node IoC application, you may clone (or download) the official [Node IoC application scaffold](https://github.com/absolunet/node-ioc-app).
 This repository is always up to date to the last framework version.
@@ -41,7 +41,7 @@ _From now on, NPM will be used for examples_
 ## Compile source code
 
 The application, as well as the framework, was built with the latest ES6+ features.
-In order to properly work on older environment, without experimental flags or unstable implementation, they rely on Babel transpiler, which basically converts EcmaScript Modules (ESM) to CommonJS, the default Node.js modular system.
+In order to properly work on an older environment, without experimental flags or unstable implementation, they rely on Babel transpiler, which basically converts EcmaScript Modules (ESM) to CommonJS, the default Node.js modular system.
 That being said, you are free to use any JavaScript preprocessor you want, such as TypeScript.
 However, the application comes with vanilla JavaScript only, without any TypeScript definition.
 
@@ -77,7 +77,7 @@ If you feel that some additional configuration is needed, please read the offici
 ## Run CLI
 
 Now that your application has been compiled, you are ready to use Node IoC.
-The basic command to run your application CLI must start by `node ioc`, follow by your command.
+The basic command to run your application CLI must start by `node ioc`, followed by your command.
 
 ```bash
 node ioc
@@ -111,7 +111,7 @@ You can also use this alias
 node ioc list
 ```
 
-When you start using the application, you will only have few commands available, for multiple reasons:
+When you start using the application, you will only have a few commands available, for multiple reasons:
  - Your environment has not been set yet
  - You don't have any module installed
  - You have not built your own commands yet
@@ -134,7 +134,7 @@ You can now visit your application website through [http://localhost:8080](http:
 A basic website scaffold comes with the application for example purpose, but feel free to change whatever you want.
 
 The port remains configurable with the `--port` option.
-You you want to know how a command works, you can use the `--help` flag.
+If you want to know how a command works, you can use the `--help` flag.
 
 ```bash
 node ioc serve --help
@@ -154,7 +154,7 @@ Options:
   --port          Port to use to serve the application.                                         [string] [default: 8080]
   --daemon        Use a daemon to automatically restart the serve process when a file has changed.             [boolean]
   --silent        Silently run the process without any console output.                                         [boolean]
-  --start-silent  Silently start the process, but still output data in the console afterwards.                 [boolean]
+  --start-silent  Silently start the process, but still output data in the console afterward.                  [boolean]
 ```
 
 
@@ -188,7 +188,7 @@ Here is the basic configuration for Apache server.
         AllowOverride None
         Require all granted
 
-        # Here, we indicate that any request made to "http://my-app.example.com"
+        # Here, we indicate that any requests made to "http://my-app.example.com"
         # domain, on port 80, are actually made to "http://localhost:8080".
         # If a request to the page "http://my-app.example.com/foo/bar" is made,
         # apache will resolve the response through "http://localhost:8080/foo/bar".
@@ -238,7 +238,7 @@ server {
 ### Configure process management
 
 Since Node.js is an engine that is not bootstrapped my the Apache or the Nginx server, it must be started manually.
-The `node ioc serve` starts a new process that listen to the HTTP port 8080.
+The `node ioc serve` starts a new process that listens to the HTTP port 8080.
 However, in order to make this process automatically started on server boot, a process manager can be a very good help to monitor the process and ensure that it is fully running anytime.
 
 
@@ -276,7 +276,7 @@ If you want to restart it, simply use your process name.
 pm2 start my-app
 ```
 
-To enable start on server boot, please follow the [official documentation](http://pm2.keymetrics.io/docs/usage/startup/).
+To enable PM2 to start on server boot, please follow the [official documentation](http://pm2.keymetrics.io/docs/usage/startup/).
 
 
 
@@ -303,20 +303,20 @@ However, here are the key points:
 
 ### Environment
 
-The environment is very useful to quickly adapt configuration from local machine to production server.
+The environment is very useful to quickly adapt configuration from a local machine to the production server.
 The configuration can directly references the environment variable with the double mustache syntax.
 However, to ensure that the environment remains simple to manage, a `.env` file can be used in your application.
 Every key-value pair will be merged in the existing environment during your application execution time.
 A `.env.example` is provided by default in the application repository.
 Simply copy the file with the name `.env` and change the appropriate values, such as `APP_ENV`, that will specify the application environment, such as `local`, `test`, `staging` or `production`.
 The environment repository can be used to safely retrieve environment variable (eg: `app.make('env').get('APP_ENV', 'production')` (get `APP_ENV` environment variable value, with `production` as default value)).
-If the file does not exists, the current environment will still be accessible through the application and the environment repository.
+If the file does not exist, the current environment will still be accessible through the application and the environment repository.
 
 
 
 ### Directory permissions
 
-The whole project must be accessible in read mode for your application, in order to require and execute JavaScript files and read configuration and environment files.
+The whole project must be accessible in _read_ mode for your application, in order to require and execute JavaScript files and read configuration and environment files.
 However, the `storage` directory must be writable by your application, since logs, cache, SQLite database and uploaded files are stored in this directory.
 
 ```bash
