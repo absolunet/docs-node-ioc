@@ -39,6 +39,22 @@ _From now on, NPM will be used for examples_
 
 
 
+## Create the .env file
+
+You can, and should, rely on a `.env` file to drive your application configuration.
+
+Node IoC provides a reference environment file called `.env.example` that you can use, at first to set up the
+basic environment variable, but that you can modify throughout the development process for other developers,
+as your own application reference.
+
+You simply have to copy the `.env.example` to `.env`. Note that the `.env` file should _never_ be in your version control system,
+since it may contain a lot of sensitive information, such as API keys, database credentials, and more.
+
+That being said, make sure your `.env.example` file never contains sensitive information, as this file should be included
+in your version control system as a reference.
+
+
+
 ## Compile source code
 
 The application, as well as the framework, was built with the latest ES6+ features.
