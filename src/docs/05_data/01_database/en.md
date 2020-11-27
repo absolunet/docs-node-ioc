@@ -4,7 +4,7 @@
 
 Node IoC offers an elegant wrapper over [Knex.js](http://knexjs.org/) to create database connections.
 It currently supports configurable and dynamic connections for both single-database website or multi-tenant application with many databases.
-By default, Node IoC supports `SQLite` connections, but additional connector drivers can be developed to enable Knex.js supported database engines.
+By default, Node IoC supports `MySQL` and `SQLite` connections, but additional connector drivers can be developed to enable Knex.js supported database engines.
 
 
 
