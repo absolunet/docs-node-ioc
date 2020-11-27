@@ -20,7 +20,7 @@ However, all the `@absolunet/tester` tests are driven by Jest, without any possi
 
 ## NPM commands
 
-By default, it is strongly recommended to use the given NPM commands to run tests, since the `@absolunet/tester` package will properly handle it.
+By default, it is strongly recommended using the given NPM commands to run tests, since the `@absolunet/tester` package will properly handle it.
 
 Your `package.json` file should contain those scripts:
 
@@ -32,7 +32,7 @@ Your `package.json` file should contain those scripts:
     "test:unit": "node test --scope=unit",
     "test:feature": "node test --scope=feature",
     "test:integration": "node test --scope=integration",
-    "test:endtoend": "node test --scope=endtoend",
+    "test:endtoend": "node test --scope=endtoend"
   }
 }
 ```

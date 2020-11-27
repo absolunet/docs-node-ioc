@@ -4,7 +4,7 @@
 
 Views are the entry point for front-end development.
 It allows you to render HTML pages in an organized, composable and programmatic way, inject dynamic data in your pages from the back-end, prepare the field for a single-page application, and so on.
-Node IoC has made it easy to play with views by building a configurable and extendable view factory that relies, by default, on [JSRender](https://www.jsviews.com) template engine.
+Node IoC has made it easy to play with views by building a configurable and extendable view factory that relies by default on [JSRender](https://www.jsviews.com) template engine.
 If you feel the need to work with another template system, such as Pug, or more dynamic and modern engines such as React or Vue.js, feel free to create the appropriate driver in a Node IoC package.
 
 
@@ -39,7 +39,7 @@ This method will call the `view.resolver` to find the `pages.hello` view, retrie
 
 ### View name
 
-The view name must match the view file path from the views folder, with dot-separated segments, and without the file extension.
+The view name must match the view file path from the _views_ folder, with dot-separated segments, and without the file extension.
 
 If the wanted view file is `resources/views/pages/foo/bar.html`, then its name should be `pages.foo.bar`.
 
@@ -59,7 +59,7 @@ app.make('view.resolver').namespace('home', app.homePath('ioc', 'views'));
 Then, a view in this namespace can be rendered by using the `namespace::view.name` syntax.
 
 Given the `~/ioc/views/pages/foo/bar.html` file, we would render it with `home::pages.foo.bar` name.
-That will prevent conflict between your application pages and the home directory pages.
+That will prevent conflict between your application pages, and the home directory pages.
 
 
 
@@ -73,7 +73,7 @@ However, the `include` tag just did not suit the Node IoC ecosystem, so it was r
 
 
 
-#### The echo tags
+#### The _echo_ tags
 
 To print values in your views, JSRender offers the `{{: ...}}` and `{{> ...}}` tags.
 
@@ -85,7 +85,7 @@ Given the view-model object `{ heading: 'This is a <strong>huge</strong> news' }
 
 
 
-#### The include tag
+#### The _include_ tag
 
 To include another template, the `include` exists in the JSRender engine but refactored by Node IoC.
 
@@ -140,7 +140,7 @@ They act as functions that are defined by the JSRender view driver.
 
 
 
-#### The inject helper
+#### The _inject_ helper
 
 If you need, in any case, to get an injectable in your view, the `inject` helper may be very useful.
 It acts the same way as `app.make()`.
@@ -153,7 +153,7 @@ It acts the same way as `app.make()`.
 
 
 
-#### The config helper
+#### The _config_ helper
 
 Sometimes, the configuration is used by all templates.
 To prevent sending the same view-model over and over again, you can quickly access the configuration from the `config` helper.
@@ -164,7 +164,7 @@ To prevent sending the same view-model over and over again, you can quickly acce
 
 
 
-#### The route helper
+#### The _route_ helper
 
 Instead of inserting manual links in your views, the `route` helper may be used to resolve a route URL by name and parameters.
 
@@ -183,10 +183,10 @@ It is only required if the route URI has parameters.
 
 
 
-#### The t helper
+#### The _t_ helper
 
 The `t` helper stands for `translate`.
-A lot of framework use `t()`, `trans()`, `__()` and `translate()`.
+Lots of framework use `t()`, `trans()`, `__()` and `translate()`.
 The choice of the `t` name was mainly for simplicity when translating content.
 
 ```html
@@ -196,7 +196,7 @@ The choice of the `t` name was mainly for simplicity when translating content.
 
 
 
-#### The dump helper
+#### The _dump_ helper
 
 In a controller, you can easily dump variables with the `return this.dump(variable)` statement.
 However, it may be very useful to dump data while rendering a template, because the context of a template differs a lot from a basic JavaScript class context.

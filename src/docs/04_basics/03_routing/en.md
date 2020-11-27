@@ -56,7 +56,7 @@ The router handles the following basic methods:
 
 
 
-### Redirection routes
+### Redirection route
 
 Sometime, the application may handle redirection.
 It is always a better solution, regarding the performance, to handle the redirection from the server engine, such as Apache or Nginx configuration files.
@@ -67,7 +67,7 @@ A simple solution was developed to handle those situations, for both temporary a
 
 
 
-### Static routes
+### Static route
 
 Also, static content may come from dedicated folders.
 By default, the `/static` and `/uploads` routes are static assets routes, `/static` from the `path.public` folder and `/uploads` from the `path.upload`'s `public` folder.
@@ -94,7 +94,7 @@ router.static('/files', '/path/to/files');
 
 
 
-### Any verbs routes
+### Any verbs route
 
 It may occur that your route must handle any kind of verbs.
 
@@ -103,7 +103,7 @@ The `router.all(uri, handler)` method is an alias of the `any` method.
 
 
 
-### Fallback routes
+### Fallback route
 
 Also, fallback routes may be very useful to handle single page application (SPA) built with React or Vue.js, for instance.
 
@@ -189,7 +189,7 @@ route.action === 'FooController@index'; // true
 ## Groups
 
 Grouping routes is a great idea to prevent all routes to have long URIs, a complex naming structure that may have typos in it, and so on.
-The router offers the `group` method that accepts a group options object and a callback that registers the routes in the group.
+The router offers the `group` method that accepts a group options object, and a callback that registers the routes in the group.
 
 ```javascript
 router.group({ prefix: '/admin', as: 'admin.', namespace: 'backend.'}, () => {

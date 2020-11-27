@@ -12,15 +12,15 @@ It mainly relies on two packages, `@absolunet/fsp` and `@absolunet/fss`, which o
 The file manager is a service that interacts with the file system with some intelligence when it comes to content.
 It offers `load`, `loadAsync`, `write` and `writeAsync` methods that will handle the file type and decode it the simplest way possible.
 
-For instance, a `.js` file will be parsed, executed and the exported data will be returned.
+For instance, a `.js` file will be parsed, executed, and the exported data will be returned.
 However, when writing `.js` file, plain text is used.
-`.json`, `.yaml` and `.yml` files return parsed object when read and can write from JSON serializable data, such as an array or an object.
+`.json`, `.yaml` and `.yml` files return parsed objects when read and can write from JSON serializable data, such as an array or an object.
 
 Other helper methods are also exposed, such as `scandir` and `exists`, but it helps a lot when attempting to load files with some logic.
 
 For instance, `findFirst` inspect the file system for the wanted files.
 When a file exists, the path is returned, without going any further.
-`loadFirst` and `loadFirstAsync` do the exact same thing, except that the file is parsed by the proper driver and the value is returned.
+`loadFirst` and `loadFirstAsync` do the exact same thing, except that the file is parsed by the proper driver, and the value is returned.
 
 Also, you can load the content of all the files in a given folder with `loadInFolder`.
 

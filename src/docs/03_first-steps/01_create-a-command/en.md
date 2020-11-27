@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this first of four first step tutorials, you will create your first CLI command.
+In this first of four first steps tutorials, you will create your first CLI command.
 
 For this first assignment, we will build a command that will display a book suggestion related to a given query through the [Google Books API](https://developers.google.com/books/docs/v1/using#PerformingSearch).
 

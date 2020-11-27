@@ -64,7 +64,7 @@ If you have bound `{ key: 'value' }` to the `bar` abstract, then `app.make('bar'
 app.make('some.service'); // SomeService {}
 ```
 
-You can make any bound abstract and the container will resolve it for you.
+You can make any bound abstract, and the container will resolve it for you.
 
 However, if you need to use all the rich container features when it comes to instantiation, you can use the `make` method with a concrete instead of an abstract.
 
@@ -176,7 +176,7 @@ await Object.values(loggers).map(async (logger) => {
 ## Dependency injection
 
 The most powerful tool in the Node IoC container is the dependency injection system.
-It was mostly inspired by the [Angular.js](https://docs.angularjs.org/guide/di#-inject-property-annotation) dependency injection approach in term of usage, but some magic was added to the recipe for easier user-end implementation.
+It was mostly inspired by the [Angular.js](https://docs.angularjs.org/guide/di#-inject-property-annotation) dependency injection approach in terms of usage, but some magic was added to the recipe for easier user-end implementation.
 
 To request dependencies in a class instance, you must implement a static getter called `dependencies`.
 
@@ -290,7 +290,7 @@ If it is the case, the concrete is retrieved, along with a singleton flag.
 
 Otherwise, if the abstract is a valid tag, the tagged concretes are resolved through the same process within a loop to resolve all the tagged abstracts.
 
-Otherwise, if the abstract is a string, it assumes that it must be either a path or a module that can be required.
+Otherwise, if the abstract is a string, it assumes that it must be either a path, or a module that can be required.
 It attempts to require it.
 
 Otherwise, the abstract is considered a concrete.
@@ -299,7 +299,7 @@ Then, when a concrete has been found, it builds it by following those rules:
 
  - If it is a class or a regular function, it returns a new instance with dependency injection, if present.
  - Otherwise, if it is a function, it calls it and returns the received value.
- - Otherwise, it treats it as an object and merges the dependency overwrites in it if provided.
+ - Otherwise, it treats it as an object and merges the dependency overwrites in it, if provided.
  
 Now that the build has been done, all the decorators, in order of bindings, decorates the built instance.
 

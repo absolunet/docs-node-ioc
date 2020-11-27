@@ -2,7 +2,7 @@
 
 ## Introduction
 
-It happens often that some features are restricted to some users or other conditions such as configuration.
+It often happens that some features are restricted to some users or other conditions such as configuration.
 Those restrictions are called `policies`, which comes out of the box in Node IoC.
 You can define your policies through the `gate` service and use them wherever you want.
 Plus, there is already an implementation of gates and policies in commands that you are already using without even noticing it.
@@ -12,7 +12,7 @@ Plus, there is already an implementation of gates and policies in commands that 
 ## The gate service
 
 The security service provider offers the `gate` service.
-It offers basic features to define and use policies through the `policy` and `can` methods
+It offers basic features to define and use policies through the `policy` and `can` methods.
 
 ```javascript
 const gate       = app.make('gate');

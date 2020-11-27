@@ -10,7 +10,7 @@ This tutorial will show you how to build a basic CRUD API application to manage 
 Here are the key concepts that will be part of this tutorial:
 
  - The `serve` command
- - The `router` service (through the routes file and a view helper function)
+ - The `router` service (through the routes file, and a view helper function)
  - The API routes file
  - The `Controller` class
  - Scaffolding controller with `make:controller`
@@ -116,7 +116,7 @@ Each one of them indicates to create a specific type of controller.
 In our case, we need an API controller, which implements the API CRUD methods that we want to implement.
 
 Let's make our API controller, called `TodoController`.
-And let's put it in a subfolder called `api`.
+Also, let's put it in a sub-folder called `api`.
 
 ```bash
 node ioc make:controller api/TodoController --api
@@ -245,7 +245,7 @@ export default (router) => {
 Much cleaner, isn't it? All we need to send to the `resource` or the `apiResource` method is the current resource name, which will be present in the URL, and the resource controller that will handle the requests.
 
 The key difference between a `resource` and an `apiResource` (which will be reflected in the `make:controller`'s `--resource` and `--api`) is that the `resource` has two additional routes: `create` (`/resource/create`) and `edit` (`/resource/:id/edit`).
-They are not present in an API resource since they should return a creation or an edition form, which does not make sense in an API.
+They are not present in an API resource since they should return a creation, or an edition form, which does not make sense in an API.
 
 
 
@@ -254,8 +254,8 @@ They are not present in an API resource since they should return a creation or a
 To make our first CRUD application works, we need some data.
 We could set up a local database, but let's keep it simple for now.
 
-The `config` repository can be very helpful to handle application configuration through the framework modules, our own implementation, and also for third parties.
-But let's use it another way: as a runtime database.
+The `config` repository can be very helpful to handle application configuration through the framework modules, our own implementation, and for third parties.
+Let's use it another way (for demo purpose): as a runtime data repository.
 
 First, we need to inject the `config` repository in our controller.
 
@@ -312,7 +312,7 @@ class TodoController extends Controller {
 ```
 
 This will return an empty array.
-But let's try to populate it manually to see how it reacts in a runtime environment.
+Let's try to populate it manually to see how it reacts in a runtime environment.
 
 ```javascript
 class TodoController extends Controller {
@@ -332,7 +332,7 @@ class TodoController extends Controller {
 ```
 
 If you reload the page, you should see `[{"name":"My first todo","done":false}]`.
-But try to reload it another time.
+Try to reload it another time.
 Now, you have two todos, `[{"name":"My first todo","done":false},{"name":"My first todo","done":false}]`.
 The configuration caches the result the whole time the application runs.
 
@@ -558,7 +558,7 @@ Interesting fact, you can send a `404 Not Found.` very easily with the `notFound
 If you are not in a local environment, the real 404 page or JSON response will show up.
 
 To be able to display a todo, ensure that your to-do list contains the requested todo.
-Friendly reminder that each time the server is stopped, the data disappear and you have to create them again.
+Friendly reminder that each time the server is stopped, the data disappear, and you have to create them again.
 
 
 

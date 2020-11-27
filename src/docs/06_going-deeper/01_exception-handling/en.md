@@ -2,7 +2,7 @@
 
 ## Introduction
 
-To properly handle exceptions across the different contexts, such as CLI, Web and API requests, Node IoC made an exception handler that handles all those cases in a proper way, besides logging the exceptions through the logger.
+To properly handle exceptions across the different contexts, such as CLI, Web and API requests, Node IoC made an exception handler that handles all those cases the proper way, besides logging the exceptions through the logger.
 
 The bound exception handler is located in a Node IoC application.
 It extends the framework's exception handler, so you can easily interact before or after different handling phases or completely override some handling phases.
@@ -18,9 +18,9 @@ The exception handler is also used in two places: the command runner and the HTT
 
 Since a CLI request is handled by Yargs under the hood, we want to skip its error handler, which is not behaving the best possible way for Node IoC.
 It overrides the Yargs exception handling by catching an error from within the handling process, so Yargs never notice it.
-We then properly handle it so the kernel can properly terminate the request.
+We then properly handle it, so the kernel can properly terminate the request.
 
-For the HTTP exception handling, we cannot rely on the global kernel error catching since the whole process is trapped by Express to prevent unexpected exit.
+For the HTTP exception handling, we cannot rely on the global kernel error catching since the whole process is trapped by Express to prevent unexpected exits.
 The same thing happens here: the application's exception handler is called when an HTTP request error occurs, so the HTTP handler properly terminates the request.
 
 
@@ -28,7 +28,7 @@ The same thing happens here: the application's exception handler is called when 
 ## The handle method
 
 The `handle` report is the one that should be called when an exception occurs.
-By default, it stops the terminal interceptor capture to prevent muted console and to prevent unexpected console behavior.
+By default, it stops the terminal interceptor capture to prevent a muted console, and to prevent unexpected console behavior.
 Then, it reports the exception through the `report` method, and then render the exception through the `render` method.
 
 When an exception is handled, it keeps the exception in memory.
@@ -39,7 +39,7 @@ It will then affect the `hadException` and `lastException` accessors.
 ## The report method
 
 This method uses the logger service (`log`), if bound in the application, and reports the exception as an `error`.
-If an error occurs while reporting, the reported error is rendered in the console and the report does not occur.
+If an error occurs while reporting, the reported error is rendered in the console, and the report does not occur.
 
 
 
@@ -52,7 +52,7 @@ To render a response, the `response` object must be truthy and expose the `write
 
 ### Render in console
 
-When rendering in console, the exception handler uses the `console` driver.
+When rendering in the console, the exception handler uses the `console` driver.
 By default, the `console` driver is the `prettyError` driver, which uses the `terminal` service to echo the formatted error.
 
 The formatting is handled by the [`pretty-error`](https://github.com/AriaMinaei/pretty-error) package.
@@ -84,7 +84,7 @@ You must, however, specify your own IDE in the `dev.ide` configuration.
 
 #### JSON response
 
-If the request accepts `application/json` or contains the `x-requested-with: xmlhtttprequest` header (case insensitive), the response will be formatted as JSON instead.
+If the request accepts `application/json` or contains the `x-requested-with: xmlhtttprequest` header (case-insensitive), the response will be formatted as JSON instead.
 The Ouch's JsonResponseHandler is then used to process the JSON response.
 
 The schema will look like this.
@@ -129,5 +129,5 @@ By default, the application offers the `resources/view/errors/base.html` templat
 The HTTP status code is used to render the appropriate view.
 For instance, a `404 Not Found.` error will attempt to render the `errors.404` view.
 The `errors.generic` view is used by default if the current error code cannot be found.
-And if the `errors.generic` view cannot be found, a simple `Something went wrong...` text is rendered.
+If the `errors.generic` view cannot be found, a simple `Something went wrong...` text is rendered.
 If the `translator` service is available, it will use it to translate the default text, such as `Quelque chose a mal tourné...` in french.

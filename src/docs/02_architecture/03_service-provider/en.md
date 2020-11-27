@@ -4,7 +4,7 @@
 
 In Node IoC, as some other platforms do (Laravel, Angular.js, Java, .NET, etc), the main way to expose services and to be part of the bootstrapping process is through the service providers.
 Essentially, they act as their own module managers.
-They bind the services into the application, propose basic configuration, register commands, models, views, routes, controllers and other entities.
+They bind the services into the application, propose a basic configuration, register commands, models, views, routes, controllers and other entities.
 
 
 
@@ -56,7 +56,7 @@ All you have to do is to implement the wanted methods, `register` and `boot`.
 The register method is called during the first step of the application booting process.
 When the application boots, it starts by registering the core service providers, which also add the configured service providers in the application to be booted.
 
-In this method, as explained a little bit earlier, you should consider that no services are available yet.
+In this method, as explained earlier, you should consider that no services are available yet.
 
 You should only bind your own services in the application container to make them available to others during the booting process.
 
@@ -123,7 +123,7 @@ To register service providers, there are two ways to do it.
 
 The first one is by using the application `register` method.
 It accepts any resolvable as value (class, instance, factory or path/module).
-It should be used only if necessary as if it needs some logic before registering it.
+It should be used only if necessary, as if it needs some logic before registering it.
 
 The other way to do it, considered a better practice, would be from the configuration.
 
@@ -135,7 +135,7 @@ By default, you will have your two application service providers:
 - AppServiceProvider
 - RouteServiceProvider
 
-The grammar used to include those files is made such as you can either fill a resolvable module, an absolute path or a relative path fro the base path of the application, prefixed by `@/`.
+The grammar used to include those files is made such as you can either fill a resolvable module, an absolute path or a relative path from the base path of the application, prefixed by `@/`.
 
 ```yaml
 # config/app.yaml

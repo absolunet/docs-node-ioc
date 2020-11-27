@@ -27,7 +27,7 @@ Essentially, a service manages the business (or the application) logic.
 They are separated by concerns and can use other services, repositories and so on.
 In an eCommerce platform, for instance, it is very usual to have a `CustomerService`, a `ProductService` and an `OrderService`, each of them exposing methods to interact with the data by using the programmed business logic.
 
-In our case, the `TodoService` that we will create will essentially expose the CRUD methods, but with some verbosity in it: instead of `index`, we will call `all()`, or `getAllTodos()`, whatever is verbose enough for you and those who will read or use the code.
+In our case, the `TodoService` that we will create will essentially expose the CRUD methods, but with some verbosity in it: instead of `index`, we will call `all()`, or `getAllTodos()`, whatever is verbose enough for you, and those who will read or use the code.
 
 > Indeed, the ratio of time spent reading versus writing is well over 10 to 1.
 > We are constantly reading old code as part of the effort to write new code.
@@ -256,8 +256,8 @@ Now, we need to implement the `TodoService` methods.
 
 Let's tackle our first method, `getAll`, which should return an array of todos, as described above.
 
-But, before implementing it, we need to store the todos somewhere.
-And the `config` repository was just for testing...
+Before implementing it, we need to store the todos somewhere.
+The `config` repository was just for demonstration...
 It is not its purpose, so we should not use it anymore.
 
 In fact, we just need a repository to store them.
@@ -294,7 +294,7 @@ class TodoService {
 }
 ```
 
-However, since the dependency injection occurs at this time and the dependencies are not yet dynamically assigned, Node IoC offers another starting point for initialization, through the `init` method.
+However, since the dependency injection occurs at this time, and the dependencies are not yet dynamically assigned, Node IoC offers another starting point for initialization, through the `init` method.
 
 ```javascript
 class TodoService {
@@ -310,7 +310,7 @@ In the container instantiation cycle, the instance's dependencies are resolved.
 An instance is created, with the resolved dependencies passed as arguments.
 They are then dynamically assigned, and finally, the `init` method is called.
 
-In the `init` method, you can assume that everything is properly set up and the instance is ready to work.
+In the `init` method, you can assume that everything is properly set up, and the instance is ready to work.
 
 Now that the todos are saved somewhere, let's implement the `getAll` method.
 
@@ -345,7 +345,7 @@ We should have an empty array as the response.
 ### Implement create()
 
 Now, we can create a new todo and store it in the private registry.
-And we can keep track of an incrementing ID, which would be much cleaner than what we have done previously in the controller.
+We can keep track of an incrementing ID, which would be much cleaner than what we have done previously in the controller.
 
 ```javascript
 class TodoService {
@@ -402,7 +402,7 @@ class TodoService {
 Here, we do the same thing as the `getAll` method.
 We return another instance of the same data to prevent direct overwrite.
 
-However, you may have noticed that we do not cast the id as a string, because, in our model, we expect a number as ID.
+However, you may have noticed that we do not cast the id as a string, because, in our model, we expect a number as an ID.
 It's the responsibility of the caller to provide us the proper type.
 In the controller, you may have also noticed that all the `id` that are sent to the service are cast as `Number`.
 
@@ -485,7 +485,7 @@ class TodoService {
 Here, first retrieve the original array, with all the original todo instances.
 
 We attempt to find the todo with the received ID.
-If it does not exists, we throw an error.
+If it does not exist, we throw an error.
 Notice that our controller made an `existById` check before going forward with the update.
 
 Notice that we do not reassign the todo in the array.

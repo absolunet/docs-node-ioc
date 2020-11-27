@@ -38,7 +38,7 @@ class UserFactory extends Factory {
 ## Auto-registration
 
 By default, all the model factories defined in the `src/database/factories` folders will be automatically registered in the factory service.
-Otherwise, the `register` method is defined so you can manually define model factories.
+Otherwise, the `register` method is defined, so you can manually define model factories.
 
 Given the `UserFactory` that has the `model` set to `User`, the following registration would work.
 

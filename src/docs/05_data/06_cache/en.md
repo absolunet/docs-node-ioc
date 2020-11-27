@@ -14,7 +14,7 @@ You can find the cache configuration in the `config/cache.yaml` file.
 
 By default, the file cache store is used, under `default`.
 There is three different stores available: `runtime`, `file` and `database`.
-Each of them has a dedicated driver, so you can reuse those drivers with other cache stores, with other configuration.
+Each of them has a dedicated driver, so you can reuse those drivers with other cache stores, with another configuration.
 
 Let's say for instance that you need to cache in a different file for a certain type of data.
 You could have this configuration.

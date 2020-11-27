@@ -105,7 +105,7 @@ Those will be put in the current queue.
 You will only have two opportunities to register a service provider programmatically: before or during the registering process and after the booting process.
 If you need to act after all the services are exposed, you can take a look at the `this.app.onBooted()` hook.
 
-During this phase, you can bind your own services in the application container, and also load your configuration.
+During this phase, you can bind your own services in the application container, and load your configuration.
 
 
 
@@ -157,9 +157,9 @@ It plays the same role as a controller (or a handler) in a Web MVC/MVA applicati
 
 #### ForwardCall
 
-It may happen that a created command only preprocesses/postprocesses data.
+It may happen that a created command only pre-processes/post-processes data.
 In those cases, the `handle` method may not be called.
-If a `forward` property exists in the command instance, the value, that represents an underlying command name that will handle the process, will be use to forward the call to the specified command instance.
+If a `forward` property exists in the command instance, the value, that represents an underlying command name that will handle the process, will be used to forward the call to the specified command instance.
 
 Let's say for instance that `foo` and `private:foo` command exists, and only `foo` is visible through the CLI since the `private:foo` command has a `private` policy (we will go into this later).
 `foo` can then forward the call to `private:foo`, but preprocess the input before calling `private:foo`.

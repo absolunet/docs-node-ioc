@@ -98,7 +98,7 @@ const {
 
 ### checksTypes
 
-The `checksTypes` mixin exposes four methods that help validating types.
+The `checksTypes` mixin exposes four methods that help to validate types.
 
  - `isInstantiable(object)`
     > Returns `true` if the given argument can be called with the `new` keyword
@@ -192,7 +192,7 @@ The `hasEngine` mixin exposes a single method, paired with an accessor.
 
 To define a new mixin, the `mixins` exposed object from Node IoC contains a `factory` function, for standalone mixins, and `add` function, for registered and reusable mixins.
 
-The `add` method accepts a name and a factory function, while `factory` only accepts a factory function.
+The `add` method accepts a name, and a factory function, while `factory` only accepts a factory function.
 
 
 ```javascript
@@ -281,7 +281,7 @@ However, the parent class may also inject services.
 We must ensure that its dependencies are resolved and in the same order.
 That is the reason why the current class dependencies are appended instead of prepended.
 
-This is one of the only items that cannot be injected by Node IoC since it allows us to change an exported value that can be used for further definitions.
+This is one of the few items that cannot be injected by Node IoC since it allows us to change an exported value that can be used for further definitions.
 
 If you want to create mixins, they should be done before loading any classes.
 

@@ -45,7 +45,7 @@ For instance, you may want to log everything in your `single` channel but preven
 
 ## Channels
 
-Channels are basically drivers with custom configuration.
+Channels are basically drivers with a custom configuration.
 Node IoC offers three drivers, and three channels using each of the drivers.
 You can, of course, create your own channels with existing drivers, or create your own driver and create one or many channels with it.
 

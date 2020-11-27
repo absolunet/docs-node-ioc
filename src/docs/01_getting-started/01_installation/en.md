@@ -26,7 +26,8 @@ cd [your-application-name]
 With this method, you will download the Git history as well.
 Simply delete the `.git` folder and start a fresh history with `git init` (if you are working with Git as your SVN)
 
-Now that the application was downloaded, install the project dependencies, with the development dependencies so you can test your application.
+Now that the application has been downloaded, install the project dependencies, with the development dependencies so
+you can test your application.
 
 ```bash
 npm install
@@ -49,7 +50,7 @@ However, the application comes with vanilla JavaScript only, without any TypeScr
 
 ### Node Manager
 
-To compile your code, [Absolunet](https://absolunet.com) as built a [Node Manager](https://github.com/absolunet/node-manager) to facilitate code compilation, outdated dependencies reports, package deployment, API documentation generation and much more.
+To compile your code, [Absolunet](https://absolunet.com) built a [Node Manager](https://github.com/absolunet/node-manager) to facilitate code compilation, outdated dependencies reports, package deployment, API documentation generation, and much more.
 By the way, feel free to check the amazing [Absolunet public packages](https://github.com/absolunet)!
 
 
@@ -62,7 +63,7 @@ To compile the source code, simply run the manager task:
 npm run manager:build
 ```
 
-You can also use the build watch feature so you can quickly develop without having to manually compile your source code.
+You can also use the build watch feature, so you can quickly develop without having to manually compile your source code.
 
 ```bash
 npm run manager:watch
@@ -120,7 +121,7 @@ When you start using the application, you will only have a few commands availabl
 
 ## Run server
 
-One of the available command is called `serve`.
+One of the available commands is called `serve`.
 It starts your application HTTP server, which is powered by Express.
 
 To start the server, use this command:
@@ -189,7 +190,7 @@ Here is the basic configuration for Apache server.
         Require all granted
 
         # Here, we indicate that any requests made to "http://my-app.example.com"
-        # domain, on port 80, are actually made to "http://localhost:8080".
+        # domain, on port 80, is actually made to "http://localhost:8080".
         # If a request to the page "http://my-app.example.com/foo/bar" is made,
         # apache will resolve the response through "http://localhost:8080/foo/bar".
 
@@ -219,7 +220,7 @@ server {
     location / {
 
         # Here, we indicate that any request made to "http://my-app.example.com"
-        # domain, on port 80, are actually made to "http://localhost:8080".
+        # domain, on port 80, is actually made to "http://localhost:8080".
         # If a request to the page "http://my-app.example.com/foo/bar" is made,
         # nginx will resolve the response through "http://localhost:8080/foo/bar".
 
@@ -245,8 +246,8 @@ However, in order to make this process automatically started on server boot, a p
 
 #### PM2
 
-[PM2](http://pm2.keymetrics.io/) os one of the most popular Node.js production process manager.
-It allows to easily manage, start, stop, restart and monitor processes.
+[PM2](http://pm2.keymetrics.io/) is one of the most popular _Node.js_ production process managers.
+It allows to easily manage, start, stop, restart, and monitor processes.
 
 First, install the package globally.
 
@@ -282,19 +283,19 @@ To enable PM2 to start on server boot, please follow the [official documentation
 
 ### Configuration files
 
-Node IoC make it very easy to manage packages and framework behavior through configuration files.
+Node IoC makes it very easy to manage packages and framework behavior through configuration files.
 Those files are located under the `config` folder.
 The configuration system supports `.yaml`, `yml`, `.js` and `.json` files.
 By default, `.yaml` files are being used, mostly for readability.
-If you are using `.js` files, make sure that you are using common.js syntax (`module.exports = {}`) instead of EcmaScript modules (`export default {}`), since those files are never compiled.
+If you are using `.js` files, make sure you are using common.js syntax (`module.exports = {}`) instead of EcmaScript modules (`export default {}`), since those files are never compiled.
 
 However, here are the key points:
 
- - A configuration can contain any type of JSON-compatible value: null, string, number, boolean, object or array
+ - A configuration can contain any type of JSON-compatible value: null, string, number, boolean, object, or array
  - Dotted string notation is used to access configuration; the config keys must not contain dots
  - The configuration namespaces are the file names (eg: `foo.bar` references to the `bar` first-level key inside `foo.yaml` file)
  - To reference the application root path, the value must start by `@/` (eg: `@/storage/logs/ioc.log`)
- - To reference the home directory path the value myst start by `~/` (eg: `~/.ssh/id_rsa.pub`)
+ - To reference the home directory path the value must start by `~/` (eg: `~/.ssh/id_rsa.pub`)
  - To reference an environment variable, the value must contain double mustaches (eg: `{{SOME_VARIABLE}}`)
  - To reference an environment variable with a fallback value, you must use a pipe to separate the variable from the default value (eg: `{{SOME_VARIABLE|default value}}`)
  - An environment variable can be used inside a value (eg: `foo_{{SOME_VARIABLE}}_bar`, `{{SOME_VARIABLE|table_name}}.column_name`)
@@ -303,8 +304,8 @@ However, here are the key points:
 
 ### Environment
 
-The environment is very useful to quickly adapt configuration from a local machine to the production server.
-The configuration can directly references the environment variable with the double mustache syntax.
+The environment is very useful to quickly adapt the configuration from a local machine to the production server.
+The configuration can directly reference the environment variable with the double mustache syntax.
 However, to ensure that the environment remains simple to manage, a `.env` file can be used in your application.
 Every key-value pair will be merged in the existing environment during your application execution time.
 A `.env.example` is provided by default in the application repository.

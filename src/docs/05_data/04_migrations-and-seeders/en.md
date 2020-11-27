@@ -27,7 +27,7 @@ The prefix is the date it was created, to prevent running migrations that were c
 This will create a file that contains two methods: `up` and `down`.
 The `up` method is used when running the migration, while the `down` method will be used when rollbacking.
 
-If your migration class name starts with both `Create`, `Drop` or `Delete`, there will be a default scaffold so you can quickly craft your table schema.
+If your migration class name starts with both `Create`, `Drop` or `Delete`, there will be a default scaffold, so you can quickly craft your table schema.
 
 To implement the migration, you can use the `this.connection.schema` Knex.js schema instance and either create a table with `createTable()`, alter it with `table()` or drop it with `dropTableIfNotExists()`.
 For further explanation and API documentation, you can read the [official Knex.js documentation](http://knexjs.org/#Schema).
@@ -120,7 +120,7 @@ This is very useful when working in a local environment to restore the database 
 
 ### The db:migrate:status command
 
-This command helps you get a quick overview of the migrations that were run and those which are pending to run.
+This command helps you get a quick overview of the migrations that were run, and those which are pending to run.
 It simply prints a table with all the migrations and their status.
 
 
@@ -129,7 +129,7 @@ It simply prints a table with all the migrations and their status.
 
 When the migrations are run, you have a database schema ready to be used for insertion.
 To quickly insert fake data in your database, the `src/database/seeds/DatabaseSeeder.js` class may come in help.
-This class will be run with the `db:seed` command and this class can, and should, run other seeders.
+This class will be run with the `db:seed` command, and this class can, and should, run other seeders.
 
 A seeder only has the `seed` method, unlike the migrations with `up` and `down`.
 When running a seeder, insertion of fake records in the database can be done.

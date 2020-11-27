@@ -20,7 +20,7 @@ By default, `db` will be used, to create `db:migrate`, `db:seed` and so on.
 
 The `default` key represents the default database connection name to use when making a connection.
 
-By default, only the `sqlite` connection name exists, driven by the `sqlite` driver.
+By default, the `sqlite` and the `mysql` connection names are defined, which use the driver of the same name underneath.
 
 The key difference between the name and the driver is that the name is the unique identifier of the configured connection, while the driver is the engine used to establish a database connection with the proper SQL grammar.
 You could create an `etl` database connection with the `sqlite` driver for integration processes, for instance.
@@ -48,6 +48,7 @@ You can also create a connection by configuration name.
 
 ```javascript
 const sqliteConnection = app.make('db').getConnection('sqlite');
+const mySqlConnection  = app.make('db').getConnection('mysql');
 const etlConnection    = app.make('db').getConnection('etl');
 ```
 

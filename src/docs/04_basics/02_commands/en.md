@@ -5,7 +5,7 @@
 The commands are the main entry point for CLI users.
 It acts as both CLI routes and controllers, for those who work with MVC architecture.
 
-A command is used to handle CLI request through a structured, standardized and simplified system.
+A command is used to handle a CLI request through a structured, standardized and simplified system.
 Each command is represented by a `Command` class file, with some methods and accessors that must be implemented to work properly.
 
 We will go through everything you need to get started properly in your Node IoC application.
@@ -18,7 +18,7 @@ In the application, the commands are located in the `src/app/console/commands` f
 By default, an application has no command, but Node IoC makes it a breeze to create a command.
 To have a quick introduction to commands, you may want to start with the `Create a command` first step.
 
-All the commands in the commands folder are automatically loaded by the application kernel (`src/app/console/Kernel.js`), before handling the request.
+All the commands in the `commands` folder are automatically loaded by the application kernel (`src/app/console/Kernel.js`), before handling the request.
 At the auto-registration point, all the service providers were booted, so all the services are available and can be injected.
 
 For the commands, there are no dynamic namespaces based on the folder structure, so you can organize your commands the way you want in the dedicated folder.
@@ -387,10 +387,10 @@ However, the command lifecycle offers two other methods to act before and after,
 
 
 
-#### Preprocess
+#### Pre-process
 
-During the preprocess phase, we can change the Yargs `argv` object.
-Let's say that some flags become deprecated over time and you want to adapt the handling code properly without the deprecated flags in it, you can transform the request object.
+During the pre-process phase, we can change the Yargs `argv` object.
+Let's say that some flags become deprecated over time, and you want to adapt the handling code properly without the deprecated flags in it, you can transform the request object.
 It acts as a command middleware.
 
 This method accepts an `argv` object and must return an `argv` object.
@@ -409,9 +409,9 @@ If you forgot to do so, or if you need service conditionally, the application is
 
 
 
-#### Postprocess
+#### Post-process
 
-The postprocess phase may be used to do additional things after request handling.
+The post-process phase may be used to do additional things after request handling.
 Normally, there is nothing to do since everything would be done in the handling phase, but it is useful for commands that are forwarding the request to another command that may have policies that do not expose it.
 Forwarding is explained below.
 
@@ -481,7 +481,7 @@ node ioc foo:bar <one> [two] [--three=null] [four]
 
 The signature will be identical.
 By default, if a command forwards to a command that also forwards to another command, the three commands will have the same signature, except for their name.
-And their policies will be different too, so their public appearance will be different.
+Their policies will be different too, so their public appearance will be different.
 
 
 

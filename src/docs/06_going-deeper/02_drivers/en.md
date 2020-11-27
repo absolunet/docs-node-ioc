@@ -10,7 +10,7 @@ For instance, the logger service does not have to know how a file logger is impl
 It simply uses the correct implementation and calls its methods.
 
 Normally, all drivers of a given service must implement the same "interface", which does not exist in JavaScript.
-However, a very convenient way to emulate interfaces is through abstract classes (normally called `Driver` in our case), which still do not exists in JavaScript, but the `NotImplementedError` is used to throw an exception when the method was not implemented by the instantiable class.
+However, a very convenient way to emulate interfaces is through abstract classes (normally called `Driver` in our case), which still do not exist in JavaScript, but the `NotImplementedError` is used to throw an exception when the method was not implemented by the instantiable class.
 
 
 
@@ -297,9 +297,9 @@ class TaskService extends hasDriver() {
 ```
 
 The only method to implement to make the forwarding works is `getForward`.
-The `ForwardProxy` handler will first look into the trapped instance to see if the property or the method exists.
+The `ForwardProxy` handler will first look into the trapped instance to see if the property, or the method exists.
 If it does, then the trapped instance's property value is returned.
-Otherwise, the object returned by the `getForward` method is used and the forwarded object's property value is returned.
+Otherwise, the object returned by the `getForward` method is used, and the forwarded object's property value is returned.
 If the result is a function, it binds the object to it.
 
 

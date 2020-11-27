@@ -10,7 +10,7 @@ The fetch logic will be the same, but the implementation will be different since
 Here are the key concepts that will be part of this tutorial:
 
  - The `serve` command
- - The `router` service (through the routes file and a view helper function)
+ - The `router` service (through the routes file, and a view helper function)
  - The web routes file
  - Named routes
  - The `Controller` class
@@ -18,7 +18,7 @@ Here are the key concepts that will be part of this tutorial:
  - The `http` service
  - The `view` service (through a controller method)
  - The `include` view tag
- - The `dumper` service (through a controller method and a view helper function)
+ - The `dumper` service (through a controller method, and a view helper function)
  - The `translator` service (through a view helper function)
  - The translations file
 
@@ -196,7 +196,7 @@ Now, the `/inspire/book` page should display the same page as the home page.
 Let's define our own page template.
 
 Inside `resources/views/pages`, we will create a folder called `inspire`, and inside of it, a `book` folder.
-The views organization is yours to implement when building your own website.
+The views' organization is yours to implement when building your own website.
 We will keep it simple and URL-related for now, so you won't get lost through this assignment.
 Feel free to explore the best ways to organize your application.
 
@@ -245,7 +245,7 @@ Some tags and helpers are added by default by the `view.engine` service.
 
 
 
-### The include tag
+### The _include_ tag
 
 The `{{include}}` tag indicates to load another view.
 It needs a view `name` (the same dotted syntax previously used), at least, and an optional `data` object.
@@ -260,7 +260,7 @@ Inside the application layout slot, we print the page main HTML content.
 
 
 
-### The t() helper function
+### The _t()_ helper function
 The `{{:~t('some text)}}` instruction prints the given text, but transformed by the `translator` service.
 If a translation exists for the current locale, it will return the translated string.
 Otherwise, the original string is returned.
@@ -272,7 +272,7 @@ Otherwise, the original string is returned.
 Now that we made our first web page, let's perform a search.
 
 First, we need to change the second route handler to point to our controller.
-Let's use the `search` action method
+Let's use the `search` action method.
 
 ```javascript
 // src/routes/web.js
@@ -308,7 +308,7 @@ We just need to actually perform a search and render it.
 
 
 
-### Use a route name instead of an URL
+### Use a route name instead of a URL
 
 We succeeded in sending a search request from a page to a route.
 However, let's already use good practices.
@@ -333,7 +333,7 @@ export default (router, app) => {
 
 
 
-#### The route helper function
+#### The _route_ helper function
 
 Once the routes are named, we can replace the hard-coded URL in the form with the `route` helper function.
 
@@ -427,9 +427,9 @@ class InspireBookController extends Controller {
 ```
 
 In Node.js or any CLI application, it's a reflex to print the received data in the console.
-We can also launch the engine debugger, if available, to put some breakpoints.
-However, for front-end developers, it is mode intuitive to use the browser console such as the Chrome DevTool Console or Firebug.
-It is still possible to launch node in inspect mode, but may still be complicated to use if not properly configured.
+We can also launch the engine debugger with the `--inspect` flag (much more information [in the Node.js documentation](https://nodejs.org/en/docs/guides/debugging-getting-started/).
+However, for front-end developers, it is more intuitive to use the browser console such as the Chrome DevTool Console or Firebug.
+It is still possible to launch node in inspect mode, but it may still be complicated to use if not properly configured, or with less advanced Node.js developers.
 
 Fortunately, Node IoC provides a simple service to quickly inspect some data in the browser or in the console, called `dumper`.
 It is based on the [Symfony VarDumper](https://symfony.com/doc/current/components/var_dumper.html#dump-examples-and-output) project.
@@ -523,7 +523,7 @@ Here is the basic template that should be rendered (feel free to customize it yo
 
 
 
-### The dump helper function
+### The _dump_ helper function
 
 Notices the `{{:~dump(#data)}}` statement? This acts the same as the controller's `this.dump(data)`.
 However, it outputs the data inside the template instead of displaying a complete web page filled with the dumped value.
@@ -599,7 +599,7 @@ For the author, we made a `for` loop to print all the names.
 
 Something that we did not cover yet was the pluralization, which is part of the framework, within a standalone helper, but also within the translator service, which we use through the `t` helper function.
 
-Then `t` function can accept multiple kind of parameters:
+Then `t` function can accept many kinds of parameters:
 
  - `t('my.string')` -> basic translation
  - `t('my.string', 2)` -> basic translation with pluralization
@@ -609,7 +609,7 @@ Then `t` function can accept multiple kind of parameters:
  Unlike the `helper.string`'s `pluralize` method, the pluralization of a translation is not magic.
  It relies on translation configuration.
  
- In our case, we used the following statement: `t('Author', book.volumeInfo.authors.length`, which basically says that the word should be translated, and also pluralize if there are more than one author.
+ In our case, we used the following statement: `t('Author', book.volumeInfo.authors.length`, which basically says that the word should be translated, and pluralize if there are more than one author.
  If the value is `>= 1`, the plural version, if it exists, will be used.
  Since no translation was made yet, we see `Author` as an output instead of `Authors` when we see more than one result.
 

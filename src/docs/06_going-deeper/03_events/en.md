@@ -6,7 +6,7 @@ Events are part of a lot of JavaScript packages and frameworks.
 In Node.js, the `EventEmitter` from the `events` core package can be used to subscribe and dispatch events.
 However, a singleton is needed in order to work across multiple files or packages.
 
-Node IoC makes it very simple to use events in an application or in a module without having to worry about singleton or event the concrete engine under it.
+Node IoC makes it very simple to use events in an application or in a module without having to worry about singletons or event the concrete engine under it.
 
 
 
@@ -40,7 +40,7 @@ Since some packages, or even your own application, could want to bind to the lif
 
 Also, some hooks are available in the console kernel.
 By default, they are declared in your application's console kernel.
-The only one that is implemented in a fresh application is `beforeHandling`, to load application commands.
+The only implemented one in a fresh application is `beforeHandling`, to load application commands.
 Here are the different hooks: 
 
  - `beforeHandling`

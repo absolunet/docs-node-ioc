@@ -15,7 +15,7 @@ The environment variables are, like most of the modern applications, located in 
 ## Files
 
 The configuration files are by default located in the `config` folder of a Node IoC application.
-The configuration are written in `yaml` files, but the repository handles `.yaml`, `.yml`, `.json` and `.js` files.
+The configuration is written in `yaml` files, but the repository handles `.yaml`, `.yml`, `.json` and `.js` files.
 For the JavaScript files, they must be written in CommonJS since they are not compiled by Babel.
 
 Each file represents a namespace, which name is the file name itself.
@@ -65,7 +65,7 @@ configRepository.get('app.unknown', 'default value'); // "default value"
 configRepository.get('app.unknown'); // null
 ```
 
-This repository allows to access and mutate configuration, but also to load configuration files.
+This repository allows accessing and mutating configuration, but also to load configuration files.
 
 Given the following file tree:
 
@@ -93,7 +93,7 @@ configRepository.get('namespace'); // { baz: { key: "nested value" } }
 
 ## The config.grammar service
 
-To make sure that the configuration is mostly static and predictable, YAML files are used by default instead of JavaScript files, which may add dynamic values.
+To make sure the configuration is mostly static and predictable, YAML files are used by default instead of JavaScript files, which may add dynamic values.
 It is not recommended, but still available if you need it.
 
 However, some values are normally based on others, or on application core configuration, such as base path.
